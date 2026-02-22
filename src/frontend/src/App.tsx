@@ -15,12 +15,14 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import AdminDashboard from './pages/AdminDashboard';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1000 * 60 * 5, // 5 minutes
       refetchOnWindowFocus: false,
+      retry: 1,
     },
   },
 });
@@ -107,6 +109,12 @@ const profileRoute = createRoute({
   component: Profile,
 });
 
+const adminRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/admin',
+  component: AdminDashboard,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   modulesRoute,
@@ -121,6 +129,7 @@ const routeTree = rootRoute.addChildren([
   contactRoute,
   loginRoute,
   profileRoute,
+  adminRoute,
 ]);
 
 const router = createRouter({ routeTree });

@@ -9,7 +9,11 @@ export function useSubmitQuizResults() {
   return useMutation({
     mutationFn: async ({ selectedStreams, completionPercentage }: { selectedStreams: string[], completionPercentage: number }) => {
       if (!actor) throw new Error('Actor not initialized');
-      return actor.submitQuizResults(selectedStreams, BigInt(completionPercentage));
+      const result = await actor.submitQuizResults(selectedStreams, BigInt(completionPercentage));
+      if (result.__kind__ === 'err') {
+        throw new Error(result.err);
+      }
+      return result.ok;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['userProfile'] });
@@ -25,7 +29,8 @@ export function useGetUserProfile() {
     queryFn: async () => {
       if (!actor) return null;
       try {
-        return await actor.getUserProfile();
+        const result = await actor.getCallerUserProfile();
+        return result;
       } catch (error) {
         // User profile not found is expected for new users
         return null;
@@ -42,7 +47,11 @@ export function useAddBookmark() {
   return useMutation({
     mutationFn: async (careerId: number) => {
       if (!actor) throw new Error('Actor not initialized');
-      return actor.addBookmark(BigInt(careerId));
+      const result = await actor.addBookmark(BigInt(careerId));
+      if (result.__kind__ === 'err') {
+        throw new Error(result.err);
+      }
+      return result.ok;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['userProfile'] });
@@ -58,7 +67,11 @@ export function useRemoveBookmark() {
   return useMutation({
     mutationFn: async (careerId: number) => {
       if (!actor) throw new Error('Actor not initialized');
-      return actor.removeBookmark(BigInt(careerId));
+      const result = await actor.removeBookmark(BigInt(careerId));
+      if (result.__kind__ === 'err') {
+        throw new Error(result.err);
+      }
+      return result.ok;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['userProfile'] });

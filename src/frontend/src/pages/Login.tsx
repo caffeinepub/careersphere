@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useInternetIdentity } from '../hooks/useInternetIdentity';
 import { LogIn, Loader2, CheckCircle, Save, Heart, TrendingUp, LogOut } from 'lucide-react';
 import { useNavigate } from '@tanstack/react-router';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function Login() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { login, loginStatus, identity, clear } = useInternetIdentity();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,8 +16,9 @@ export default function Login() {
     alert('Traditional login is not implemented in this demo. Please use Internet Identity.');
   };
 
-  const handleLogout = () => {
-    clear();
+  const handleLogout = async () => {
+    await clear();
+    queryClient.clear();
     navigate({ to: '/' });
   };
 
@@ -47,7 +50,7 @@ export default function Login() {
             </div>
             <h1 className="text-4xl font-bold mb-2">
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                {identity ? 'Welcome Back!' : 'Sign In to CareerSphere'}
+                {identity ? 'Welcome Back!' : 'Sign In'}
               </span>
             </h1>
             <p className="text-muted-foreground">
@@ -67,65 +70,55 @@ export default function Login() {
                 <p className="text-xs font-mono bg-accent px-4 py-2 rounded-lg break-all mb-6">
                   {identity.getPrincipal().toString()}
                 </p>
-                <div className="flex gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <button
                     onClick={() => navigate({ to: '/profile' })}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:shadow-soft transition-all"
+                    className="px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:shadow-soft-lg transition-all min-h-[44px]"
                   >
-                    View Profile
+                    Go to Profile
                   </button>
                   <button
                     onClick={handleLogout}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border hover:bg-accent transition-all"
+                    className="px-6 py-3 rounded-xl border-2 border-border text-foreground font-semibold hover:bg-accent transition-all inline-flex items-center justify-center gap-2 min-h-[44px]"
                   >
                     <LogOut className="w-4 h-4" />
                     Logout
                   </button>
                 </div>
               </div>
-
-              <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-6 border border-primary/20">
-                <h3 className="font-semibold mb-3 text-center">What You Can Do Now:</h3>
-                <div className="grid md:grid-cols-3 gap-4">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="text-center">
-                      <benefit.icon className="w-8 h-8 mx-auto mb-2 text-primary" />
-                      <p className="text-sm font-medium">{benefit.title}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           ) : (
-            // Login State
+            // Not Logged In State
             <div className="grid md:grid-cols-2 gap-8">
               {/* Benefits Section */}
               <div className="space-y-6 animate-fade-in">
-                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 border border-primary/20">
-                  <h2 className="text-2xl font-semibold mb-6">Why Sign In?</h2>
-                  <div className="space-y-6">
-                    {benefits.map((benefit, index) => (
-                      <div key={index} className="flex gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <benefit.icon className="w-6 h-6 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold mb-1">{benefit.title}</h3>
-                          <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                        </div>
-                      </div>
-                    ))}
+                <h2 className="text-2xl font-semibold mb-6">Why Sign In?</h2>
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex gap-4 p-4 rounded-xl bg-card border border-border hover:shadow-soft transition-all">
+                    <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center shrink-0">
+                      <benefit.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">{benefit.title}</h3>
+                      <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                    </div>
                   </div>
+                ))}
+                <div className="p-4 rounded-xl bg-accent/50 border border-border">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Note:</strong> You can browse all modules without logging in. Sign in only when you want to save your progress or bookmark items.
+                  </p>
                 </div>
               </div>
 
               {/* Login Form Section */}
-              <div className="bg-card rounded-2xl p-8 border border-border shadow-soft-lg space-y-6 animate-fade-in">
-                <div className="space-y-4">
+              <div className="space-y-6 animate-fade-in">
+                <div className="bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-soft-lg">
+                  <h2 className="text-xl font-semibold mb-6">Sign In with Internet Identity</h2>
                   <button
                     onClick={login}
                     disabled={loginStatus === 'logging-in'}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-primary text-primary-foreground hover:shadow-soft transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-6 py-4 rounded-xl bg-primary text-primary-foreground font-semibold hover:shadow-soft-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 min-h-[44px]"
                   >
                     {loginStatus === 'logging-in' ? (
                       <>
@@ -135,65 +128,30 @@ export default function Login() {
                     ) : (
                       <>
                         <LogIn className="w-5 h-5" />
-                        Login with Internet Identity
+                        Sign In with Internet Identity
                       </>
                     )}
                   </button>
-                  <p className="text-xs text-center text-muted-foreground">
+                  <p className="text-xs text-muted-foreground mt-4 text-center">
                     Secure authentication powered by Internet Computer
                   </p>
                 </div>
 
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-border" />
+                    <div className="w-full border-t border-border"></div>
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-card text-muted-foreground">Or continue with email</span>
+                    <span className="px-4 bg-background text-muted-foreground">Or continue browsing</span>
                   </div>
                 </div>
 
-                <form onSubmit={handleTraditionalLogin} className="space-y-4">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="password" className="block text-sm font-medium mb-2">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="••••••••"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full px-6 py-3 rounded-lg border border-border hover:bg-accent transition-all"
-                  >
-                    Sign In
-                  </button>
-                </form>
-
-                <p className="text-sm text-center text-muted-foreground">
-                  Don't have an account?{' '}
-                  <button className="text-primary hover:underline">Sign up</button>
-                </p>
+                <button
+                  onClick={() => navigate({ to: '/modules' })}
+                  className="w-full px-6 py-4 rounded-xl border-2 border-border text-foreground font-semibold hover:bg-accent transition-all min-h-[44px]"
+                >
+                  Explore Modules Without Login
+                </button>
               </div>
             </div>
           )}

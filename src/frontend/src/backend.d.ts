@@ -8,10 +8,22 @@ export interface None {
 }
 export type Option<T> = Some<T> | None;
 export interface UserProfileView {
+    bookmarkedDegrees: Array<bigint>;
     quizResults: Array<QuizResult>;
     surveyCompleted: boolean;
-    bookmarked: Array<bigint>;
+    bookmarkedCareers: Array<bigint>;
 }
+export interface QuizResult {
+    completionPercentage: bigint;
+    selectedStreams: Array<string>;
+}
+export type Result = {
+    __kind__: "ok";
+    ok: null;
+} | {
+    __kind__: "err";
+    err: string;
+};
 export interface CareerPath {
     id: bigint;
     professionalRecognition: Array<string>;
@@ -23,15 +35,28 @@ export interface CareerPath {
     specializations: Array<string>;
     location: string;
 }
-export interface QuizResult {
-    completionPercentage: bigint;
-    selectedStreams: Array<string>;
+export interface UserData {
+    principal: Principal;
+    profile: UserProfileView;
+}
+export enum UserRole {
+    admin = "admin",
+    user = "user",
+    guest = "guest"
 }
 export interface backendInterface {
-    addBookmark(careerId: bigint): Promise<void>;
+    addBookmark(careerId: bigint): Promise<Result>;
+    assignCallerUserRole(user: Principal, role: UserRole): Promise<void>;
+    deleteUserProfile(principal: Principal): Promise<Result>;
     findSimilarCareersByStream(stream: string): Promise<Array<CareerPath>>;
+    getAllCareers(): Promise<Array<CareerPath>>;
+    getAllUserProfiles(): Promise<Array<UserData>>;
     getBookmarkedCareers(): Promise<Array<CareerPath>>;
-    getUserProfile(): Promise<UserProfileView>;
-    removeBookmark(careerId: bigint): Promise<void>;
-    submitQuizResults(selectedStreams: Array<string>, completionPercentage: bigint): Promise<void>;
+    getCallerUserProfile(): Promise<UserProfileView | null>;
+    getCallerUserRole(): Promise<UserRole>;
+    getUserProfile(user: Principal): Promise<UserProfileView | null>;
+    isCallerAdmin(): Promise<boolean>;
+    removeBookmark(careerId: bigint): Promise<Result>;
+    saveCallerUserProfile(profileView: UserProfileView): Promise<void>;
+    submitQuizResults(selectedStreams: Array<string>, completionPercentage: bigint): Promise<Result>;
 }

@@ -1,16 +1,14 @@
 # Specification
 
 ## Summary
-**Goal:** Add user authentication with Internet Identity to enable students to save their progress, quiz results, and preferences across sessions.
+**Goal:** Fix Motoko compilation errors in the backend and deploy CareerSphere to Internet Computer production network with a permanent public URL.
 
 **Planned changes:**
-- Implement backend user profile storage with stable persistence for quiz results, bookmarked careers, and degree programs
-- Add backend functions to save and retrieve Stream Selector quiz results linked to user principal IDs
-- Add backend functions to bookmark and retrieve career paths and degree programs
-- Auto-save quiz results when students complete the Stream Selector Quiz (if authenticated)
-- Add bookmark buttons to Career Path and Degree Finder pages to save selections
-- Create a Profile/Dashboard page showing saved quiz results, bookmarked careers, and bookmarked degrees
-- Update Login page to explain authentication benefits and show user status
-- Add Profile/My Progress link to navigation menu
+- Analyze and fix all Motoko compilation errors in backend/main.mo
+- Correct HashMap operations and stable storage patterns to use valid Motoko syntax
+- Ensure all module imports reference valid Motoko base library modules with correct paths
+- Deploy backend canister to Internet Computer production network
+- Deploy frontend to Internet Computer production network and generate permanent .ic0.app URL
+- Verify production deployment is publicly accessible on mobile and laptop devices without platform login
 
-**User-visible outcome:** Students can log in with Internet Identity to automatically save their Stream Selector quiz results, bookmark favorite career paths and degree programs, and view all their saved progress on a dedicated Profile page.
+**User-visible outcome:** CareerSphere will be deployed to a permanent public URL (https://xxxxx-xxxxx-xxxxx-xxxxx-xxx.ic0.app) that works on mobile and laptop devices, accessible 24/7 without requiring platform authentication.

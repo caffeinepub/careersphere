@@ -94,7 +94,7 @@ export default function DegreeFinder() {
     degree.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const bookmarkedIds = userProfile?.bookmarked.map(id => Number(id)) || [];
+  const bookmarkedIds = userProfile?.bookmarkedCareers.map(id => Number(id)) || [];
 
   const handleBookmarkToggle = async (degreeId: number) => {
     if (!identity) {
@@ -120,34 +120,34 @@ export default function DegreeFinder() {
   };
 
   return (
-    <div className="py-16 min-h-screen bg-gradient-to-b from-background via-accent/10 to-background">
+    <div className="py-12 sm:py-16 min-h-screen bg-gradient-to-b from-background via-accent/10 to-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Degree Info Finder
             </span>
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Search and explore detailed information about degrees, entrance exams, and career prospects
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto space-y-8">
-          <div className="bg-card rounded-2xl p-6 border border-border shadow-soft">
+        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
+          <div className="bg-card rounded-2xl p-4 sm:p-6 border border-border shadow-soft">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for degrees (e.g., Engineering, Medicine, Commerce)..."
-                className="w-full pl-12 pr-4 py-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary text-lg"
+                className="w-full pl-12 pr-4 py-3 sm:py-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary text-base sm:text-lg min-h-[44px]"
               />
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredDegrees.map((degree, index) => {
               const isBookmarked = bookmarkedIds.includes(degree.id);
               const isLoading = addBookmark.isPending || removeBookmark.isPending;
@@ -155,15 +155,15 @@ export default function DegreeFinder() {
               return (
                 <div
                   key={index}
-                  className="bg-card rounded-2xl p-6 border border-border hover:shadow-soft-lg transition-all animate-fade-in relative"
+                  className="bg-card rounded-2xl p-5 sm:p-6 border border-border hover:shadow-soft-lg transition-all animate-fade-in relative"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-2xl font-semibold text-primary">{degree.name}</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-primary pr-2">{degree.name}</h3>
                     <button
                       onClick={() => handleBookmarkToggle(degree.id)}
                       disabled={isLoading}
-                      className="p-2 rounded-lg hover:bg-accent transition-all disabled:opacity-50"
+                      className="p-2 rounded-lg hover:bg-accent transition-all disabled:opacity-50 min-h-[44px] min-w-[44px] flex items-center justify-center shrink-0"
                       title={isBookmarked ? 'Remove bookmark' : 'Bookmark degree'}
                     >
                       {isLoading ? (
@@ -179,31 +179,31 @@ export default function DegreeFinder() {
                       )}
                     </button>
                   </div>
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                  <p className="text-muted-foreground mb-4 text-xs sm:text-sm leading-relaxed">
                     {degree.description}
                   </p>
 
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <Clock className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-secondary shrink-0 mt-0.5" />
                       <div>
-                        <span className="font-medium text-sm">Duration:</span>
-                        <span className="text-muted-foreground text-sm ml-2">{degree.duration}</span>
+                        <span className="font-medium text-xs sm:text-sm">Duration:</span>
+                        <span className="text-muted-foreground text-xs sm:text-sm ml-2">{degree.duration}</span>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <DollarSign className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      <DollarSign className="w-4 h-4 sm:w-5 sm:h-5 text-secondary shrink-0 mt-0.5" />
                       <div>
-                        <span className="font-medium text-sm">Fees Range:</span>
-                        <span className="text-muted-foreground text-sm ml-2">{degree.fees}</span>
+                        <span className="font-medium text-xs sm:text-sm">Fees Range:</span>
+                        <span className="text-muted-foreground text-xs sm:text-sm ml-2">{degree.fees}</span>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <FileText className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-secondary shrink-0 mt-0.5" />
                       <div>
-                        <span className="font-medium text-sm">Entrance Exams:</span>
+                        <span className="font-medium text-xs sm:text-sm">Entrance Exams:</span>
                         <div className="mt-1 flex flex-wrap gap-2">
                           {degree.exams.map((exam, i) => (
                             <span
@@ -224,8 +224,8 @@ export default function DegreeFinder() {
 
           {filteredDegrees.length === 0 && (
             <div className="text-center py-12 animate-fade-in">
-              <Search className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-muted-foreground">
+              <Search className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-muted-foreground" />
+              <p className="text-sm sm:text-base text-muted-foreground px-4">
                 No degrees found matching your search. Try different keywords!
               </p>
             </div>

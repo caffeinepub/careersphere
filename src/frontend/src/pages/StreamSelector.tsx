@@ -118,27 +118,27 @@ export default function StreamSelector() {
   const hasAnswer = answers[currentQuestion] !== undefined;
 
   return (
-    <div className="py-16 min-h-screen bg-gradient-to-b from-background via-accent/10 to-background">
+    <div className="py-12 sm:py-16 min-h-screen bg-gradient-to-b from-background via-accent/10 to-background">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-8 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="text-center mb-6 sm:mb-8 animate-fade-in">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Stream Selector Quiz
               </span>
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-base sm:text-lg text-muted-foreground px-4">
               Answer these questions to find your ideal stream
             </p>
             {!identity && (
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2 px-4">
                 💡 <a href="/login" className="text-primary hover:underline">Log in</a> to save your results
               </p>
             )}
           </div>
 
-          <div className="mb-8">
-            <div className="flex justify-between text-sm text-muted-foreground mb-2">
+          <div className="mb-6 sm:mb-8">
+            <div className="flex justify-between text-xs sm:text-sm text-muted-foreground mb-2 px-1">
               <span>Question {currentQuestion + 1} of {questions.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
@@ -150,8 +150,8 @@ export default function StreamSelector() {
             </div>
           </div>
 
-          <div className="bg-card rounded-2xl p-8 border border-border shadow-soft-lg animate-fade-in">
-            <h2 className="text-2xl font-semibold mb-6">{currentQ.question}</h2>
+          <div className="bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-soft-lg animate-fade-in">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-6">{currentQ.question}</h2>
 
             <div className="space-y-3">
               {currentQ.options.map((option, index) => (
@@ -166,7 +166,7 @@ export default function StreamSelector() {
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
                         answers[currentQuestion] === option.stream
                           ? 'border-primary'
                           : 'border-muted-foreground'
@@ -176,17 +176,17 @@ export default function StreamSelector() {
                         <div className="w-3 h-3 rounded-full bg-primary" />
                       )}
                     </div>
-                    <span className="font-medium">{option.text}</span>
+                    <span className="font-medium text-sm sm:text-base">{option.text}</span>
                   </div>
                 </button>
               ))}
             </div>
 
-            <div className="flex justify-between mt-8">
+            <div className="flex flex-col sm:flex-row justify-between gap-3 mt-6 sm:mt-8">
               <button
                 onClick={handlePrevious}
                 disabled={currentQuestion === 0}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-lg border border-border hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-all min-h-[44px] order-2 sm:order-1"
               >
                 <ChevronLeft className="w-5 h-5" />
                 Previous
@@ -195,7 +195,7 @@ export default function StreamSelector() {
               <button
                 onClick={handleNext}
                 disabled={!hasAnswer || submitQuizResults.isPending}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:shadow-soft disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:shadow-soft disabled:opacity-50 disabled:cursor-not-allowed transition-all min-h-[44px] order-1 sm:order-2"
               >
                 {submitQuizResults.isPending ? (
                   <>

@@ -25,18 +25,37 @@ export interface QuizResult {
   'completionPercentage' : bigint,
   'selectedStreams' : Array<string>,
 }
+export type Result = { 'ok' : null } |
+  { 'err' : string };
+export interface UserData {
+  'principal' : Principal,
+  'profile' : UserProfileView,
+}
 export interface UserProfileView {
+  'bookmarkedDegrees' : Array<bigint>,
   'quizResults' : Array<QuizResult>,
   'surveyCompleted' : boolean,
-  'bookmarked' : Array<bigint>,
+  'bookmarkedCareers' : Array<bigint>,
 }
+export type UserRole = { 'admin' : null } |
+  { 'user' : null } |
+  { 'guest' : null };
 export interface _SERVICE {
-  'addBookmark' : ActorMethod<[bigint], undefined>,
+  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
+  'addBookmark' : ActorMethod<[bigint], Result>,
+  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
+  'deleteUserProfile' : ActorMethod<[Principal], Result>,
   'findSimilarCareersByStream' : ActorMethod<[string], Array<CareerPath>>,
+  'getAllCareers' : ActorMethod<[], Array<CareerPath>>,
+  'getAllUserProfiles' : ActorMethod<[], Array<UserData>>,
   'getBookmarkedCareers' : ActorMethod<[], Array<CareerPath>>,
-  'getUserProfile' : ActorMethod<[], UserProfileView>,
-  'removeBookmark' : ActorMethod<[bigint], undefined>,
-  'submitQuizResults' : ActorMethod<[Array<string>, bigint], undefined>,
+  'getCallerUserProfile' : ActorMethod<[], [] | [UserProfileView]>,
+  'getCallerUserRole' : ActorMethod<[], UserRole>,
+  'getUserProfile' : ActorMethod<[Principal], [] | [UserProfileView]>,
+  'isCallerAdmin' : ActorMethod<[], boolean>,
+  'removeBookmark' : ActorMethod<[bigint], Result>,
+  'saveCallerUserProfile' : ActorMethod<[UserProfileView], undefined>,
+  'submitQuizResults' : ActorMethod<[Array<string>, bigint], Result>,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

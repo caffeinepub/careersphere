@@ -1,90 +1,69 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-22T16:37:37.679Z",
+  "generatedAt": "2026-02-22T18:36:22.502Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 8,
-    "implemented": 5,
+    "total": 6,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-12",
-        "summary": "Implement backend user profile data model in main.mo to store student preferences, quiz results, saved career paths, and selected modules. Include stable storage for persistence across canister upgrades.",
+        "id": "REQ-70",
+        "summary": "Analyze and fix all Motoko compilation errors in backend/main.mo that are preventing successful deployment to the Internet Computer production network",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
       },
       {
-        "id": "REQ-13",
-        "summary": "Add backend functions to save and retrieve Stream Selector quiz results, associating them with the authenticated user's principal ID",
+        "id": "REQ-71",
+        "summary": "Verify all HashMap operations and stable storage patterns in backend/main.mo use correct syntax compatible with the Motoko compiler version",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
       },
       {
-        "id": "REQ-14",
-        "summary": "Add backend functions to save and retrieve bookmarked career paths and degree programs for authenticated users",
+        "id": "REQ-72",
+        "summary": "Ensure all module imports in backend/main.mo reference valid Motoko base library modules with correct paths",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
       },
       {
-        "id": "REQ-15",
-        "summary": "Update Stream Selector Quiz page to automatically save quiz results to the backend when user completes the quiz and is authenticated via Internet Identity",
+        "id": "REQ-73",
+        "summary": "Deploy the fixed backend canister to Internet Computer production network and verify it receives a permanent canister ID",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-74",
+        "summary": "Deploy the frontend to Internet Computer production network and generate a permanent public .ic0.app URL that works on mobile and laptop devices",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/StreamSelector.tsx"
+          "frontend/index.html",
+          "frontend/src/components/Navigation.tsx",
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/pages/Modules.tsx",
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/StreamSelector.tsx"
+          "frontend/index.html",
+          "frontend/src/App.tsx"
         ]
       },
       {
-        "id": "REQ-16",
-        "summary": "Add bookmark buttons to Career Path page cards that save selected careers to the user's profile when authenticated",
+        "id": "REQ-75",
+        "summary": "Verify the production deployment persists and remains accessible 24/7 without requiring platform login",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/CareerPath.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/CareerPath.tsx"
-        ]
-      },
-      {
-        "id": "REQ-17",
-        "summary": "Add bookmark buttons to Degree Finder page cards that save selected degrees to the user's profile when authenticated",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/DegreeFinder.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/DegreeFinder.tsx"
-        ]
-      },
-      {
-        "id": "REQ-18",
-        "summary": "Create a new Profile/Dashboard page accessible from the navigation menu that displays the authenticated user's saved quiz results, bookmarked careers, and bookmarked degrees",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/Profile.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/components/Navigation.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/Profile.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/components/Navigation.tsx"
-        ]
-      },
-      {
-        "id": "REQ-19",
-        "summary": "Update Login page to show authentication status and provide a clear call-to-action explaining the benefits of logging in (save progress, bookmark careers, track quiz results)",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/Login.tsx"
+          "frontend/src/pages/Login.tsx",
+          "frontend/src/pages/CareerPath.tsx",
+          "frontend/src/pages/DegreeFinder.tsx",
+          "frontend/src/pages/StreamSelector.tsx",
+          "frontend/src/hooks/useActor.ts"
         ],
         "matchedFiles": [
           "frontend/src/pages/Login.tsx"
@@ -93,24 +72,13 @@
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/index.html",
     "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/Navigation.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/pages/CareerPath.tsx",
-    "frontend/src/pages/DegreeFinder.tsx",
     "frontend/src/pages/Login.tsx",
-    "frontend/src/pages/Profile.tsx",
-    "frontend/src/pages/StreamSelector.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

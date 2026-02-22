@@ -1,172 +1,127 @@
 {
   "kind": "build_request",
-  "title": "Add user authentication with progress saving",
+  "title": "Fix deployment compilation errors and publish to production",
   "projectName": "CareerSphere",
-  "priority": "normal",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-12",
-      "text": "Implement backend user profile data model in main.mo to store student preferences, quiz results, saved career paths, and selected modules. Include stable storage for persistence across canister upgrades.",
+      "id": "REQ-70",
+      "text": "Analyze and fix all Motoko compilation errors in backend/main.mo that are preventing successful deployment to the Internet Computer production network",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-user-yes"
+          "msg-user-publish-request"
         ],
         "quotes": [
-          "authentication so students can save their progress and preferences"
+          "Publish my project and provide a permanent public link"
         ]
       },
       "acceptanceCriteria": [
-        "User profile type includes fields for principal ID, saved quiz results, bookmarked careers, and preference settings",
-        "Profiles persist across canister upgrades using stable storage",
-        "CRUD operations available for user profiles (create, read, update)"
+        "Backend/main.mo compiles without errors using the current Motoko compiler",
+        "All type declarations and function signatures are valid",
+        "Deployment to Internet Computer production network succeeds"
       ]
     },
     {
-      "id": "REQ-13",
-      "text": "Add backend functions to save and retrieve Stream Selector quiz results, associating them with the authenticated user's principal ID",
+      "id": "REQ-71",
+      "text": "Verify all HashMap operations and stable storage patterns in backend/main.mo use correct syntax compatible with the Motoko compiler version",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-user-yes"
-        ],
-        "quotes": [
-          "save their progress"
+          "msg-user-publish-request"
         ]
       },
       "acceptanceCriteria": [
-        "Function to save quiz answers and recommended stream (Science/Commerce/Arts) for a user",
-        "Function to retrieve saved quiz results by principal ID",
-        "Quiz results include timestamp and selected answers"
+        "All stable variable declarations are syntactically correct",
+        "HashMap initialization and operations use proper Motoko syntax",
+        "Pre-upgrade and post-upgrade patterns are valid if present"
       ]
     },
     {
-      "id": "REQ-14",
-      "text": "Add backend functions to save and retrieve bookmarked career paths and degree programs for authenticated users",
+      "id": "REQ-72",
+      "text": "Ensure all module imports in backend/main.mo reference valid Motoko base library modules with correct paths",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-user-yes"
-        ],
-        "quotes": [
-          "save their progress and preferences"
+          "msg-user-publish-request"
         ]
       },
       "acceptanceCriteria": [
-        "Function to bookmark a career path or degree with user principal ID",
-        "Function to retrieve all bookmarked items for a user",
-        "Function to remove a bookmark"
+        "All import statements use correct module paths",
+        "All imported modules exist in the Motoko base library",
+        "No missing or deprecated module references"
       ]
     },
     {
-      "id": "REQ-15",
-      "text": "Update Stream Selector Quiz page to automatically save quiz results to the backend when user completes the quiz and is authenticated via Internet Identity",
-      "target": "frontend",
+      "id": "REQ-73",
+      "text": "Deploy the fixed backend canister to Internet Computer production network and verify it receives a permanent canister ID",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-user-yes"
+          "msg-user-publish-request"
         ],
         "quotes": [
-          "save their progress"
+          "provide a permanent public link that I can access anytime"
         ]
       },
       "acceptanceCriteria": [
-        "Quiz results are saved to backend after completion if user is logged in",
-        "Show success message after saving results",
-        "Handle cases where user is not authenticated with a prompt to log in"
+        "Backend canister deploys successfully to production network",
+        "Canister receives a permanent canister ID",
+        "Backend functions are accessible via production canister"
       ]
     },
     {
-      "id": "REQ-16",
-      "text": "Add bookmark buttons to Career Path page cards that save selected careers to the user's profile when authenticated",
+      "id": "REQ-74",
+      "text": "Deploy the frontend to Internet Computer production network and generate a permanent public .ic0.app URL that works on mobile and laptop devices",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-yes"
+          "msg-user-publish-request"
         ],
         "quotes": [
-          "save their progress and preferences"
+          "Ensure the link works on mobile and laptop"
         ]
       },
       "acceptanceCriteria": [
-        "Bookmark icon button appears on each career card",
-        "Clicking bookmark saves the career to backend and shows visual feedback",
-        "Bookmarked careers display a filled bookmark icon",
-        "Prompt to log in if user is not authenticated"
+        "Frontend deploys successfully to production network",
+        "Application receives a permanent .ic0.app URL (format: https://xxxxx-xxxxx-xxxxx-xxxxx-xxx.ic0.app)",
+        "URL is publicly accessible without authentication",
+        "Application is fully functional on mobile devices",
+        "Application is fully functional on laptop/desktop devices"
       ]
     },
     {
-      "id": "REQ-17",
-      "text": "Add bookmark buttons to Degree Finder page cards that save selected degrees to the user's profile when authenticated",
-      "target": "frontend",
+      "id": "REQ-75",
+      "text": "Verify the production deployment persists and remains accessible 24/7 without requiring platform login",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-user-yes"
+          "msg-user-publish-request"
         ],
         "quotes": [
-          "save their progress and preferences"
+          "access anytime without logging into the platform"
         ]
       },
       "acceptanceCriteria": [
-        "Bookmark icon button appears on each degree card",
-        "Clicking bookmark saves the degree to backend and shows visual feedback",
-        "Bookmarked degrees display a filled bookmark icon",
-        "Prompt to log in if user is not authenticated"
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "text": "Create a new Profile/Dashboard page accessible from the navigation menu that displays the authenticated user's saved quiz results, bookmarked careers, and bookmarked degrees",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-yes"
-        ],
-        "quotes": [
-          "save their progress and preferences"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Profile page shows user principal ID and join date",
-        "Section displaying saved Stream Selector quiz results with recommended stream",
-        "Section showing bookmarked careers with links to Career Path page",
-        "Section showing bookmarked degrees with links to Degree Finder page",
-        "Navigation menu includes 'Profile' or 'My Progress' link",
-        "Redirect to login page if user is not authenticated"
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "text": "Update Login page to show authentication status and provide a clear call-to-action explaining the benefits of logging in (save progress, bookmark careers, track quiz results)",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-yes"
-        ],
-        "quotes": [
-          "authentication so students can save their progress and preferences"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Login page displays benefits of authentication in a prominent section",
-        "Benefits list includes: save quiz progress, bookmark careers, track journey",
-        "When authenticated, show welcome message with user's principal ID",
-        "Provide logout button when authenticated"
+        "Production URL remains accessible after deployment completes",
+        "No platform authentication required to view the live application",
+        "Application maintains uptime on Internet Computer network",
+        "All 8 feature modules are functional in production"
       ]
     }
   ],
   "constraints": [
-    "Use Internet Identity for authentication as implemented in useInternetIdentity.ts",
-    "Maintain single-actor architecture in backend/main.mo",
-    "Do not modify immutable frontend paths: useInternetIdentity.ts, useActor.ts, main.tsx, components/ui",
-    "Preserve existing navigation structure and routes in App.tsx"
+    "Must respect single-actor architecture in backend/main.mo",
+    "Must not modify frontend/src/hooks/useInternetIdentity.ts or other immutable frontend paths",
+    "Must use Motoko for backend - no other languages supported",
+    "Deployment must target Internet Computer production network, not local replica"
   ],
   "nonGoals": [
-    "Implementing social media login (Facebook, Google, etc.)",
-    "Adding third-party analytics tracking",
-    "Creating admin dashboard or role-based access control",
-    "Implementing real-time notifications or alerts",
-    "Adding email verification or password reset flows"
+    "Implementing new features or functionality",
+    "Changing the UI design or styling",
+    "Adding new pages or modules",
+    "Modifying user data structures",
+    "Adding external service integrations"
   ],
   "imageRequirements": {
     "required": [],

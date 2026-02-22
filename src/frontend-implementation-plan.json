@@ -1,101 +1,80 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add user authentication with progress saving",
+  "title": "Frontend Production Deployment Readiness",
   "requirements": [
     {
-      "id": "REQ-15",
-      "summary": "Auto-save quiz results when authenticated user completes Stream Selector Quiz",
+      "id": "REQ-74",
+      "summary": "Deploy frontend to Internet Computer production network with permanent .ic0.app URL accessible on mobile and laptop devices",
       "acceptanceCriteria": [
-        "Quiz results are saved to backend after completion if user is logged in",
-        "Show success message after saving results",
-        "Handle cases where user is not authenticated with a prompt to log in"
+        "Frontend deploys successfully to production network",
+        "Application receives a permanent .ic0.app URL (format: https://xxxxx-xxxxx-xxxxx-xxxxx-xxx.ic0.app)",
+        "URL is publicly accessible without authentication",
+        "Application is fully functional on mobile devices",
+        "Application is fully functional on laptop/desktop devices"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/StreamSelector.tsx",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Integrate backend quiz result submission using submitQuizResults from useActor hook. After calculating quiz results, check authentication status via useInternetIdentity and call submitQuizResults with selectedStreams array and completionPercentage. Display success toast/message on save completion. If user is not authenticated, show prompt to log in before navigating to results. Handle loading and error states during save operation."
-        }
-      ]
-    },
-    {
-      "id": "REQ-16",
-      "summary": "Add bookmark functionality to Career Path page for authenticated users",
-      "acceptanceCriteria": [
-        "Bookmark icon button appears on each career card",
-        "Clicking bookmark saves the career to backend and shows visual feedback",
-        "Bookmarked careers display a filled bookmark icon",
-        "Prompt to log in if user is not authenticated"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/CareerPath.tsx",
-          "operation": "modify",
-          "description": "Add bookmark button with heart or bookmark icon to each career card. Use useActor hook to access addBookmark and removeBookmark backend functions. Fetch bookmarked career IDs from getUserProfile to display filled/unfilled bookmark state. On bookmark click, check authentication status and either call addBookmark/removeBookmark or prompt user to log in. Show visual feedback (icon state change, toast message) on successful bookmark action. Handle loading states during API calls."
-        }
-      ]
-    },
-    {
-      "id": "REQ-17",
-      "summary": "Add bookmark functionality to Degree Finder page for authenticated users",
-      "acceptanceCriteria": [
-        "Bookmark icon button appears on each degree card",
-        "Clicking bookmark saves the degree to backend and shows visual feedback",
-        "Bookmarked degrees display a filled bookmark icon",
-        "Prompt to log in if user is not authenticated"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/DegreeFinder.tsx",
-          "operation": "modify",
-          "description": "Add bookmark button with heart or bookmark icon to each degree card. Use useActor hook to access addBookmark and removeBookmark backend functions. Fetch bookmarked degree IDs from getUserProfile to display filled/unfilled bookmark state. On bookmark click, check authentication status and either call addBookmark/removeBookmark or prompt user to log in. Show visual feedback (icon state change, toast message) on successful bookmark action. Handle loading states during API calls."
-        }
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "summary": "Create Profile/Dashboard page displaying saved progress and bookmarks",
-      "acceptanceCriteria": [
-        "Profile page shows user principal ID and join date",
-        "Section displaying saved Stream Selector quiz results with recommended stream",
-        "Section showing bookmarked careers with links to Career Path page",
-        "Section showing bookmarked degrees with links to Degree Finder page",
-        "Navigation menu includes 'Profile' or 'My Progress' link",
-        "Redirect to login page if user is not authenticated"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/Profile.tsx",
-          "operation": "create",
-          "description": "Create new Profile page component that fetches user data via getUserProfile and getBookmarkedCareers from useActor hook. Check authentication status using useInternetIdentity and redirect to login if not authenticated. Display user principal ID prominently at top. Create sections for: (1) Quiz Results showing selectedStreams and completionPercentage from quizResults array, (2) Bookmarked Careers displaying career cards with titles and navigation links to Career Path page, (3) Bookmarked Degrees showing degree cards with links to Degree Finder page. Include loading states and empty state messages when no data is available. Style consistently with existing pages using gradient backgrounds and card layouts."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add new route for Profile page at path '/profile' using createRoute with Profile component as the route component. Import Profile component at top of file. Add route to routeTree structure alongside existing routes."
+          "description": "Update the page title from generic 'Career Guidance Platform' to 'CareerSphere - Your Career Path Navigator' for better branding when deployed to production. Ensure all meta tags support mobile viewport and responsive rendering."
         },
         {
           "path": "frontend/src/components/Navigation.tsx",
           "operation": "modify",
-          "description": "Add 'Profile' or 'My Progress' navigation link to both desktop and mobile navigation menus. Position link near Login link. Apply active styling when on /profile route. Ensure link is visible in both navigation modes and follows existing navigation pattern with Link component from TanStack Router."
+          "description": "Verify responsive mobile menu functionality works correctly across different screen sizes. Ensure the hamburger menu on mobile devices properly toggles navigation links and maintains accessibility for touch interactions on mobile devices."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Verify hero section with generated/hero-students.dim_1200x600.png renders properly on both mobile and desktop viewports. Ensure call-to-action buttons are touch-friendly on mobile devices with adequate spacing."
+        },
+        {
+          "path": "frontend/src/pages/Modules.tsx",
+          "operation": "modify",
+          "description": "Verify the grid layout displaying all 8 module cards (Career Path, India vs Abroad, Stream Selector, AI Chatbot, FutureMap, Regional Language, AR Explorer, Degree Finder) with their respective icon assets (frontend/public/assets/generated/icon-*.dim_128x128.png) renders responsively on mobile and desktop. Ensure touch targets are adequate for mobile interaction."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Verify all 14 routes are properly configured for production deployment and work correctly when accessed via the .ic0.app URL. Ensure TanStack Router handles navigation properly in the production environment without any base path issues."
         }
       ]
     },
     {
-      "id": "REQ-19",
-      "summary": "Update Login page to explain authentication benefits and show status",
+      "id": "REQ-75",
+      "summary": "Verify production deployment accessibility and ensure all 8 feature modules remain functional 24/7 without platform login requirement",
       "acceptanceCriteria": [
-        "Login page displays benefits of authentication in a prominent section",
-        "Benefits list includes: save quiz progress, bookmark careers, track journey",
-        "When authenticated, show welcome message with user's principal ID",
-        "Provide logout button when authenticated"
+        "Production URL remains accessible after deployment completes",
+        "No platform authentication required to view the live application",
+        "Application maintains uptime on Internet Computer network",
+        "All 8 feature modules are functional in production"
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/Login.tsx",
           "operation": "modify",
-          "description": "Add benefits section above or beside login form that highlights authentication advantages: save quiz progress, bookmark career paths and degrees, track your journey over time. When user is authenticated (check via useInternetIdentity), display welcome message showing principal ID and add logout button that calls logout function from useInternetIdentity. Hide login form when authenticated. Style benefits list with icons and gradient cards for visual appeal. Maintain existing Internet Identity login integration."
+          "description": "Ensure the authentication page clearly communicates that Internet Identity login is optional and used only for saving progress and bookmarking features. Public browsing of all 8 modules should work without authentication."
+        },
+        {
+          "path": "frontend/src/pages/CareerPath.tsx",
+          "operation": "modify",
+          "description": "Verify career exploration and subject selection functionality works for unauthenticated users, with bookmark features gracefully disabled or prompting login only when bookmark actions are attempted. Ensure core browsing experience works without authentication."
+        },
+        {
+          "path": "frontend/src/pages/DegreeFinder.tsx",
+          "operation": "modify",
+          "description": "Verify searchable degree list displays correctly for all users regardless of authentication state. Ensure bookmark functionality is appropriately hidden or disabled for unauthenticated users without blocking core degree browsing."
+        },
+        {
+          "path": "frontend/src/pages/StreamSelector.tsx",
+          "operation": "modify",
+          "description": "Verify the 5-question quiz works for unauthenticated users, with quiz results displayed correctly. Saving results to backend should only occur for authenticated users, with appropriate messaging if user is not logged in."
+        },
+        {
+          "path": "frontend/src/hooks/useActor.ts",
+          "operation": "modify",
+          "description": "Verify the backend actor initialization works correctly in production environment with proper canister ID resolution from the deployed .ic0.app URL. Ensure the authorization component properly handles both authenticated and anonymous users without blocking public access."
         }
       ]
     }

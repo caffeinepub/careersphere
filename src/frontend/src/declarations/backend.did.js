@@ -8,6 +8,12 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
+export const Result = IDL.Variant({ 'ok' : IDL.Null, 'err' : IDL.Text });
+export const UserRole = IDL.Variant({
+  'admin' : IDL.Null,
+  'user' : IDL.Null,
+  'guest' : IDL.Null,
+});
 export const CareerPath = IDL.Record({
   'id' : IDL.Nat,
   'professionalRecognition' : IDL.Vec(IDL.Text),
@@ -24,27 +30,51 @@ export const QuizResult = IDL.Record({
   'selectedStreams' : IDL.Vec(IDL.Text),
 });
 export const UserProfileView = IDL.Record({
+  'bookmarkedDegrees' : IDL.Vec(IDL.Nat),
   'quizResults' : IDL.Vec(QuizResult),
   'surveyCompleted' : IDL.Bool,
-  'bookmarked' : IDL.Vec(IDL.Nat),
+  'bookmarkedCareers' : IDL.Vec(IDL.Nat),
+});
+export const UserData = IDL.Record({
+  'principal' : IDL.Principal,
+  'profile' : UserProfileView,
 });
 
 export const idlService = IDL.Service({
-  'addBookmark' : IDL.Func([IDL.Nat], [], []),
+  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+  'addBookmark' : IDL.Func([IDL.Nat], [Result], []),
+  'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+  'deleteUserProfile' : IDL.Func([IDL.Principal], [Result], []),
   'findSimilarCareersByStream' : IDL.Func(
       [IDL.Text],
       [IDL.Vec(CareerPath)],
-      [],
+      ['query'],
     ),
-  'getBookmarkedCareers' : IDL.Func([], [IDL.Vec(CareerPath)], []),
-  'getUserProfile' : IDL.Func([], [UserProfileView], []),
-  'removeBookmark' : IDL.Func([IDL.Nat], [], []),
-  'submitQuizResults' : IDL.Func([IDL.Vec(IDL.Text), IDL.Nat], [], []),
+  'getAllCareers' : IDL.Func([], [IDL.Vec(CareerPath)], ['query']),
+  'getAllUserProfiles' : IDL.Func([], [IDL.Vec(UserData)], ['query']),
+  'getBookmarkedCareers' : IDL.Func([], [IDL.Vec(CareerPath)], ['query']),
+  'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfileView)], ['query']),
+  'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+  'getUserProfile' : IDL.Func(
+      [IDL.Principal],
+      [IDL.Opt(UserProfileView)],
+      ['query'],
+    ),
+  'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+  'removeBookmark' : IDL.Func([IDL.Nat], [Result], []),
+  'saveCallerUserProfile' : IDL.Func([UserProfileView], [], []),
+  'submitQuizResults' : IDL.Func([IDL.Vec(IDL.Text), IDL.Nat], [Result], []),
 });
 
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
+  const Result = IDL.Variant({ 'ok' : IDL.Null, 'err' : IDL.Text });
+  const UserRole = IDL.Variant({
+    'admin' : IDL.Null,
+    'user' : IDL.Null,
+    'guest' : IDL.Null,
+  });
   const CareerPath = IDL.Record({
     'id' : IDL.Nat,
     'professionalRecognition' : IDL.Vec(IDL.Text),
@@ -61,22 +91,44 @@ export const idlFactory = ({ IDL }) => {
     'selectedStreams' : IDL.Vec(IDL.Text),
   });
   const UserProfileView = IDL.Record({
+    'bookmarkedDegrees' : IDL.Vec(IDL.Nat),
     'quizResults' : IDL.Vec(QuizResult),
     'surveyCompleted' : IDL.Bool,
-    'bookmarked' : IDL.Vec(IDL.Nat),
+    'bookmarkedCareers' : IDL.Vec(IDL.Nat),
+  });
+  const UserData = IDL.Record({
+    'principal' : IDL.Principal,
+    'profile' : UserProfileView,
   });
   
   return IDL.Service({
-    'addBookmark' : IDL.Func([IDL.Nat], [], []),
+    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+    'addBookmark' : IDL.Func([IDL.Nat], [Result], []),
+    'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+    'deleteUserProfile' : IDL.Func([IDL.Principal], [Result], []),
     'findSimilarCareersByStream' : IDL.Func(
         [IDL.Text],
         [IDL.Vec(CareerPath)],
-        [],
+        ['query'],
       ),
-    'getBookmarkedCareers' : IDL.Func([], [IDL.Vec(CareerPath)], []),
-    'getUserProfile' : IDL.Func([], [UserProfileView], []),
-    'removeBookmark' : IDL.Func([IDL.Nat], [], []),
-    'submitQuizResults' : IDL.Func([IDL.Vec(IDL.Text), IDL.Nat], [], []),
+    'getAllCareers' : IDL.Func([], [IDL.Vec(CareerPath)], ['query']),
+    'getAllUserProfiles' : IDL.Func([], [IDL.Vec(UserData)], ['query']),
+    'getBookmarkedCareers' : IDL.Func([], [IDL.Vec(CareerPath)], ['query']),
+    'getCallerUserProfile' : IDL.Func(
+        [],
+        [IDL.Opt(UserProfileView)],
+        ['query'],
+      ),
+    'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+    'getUserProfile' : IDL.Func(
+        [IDL.Principal],
+        [IDL.Opt(UserProfileView)],
+        ['query'],
+      ),
+    'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+    'removeBookmark' : IDL.Func([IDL.Nat], [Result], []),
+    'saveCallerUserProfile' : IDL.Func([UserProfileView], [], []),
+    'submitQuizResults' : IDL.Func([IDL.Vec(IDL.Text), IDL.Nat], [Result], []),
   });
 };
 

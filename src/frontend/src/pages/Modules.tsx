@@ -53,18 +53,18 @@ export default function Modules() {
   ];
 
   return (
-    <div className="py-16 bg-gradient-to-b from-background via-accent/10 to-background">
+    <div className="py-12 sm:py-16 bg-gradient-to-b from-background via-accent/10 to-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             Explore Our <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Modules</span>
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Choose from our comprehensive suite of career guidance tools designed to help you make informed decisions about your future.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {modules.map((module, index) => (
             <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <ModuleCard {...module} />
