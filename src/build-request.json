@@ -1,127 +1,106 @@
 {
   "kind": "build_request",
-  "title": "Fix deployment compilation errors and publish to production",
+  "title": "Update application name from 'career guide' to 'CareerSphere'",
   "projectName": "CareerSphere",
-  "priority": "high",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-70",
-      "text": "Analyze and fix all Motoko compilation errors in backend/main.mo that are preventing successful deployment to the Internet Computer production network",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-user-publish-request"
-        ],
-        "quotes": [
-          "Publish my project and provide a permanent public link"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Backend/main.mo compiles without errors using the current Motoko compiler",
-        "All type declarations and function signatures are valid",
-        "Deployment to Internet Computer production network succeeds"
-      ]
-    },
-    {
-      "id": "REQ-71",
-      "text": "Verify all HashMap operations and stable storage patterns in backend/main.mo use correct syntax compatible with the Motoko compiler version",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-user-publish-request"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All stable variable declarations are syntactically correct",
-        "HashMap initialization and operations use proper Motoko syntax",
-        "Pre-upgrade and post-upgrade patterns are valid if present"
-      ]
-    },
-    {
-      "id": "REQ-72",
-      "text": "Ensure all module imports in backend/main.mo reference valid Motoko base library modules with correct paths",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-user-publish-request"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All import statements use correct module paths",
-        "All imported modules exist in the Motoko base library",
-        "No missing or deprecated module references"
-      ]
-    },
-    {
-      "id": "REQ-73",
-      "text": "Deploy the fixed backend canister to Internet Computer production network and verify it receives a permanent canister ID",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-user-publish-request"
-        ],
-        "quotes": [
-          "provide a permanent public link that I can access anytime"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Backend canister deploys successfully to production network",
-        "Canister receives a permanent canister ID",
-        "Backend functions are accessible via production canister"
-      ]
-    },
-    {
-      "id": "REQ-74",
-      "text": "Deploy the frontend to Internet Computer production network and generate a permanent public .ic0.app URL that works on mobile and laptop devices",
+      "id": "REQ-76",
+      "text": "Update frontend/index.html document title tag to change from any 'career guide' reference to 'CareerSphere - Your Career Path Navigator'",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-publish-request"
+          "msg-last"
         ],
         "quotes": [
-          "Ensure the link works on mobile and laptop"
+          "Change app name career guide to careerSphere"
         ]
       },
       "acceptanceCriteria": [
-        "Frontend deploys successfully to production network",
-        "Application receives a permanent .ic0.app URL (format: https://xxxxx-xxxxx-xxxxx-xxxxx-xxx.ic0.app)",
-        "URL is publicly accessible without authentication",
-        "Application is fully functional on mobile devices",
-        "Application is fully functional on laptop/desktop devices"
+        "The <title> tag in frontend/index.html displays 'CareerSphere - Your Career Path Navigator'",
+        "No references to 'career guide' remain in the document title"
       ]
     },
     {
-      "id": "REQ-75",
-      "text": "Verify the production deployment persists and remains accessible 24/7 without requiring platform login",
-      "target": "both",
+      "id": "REQ-77",
+      "text": "Search and update frontend/src/pages/Home.tsx hero section to replace any 'career guide' text with 'CareerSphere' in the title and tagline",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-publish-request"
+          "msg-last"
         ],
         "quotes": [
-          "access anytime without logging into the platform"
+          "Change app name career guide to careerSphere"
         ]
       },
       "acceptanceCriteria": [
-        "Production URL remains accessible after deployment completes",
-        "No platform authentication required to view the live application",
-        "Application maintains uptime on Internet Computer network",
-        "All 8 feature modules are functional in production"
+        "Hero section title displays 'CareerSphere' instead of 'career guide'",
+        "Tagline maintains consistency with 'CareerSphere' branding"
+      ]
+    },
+    {
+      "id": "REQ-78",
+      "text": "Search and update frontend/src/pages/About.tsx to replace any 'career guide' references with 'CareerSphere' in mission and vision statements",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Change app name career guide to careerSphere"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All instances of 'career guide' in About page content are replaced with 'CareerSphere'",
+        "Mission and vision statements reference 'CareerSphere' consistently"
+      ]
+    },
+    {
+      "id": "REQ-79",
+      "text": "Search all remaining frontend components (Navigation.tsx, ModuleCard.tsx, Contact.tsx, Login.tsx, Profile.tsx, and all other page components) for any 'career guide' text and replace with 'CareerSphere'",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Change app name career guide to careerSphere"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No instances of 'career guide' remain in any frontend component files",
+        "All references use 'CareerSphere' consistently across the application"
+      ]
+    },
+    {
+      "id": "REQ-80",
+      "text": "Search backend/main.mo for any string literals, comments, or documentation containing 'career guide' and replace with 'CareerSphere'",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Change app name career guide to careerSphere"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No instances of 'career guide' remain in backend code, comments, or documentation",
+        "Backend references use 'CareerSphere' consistently"
       ]
     }
   ],
   "constraints": [
-    "Must respect single-actor architecture in backend/main.mo",
-    "Must not modify frontend/src/hooks/useInternetIdentity.ts or other immutable frontend paths",
-    "Must use Motoko for backend - no other languages supported",
-    "Deployment must target Internet Computer production network, not local replica"
+    "Do not modify frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui files",
+    "Preserve the existing footer copyright text '© 2026 CareerSphere. All Rights Reserved.' without changes",
+    "Do not change the single-actor backend architecture in backend/main.mo",
+    "Ensure all text replacements are case-sensitive and use 'CareerSphere' with capital C and capital S"
   ],
   "nonGoals": [
-    "Implementing new features or functionality",
-    "Changing the UI design or styling",
-    "Adding new pages or modules",
-    "Modifying user data structures",
-    "Adding external service integrations"
+    "Changing the footer copyright text (already says 'CareerSphere')",
+    "Modifying the visual design, colors, or layout",
+    "Updating any functional behavior or features",
+    "Changing URLs or routing paths"
   ],
   "imageRequirements": {
     "required": [],

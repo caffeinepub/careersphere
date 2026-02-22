@@ -3,7 +3,7 @@
   "frontend/tailwind.config.js": "Tailwind configuration extended with blue/purple gradient colors, custom shadows (soft, soft-lg), fade-in animation, and responsive design tokens.",
   "frontend/src/App.tsx": "Main application component with TanStack Router configuration for all 14 routes, React Query provider with optimized settings for production (retry: 1), and Toaster component for notifications.",
   "frontend/src/components/Layout.tsx": "Layout wrapper component that renders Navigation header, main content area with Outlet for route rendering, and Footer for all pages.",
-  "frontend/src/components/Navigation.tsx": "Responsive navigation header with \"Career Guide\" branding, mobile hamburger menu, Admin Dashboard link, and conditional Profile/Login links with fixed Tailwind class conflicts.",
+  "frontend/src/components/Navigation.tsx": "Responsive navigation header with \"CareerSphere\" branding, mobile hamburger menu, Admin Dashboard link, and conditional Profile/Login links with fixed Tailwind class conflicts.",
   "frontend/src/components/Footer.tsx": "Fully responsive footer with \"© 2026 CareerSphere. All Rights Reserved.\" copyright text, social media links, and caffeine.ai attribution with UTM tracking.",
   "frontend/src/components/ModuleCard.tsx": "Responsive module card component with scaled icons, text, and 44px minimum button height for touch-friendly interaction across all devices.",
   "frontend/src/pages/Home.tsx": "Responsive landing page with hero section featuring \"Discover Your Future\" heading, generic tagline, and feature grid without platform name references.",

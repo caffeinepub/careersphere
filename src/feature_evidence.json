@@ -2,11 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-deploy-the-frontend-to-internet-computer-production-network-and-generate-a-permanent-public-ic0-app-url-that-works-on-mobile-and-laptop-devices",
-      "featureTitle": "Deploy the frontend to Internet Computer production network and generate a permanent public .ic0.app URL that works on mobile and laptop devices",
+      "featureId": "feature-search-all-remaining-frontend-components-navigation-tsx-modulecard-tsx-contact-tsx-login-tsx-profile-tsx-and-all-other-page-components-for-any-career-guide-text-and-replace-with-careersphere",
+      "featureTitle": "Search all remaining frontend components (Navigation.tsx, ModuleCard.tsx, Contact.tsx, Login.tsx, Profile.tsx, and all other page components) for any 'career guide' text and replace with 'CareerSphere'",
       "files": [
-        "frontend/index.html",
-        "frontend/src/App.tsx"
+        "frontend/src/components/Navigation.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,26 +16,7 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-74"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-verify-the-production-deployment-persists-and-remains-accessible-24-7-without-requiring-platform-login",
-      "featureTitle": "Verify the production deployment persists and remains accessible 24/7 without requiring platform login",
-      "files": [
-        "frontend/src/pages/Login.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-75"
+        "REQ-79"
       ],
       "confidence": "high"
     }

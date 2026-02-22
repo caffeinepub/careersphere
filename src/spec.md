@@ -1,14 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Fix Motoko compilation errors in the backend and deploy CareerSphere to Internet Computer production network with a permanent public URL.
+**Goal:** Rebrand the application from "career guide" to "CareerSphere" across all text references.
 
 **Planned changes:**
-- Analyze and fix all Motoko compilation errors in backend/main.mo
-- Correct HashMap operations and stable storage patterns to use valid Motoko syntax
-- Ensure all module imports reference valid Motoko base library modules with correct paths
-- Deploy backend canister to Internet Computer production network
-- Deploy frontend to Internet Computer production network and generate permanent .ic0.app URL
-- Verify production deployment is publicly accessible on mobile and laptop devices without platform login
+- Update document title in index.html to "CareerSphere - Your Career Path Navigator"
+- Replace "career guide" with "CareerSphere" in Home.tsx hero section
+- Replace "career guide" with "CareerSphere" in About.tsx mission and vision statements
+- Replace "career guide" with "CareerSphere" in all remaining frontend components
+- Replace "career guide" with "CareerSphere" in backend code, comments, and documentation
 
-**User-visible outcome:** CareerSphere will be deployed to a permanent public URL (https://xxxxx-xxxxx-xxxxx-xxxxx-xxx.ic0.app) that works on mobile and laptop devices, accessible 24/7 without requiring platform authentication.
+**User-visible outcome:** The application displays "CareerSphere" consistently throughout the interface instead of "career guide", with updated branding in the browser title, homepage hero section, about page, and all other visible text.

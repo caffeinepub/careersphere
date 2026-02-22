@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 21,
+  "projectStateVersion": 23,
   "summary": "CareerSphere - A modern responsive career guidance web platform for school and college students with 8 interactive modules including career path suggestion, stream selector, chatbot, and degree finder",
   "architectural_notes": [
     "Modern responsive web application with mobile-first design",
@@ -397,6 +397,14 @@
         "REQ-75"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-search-all-remaining-frontend-components-navigation-tsx-modulecard-tsx-contact-tsx-login-tsx-profile-tsx-and-all-other-page-components-for-any-career-guide-text-and-replace-with-careersphere",
+      "title": "Search all remaining frontend components (Navigation.tsx, ModuleCard.tsx, Contact.tsx, Login.tsx, Profile.tsx, and all other page components) for any 'career guide' text and replace with 'CareerSphere'",
+      "reqIds": [
+        "REQ-79"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -709,6 +717,38 @@
       "summary": "Deploy the fixed backend canister to Internet Computer production network and verify it receives a permanent canister ID",
       "reqIds": [
         "REQ-73"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-54",
+      "summary": "Update frontend/index.html document title tag to change from any 'career guide' reference to 'CareerSphere - Your Career Path Navigator'",
+      "reqIds": [
+        "REQ-76"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-55",
+      "summary": "Search and update frontend/src/pages/Home.tsx hero section to replace any 'career guide' text with 'CareerSphere' in the title and tagline",
+      "reqIds": [
+        "REQ-77"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-56",
+      "summary": "Search and update frontend/src/pages/About.tsx to replace any 'career guide' references with 'CareerSphere' in mission and vision statements",
+      "reqIds": [
+        "REQ-78"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-58",
+      "summary": "Search backend/main.mo for any string literals, comments, or documentation containing 'career guide' and replace with 'CareerSphere'",
+      "reqIds": [
+        "REQ-80"
       ],
       "status": "pending"
     }

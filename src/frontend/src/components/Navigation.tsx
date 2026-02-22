@@ -28,7 +28,7 @@ export default function Navigation() {
               <span className="text-xl md:text-2xl font-bold text-white">C</span>
             </div>
             <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Career Guide
+              CareerSphere
             </span>
           </Link>
 
