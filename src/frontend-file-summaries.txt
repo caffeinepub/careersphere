@@ -1,0 +1,21 @@
+{
+  "frontend/src/index.css": "Global styles with OKLCH color system featuring soft blue and purple gradient theme for light and dark modes, custom gradient utilities, and Inter font family.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with blue/purple gradient colors, custom shadows (soft, soft-lg), fade-in animation, and responsive design tokens.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router configuration defining all routes (Home, Modules, Career Path, Stream Selector, India vs Abroad, Chatbot, FutureMap, Degree Finder, About, Contact, Login) wrapped in Layout.",
+  "frontend/src/components/Layout.tsx": "Layout wrapper component that renders Navigation header, main content area with Outlet for route rendering, and Footer for all pages.",
+  "frontend/src/components/Navigation.tsx": "Responsive navigation header with CareerSphere logo, desktop/mobile menu, active route highlighting, and gradient styling.",
+  "frontend/src/components/Footer.tsx": "Footer component with social media links (Facebook, X, LinkedIn, Instagram, GitHub), copyright notice, and caffeine.ai attribution with UTM tracking.",
+  "frontend/src/components/ModuleCard.tsx": "Reusable card component for displaying module features with icon, title, description, and explore button with hover animations.",
+  "frontend/src/pages/Home.tsx": "Landing page with hero section featuring CareerSphere title, tagline, hero image, Get Started CTA, and features overview with three benefit cards.",
+  "frontend/src/pages/Modules.tsx": "Modules page displaying 8 interactive feature cards in responsive grid layout with icons, descriptions, and explore buttons linking to respective module pages.",
+  "frontend/src/pages/CareerPath.tsx": "Career path suggestion page with subject dropdown selector displaying career options, required degrees, and entrance exams in card format.",
+  "frontend/src/pages/StreamSelector.tsx": "Interactive quiz page with 5 multiple-choice questions, progress bar, and navigation to calculate and display recommended stream (Science/Commerce/Arts).",
+  "frontend/src/pages/StreamResult.tsx": "Result page displaying recommended stream with description, key subjects, career opportunities, and navigation to career path or retake quiz.",
+  "frontend/src/pages/IndiaVsAbroad.tsx": "Comparison page with four categories (Cost, ROI, Lifestyle, Job Opportunities) showing India vs Abroad data with visual score bars and descriptions.",
+  "frontend/src/pages/Chatbot.tsx": "Chat interface with scrollable message area, bot/user message bubbles, input field, send button, and simulated AI responses for career guidance.",
+  "frontend/src/pages/FutureMap.tsx": "Visual career journey roadmap showing progression from School Subjects → Degree → Career → Job with timeline design for desktop and mobile.",
+  "frontend/src/pages/DegreeFinder.tsx": "Degree search page with search bar and filterable cards displaying degree name, duration, entrance exams, fees, and descriptions.",
+  "frontend/src/pages/About.tsx": "About page describing CareerSphere platform, problem statement about lack of career guidance, mission, vision, and why choose us section.",
+  "frontend/src/pages/Contact.tsx": "Contact page with validated form (name, email, message), contact information cards (email, phone, address), office hours, and social links.",
+  "frontend/src/pages/Login.tsx": "Login page with Internet Identity authentication button, traditional email/password form (UI only), and logged-in state display."
+}

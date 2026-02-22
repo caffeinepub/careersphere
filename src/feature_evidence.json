@@ -1,0 +1,219 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-landing-page-with-hero-section-displaying-title-careersphere-and-tagline-empowering-students-for-skills-and-knowledge-navigation-menu-with-links-to-home-modules-about-contact-and-login-and-a-prominent-get-started-call-to-action-button",
+      "featureTitle": "Create a landing page with hero section displaying title 'CareerSphere' and tagline 'Empowering Students for Skills and Knowledge', navigation menu with links to Home, Modules, About, Contact, and Login, and a prominent 'Get Started' call-to-action button",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Navigation.tsx",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-modules-section-displaying-8-interactive-feature-cards-in-a-grid-layout-career-path-suggestion-app-india-vs-abroad-career-decision-guide-stream-selector-tool-for-10th-students-know-your-skill-ai-chatbot-futuremap-visual-career-journey-regional-language-career-platform-subject-to-career-ar-explorer-and-degree-info-finder-after-12th-each-card-must-include-an-icon-short-description-and-explore-button",
+      "featureTitle": "Create a modules section displaying 8 interactive feature cards in a grid layout: Career Path Suggestion App, India vs Abroad Career Decision Guide, Stream Selector Tool for 10th Students, Know Your Skill AI Chatbot, FutureMap Visual Career Journey, Regional Language Career Platform, Subject-to-Career AR Explorer, and Degree Info Finder (After 12th). Each card must include an icon, short description, and 'Explore' button",
+      "files": [
+        "frontend/src/components/ModuleCard.tsx",
+        "frontend/src/pages/Modules.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-career-path-page-with-a-dropdown-selector-for-subjects-interests-that-displays-career-options-required-degrees-and-relevant-entrance-exams-in-a-card-based-layout",
+      "featureTitle": "Create a Career Path page with a dropdown selector for subjects/interests that displays career options, required degrees, and relevant entrance exams in a card-based layout",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/CareerPath.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-stream-selector-quiz-page-with-multiple-choice-questions-that-provides-a-result-section-displaying-the-suggested-stream-science-commerce-or-arts-based-on-user-answers",
+      "featureTitle": "Create a Stream Selector Quiz page with multiple choice questions that provides a result section displaying the suggested stream (Science, Commerce, or Arts) based on user answers",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/StreamResult.tsx",
+        "frontend/src/pages/StreamSelector.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-india-vs-abroad-comparison-page-featuring-a-comparison-table-with-columns-for-cost-roi-lifestyle-and-job-opportunities-enhanced-with-graphs-or-visual-indicators",
+      "featureTitle": "Create an India vs Abroad Comparison page featuring a comparison table with columns for Cost, ROI, Lifestyle, and Job Opportunities, enhanced with graphs or visual indicators",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/IndiaVsAbroad.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-chatbot-page-with-a-chat-interface-layout-including-message-display-area-message-input-box-and-send-button-designed-with-a-student-friendly-aesthetic",
+      "featureTitle": "Create a Chatbot page with a chat interface layout including message display area, message input box, and send button, designed with a student-friendly aesthetic",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Chatbot.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-futuremap-page-displaying-a-visual-career-journey-flow-from-school-subjects-degree-career-job-using-a-timeline-or-roadmap-style-ui",
+      "featureTitle": "Create a FutureMap page displaying a visual career journey flow from School Subjects → Degree → Career → Job using a timeline or roadmap-style UI",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/FutureMap.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-degree-info-finder-page-with-a-search-bar-that-displays-degree-information-cards-showing-degree-name-duration-entrance-exams-and-fees",
+      "featureTitle": "Create a Degree Info Finder page with a search bar that displays degree information cards showing degree name, duration, entrance exams, and fees",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/DegreeFinder.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-about-section-describing-the-careersphere-platform-including-the-problem-statement-that-students-lack-career-guidance-along-with-the-platform-s-mission-and-vision",
+      "featureTitle": "Create an About section describing the CareerSphere platform, including the problem statement that students lack career guidance, along with the platform's mission and vision",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/About.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-contact-page-with-a-contact-form-containing-fields-for-name-email-and-message-and-include-a-footer-with-social-media-links",
+      "featureTitle": "Create a Contact page with a contact form containing fields for name, email, and message, and include a footer with social media links",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/pages/Contact.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-modern-ui-design-system-with-soft-gradient-colors-blue-and-purple-fully-responsive-mobile-friendly-layouts-clean-typography-dashboard-style-components-using-cards-icons-and-interactive-buttons-throughout-the-application",
+      "featureTitle": "Implement a modern UI design system with soft gradient colors (blue and purple), fully responsive mobile-friendly layouts, clean typography, dashboard-style components using cards, icons, and interactive buttons throughout the application",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

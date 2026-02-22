@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "CareerSphere - A modern responsive career guidance web platform for school and college students with 8 interactive modules including career path suggestion, stream selector, chatbot, and degree finder",
+  "architectural_notes": [
+    "Modern responsive web application with mobile-first design",
+    "Design system: soft colors (blue, purple, gradient), clean typography, dashboard-style cards",
+    "8 interactive module pages: Career Path, Stream Selector, India vs Abroad, Chatbot, FutureMap, Degree Finder, plus About/Contact",
+    "Navigation structure: Home, Modules, About, Contact, Login"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Hero section illustration showing diverse students planning their careers with books, laptops, and graduation caps in a modern flat style (hero-students.dim_1200x600.png)\n- Career guidance icon with a compass and path symbols for Career Path Suggestion App module card (icon-career-path.dim_128x128.png)\n- Globe with India and abroad flags for India vs Abroad Career Decision Guide module card (icon-india-abroad.dim_128x128.png)\n- Three diverging paths icon for Stream Selector Tool module card (icon-stream-selector.dim_128x128.png)\n- Chat bubble with AI sparkles for Know Your Skill AI Chatbot module card (icon-ai-chatbot.dim_128x128.png)\n- Timeline roadmap icon with milestones for FutureMap Visual Career Journey module card (icon-futuremap.dim_128x128.png)\n- Multiple language symbols icon for Regional Language Career Platform module card (icon-regional-language.dim_128x128.png)\n- AR viewer with subjects and careers for Subject-to-Career AR Explorer module card (icon-ar-explorer.dim_128x128.png)\n- Graduation cap with degree scroll for Degree Info Finder module card (icon-degree-finder.dim_128x128.png)\n- Background pattern with subtle educational elements like books, pencils, and lightbulbs for page backgrounds (pattern-education.dim_800x600.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-landing-page-with-hero-section-displaying-title-careersphere-and-tagline-empowering-students-for-skills-and-knowledge-navigation-menu-with-links-to-home-modules-about-contact-and-login-and-a-prominent-get-started-call-to-action-button",
+      "title": "Create a landing page with hero section displaying title 'CareerSphere' and tagline 'Empowering Students for Skills and Knowledge', navigation menu with links to Home, Modules, About, Contact, and Login, and a prominent 'Get Started' call-to-action button",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-modules-section-displaying-8-interactive-feature-cards-in-a-grid-layout-career-path-suggestion-app-india-vs-abroad-career-decision-guide-stream-selector-tool-for-10th-students-know-your-skill-ai-chatbot-futuremap-visual-career-journey-regional-language-career-platform-subject-to-career-ar-explorer-and-degree-info-finder-after-12th-each-card-must-include-an-icon-short-description-and-explore-button",
+      "title": "Create a modules section displaying 8 interactive feature cards in a grid layout: Career Path Suggestion App, India vs Abroad Career Decision Guide, Stream Selector Tool for 10th Students, Know Your Skill AI Chatbot, FutureMap Visual Career Journey, Regional Language Career Platform, Subject-to-Career AR Explorer, and Degree Info Finder (After 12th). Each card must include an icon, short description, and 'Explore' button",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-career-path-page-with-a-dropdown-selector-for-subjects-interests-that-displays-career-options-required-degrees-and-relevant-entrance-exams-in-a-card-based-layout",
+      "title": "Create a Career Path page with a dropdown selector for subjects/interests that displays career options, required degrees, and relevant entrance exams in a card-based layout",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-stream-selector-quiz-page-with-multiple-choice-questions-that-provides-a-result-section-displaying-the-suggested-stream-science-commerce-or-arts-based-on-user-answers",
+      "title": "Create a Stream Selector Quiz page with multiple choice questions that provides a result section displaying the suggested stream (Science, Commerce, or Arts) based on user answers",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-india-vs-abroad-comparison-page-featuring-a-comparison-table-with-columns-for-cost-roi-lifestyle-and-job-opportunities-enhanced-with-graphs-or-visual-indicators",
+      "title": "Create an India vs Abroad Comparison page featuring a comparison table with columns for Cost, ROI, Lifestyle, and Job Opportunities, enhanced with graphs or visual indicators",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-chatbot-page-with-a-chat-interface-layout-including-message-display-area-message-input-box-and-send-button-designed-with-a-student-friendly-aesthetic",
+      "title": "Create a Chatbot page with a chat interface layout including message display area, message input box, and send button, designed with a student-friendly aesthetic",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-futuremap-page-displaying-a-visual-career-journey-flow-from-school-subjects-degree-career-job-using-a-timeline-or-roadmap-style-ui",
+      "title": "Create a FutureMap page displaying a visual career journey flow from School Subjects → Degree → Career → Job using a timeline or roadmap-style UI",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-degree-info-finder-page-with-a-search-bar-that-displays-degree-information-cards-showing-degree-name-duration-entrance-exams-and-fees",
+      "title": "Create a Degree Info Finder page with a search bar that displays degree information cards showing degree name, duration, entrance exams, and fees",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-about-section-describing-the-careersphere-platform-including-the-problem-statement-that-students-lack-career-guidance-along-with-the-platform-s-mission-and-vision",
+      "title": "Create an About section describing the CareerSphere platform, including the problem statement that students lack career guidance, along with the platform's mission and vision",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-contact-page-with-a-contact-form-containing-fields-for-name-email-and-message-and-include-a-footer-with-social-media-links",
+      "title": "Create a Contact page with a contact form containing fields for name, email, and message, and include a footer with social media links",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-modern-ui-design-system-with-soft-gradient-colors-blue-and-purple-fully-responsive-mobile-friendly-layouts-clean-typography-dashboard-style-components-using-cards-icons-and-interactive-buttons-throughout-the-application",
+      "title": "Implement a modern UI design system with soft gradient colors (blue and purple), fully responsive mobile-friendly layouts, clean typography, dashboard-style components using cards, icons, and interactive buttons throughout the application",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Landing page with hero section, navigation, and Get Started CTA",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "8 feature modules cards grid with icons and explore buttons",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Career Path page with subject dropdown and career/degree/exam cards",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Stream Selector Quiz with MCQs and result showing Science/Commerce/Arts",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "India vs Abroad comparison page with table and visual indicators",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Chatbot page UI with chat interface and message input",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "FutureMap page with visual career journey timeline from subjects to job",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Degree Info Finder with search bar and degree cards showing duration/exams/fees",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "About section with platform description, problem statement, mission and vision",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Contact page with form and footer with social links",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "CareerSphere",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

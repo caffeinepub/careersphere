@@ -1,0 +1,275 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "CareerSphere Frontend Implementation - Career Guidance Platform with 8 Interactive Modules",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create landing page with hero section, navigation menu, and call-to-action",
+      "acceptanceCriteria": [
+        "Hero section displays 'CareerSphere' as the main title",
+        "Tagline 'Empowering Students for Skills and Knowledge' is visible below the title",
+        "Navigation menu contains Home, Modules, About, Contact, and Login links",
+        "'Get Started' button is prominently displayed and clickable"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add routing configuration for Home, Modules, About, Contact, and Login pages. Set up React Router with route definitions for all navigation destinations."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "create",
+          "description": "Create Home page component with hero section displaying 'CareerSphere' title and tagline 'Empowering Students for Skills and Knowledge'. Include the generated hero section illustration at frontend/public/assets/generated/hero-students.dim_1200x600.png as a background or feature image. Add a prominent 'Get Started' button that navigates to the Modules page."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "create",
+          "description": "Create Navigation component with links to Home, Modules, About, Contact, and Login. Use shadcn/ui navigation components for consistent styling. Ensure responsive mobile menu behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create modules section with 8 interactive feature cards in grid layout",
+      "acceptanceCriteria": [
+        "All 8 module cards are displayed in a responsive grid layout",
+        "Each card displays a relevant icon, descriptive text, and 'Explore' button",
+        "Cards are interactive and visually distinct",
+        "Explore buttons link to respective module pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Modules.tsx",
+          "operation": "create",
+          "description": "Create Modules page displaying 8 feature cards in a responsive grid layout. Use shadcn/ui Card components for each module. Wire each card's 'Explore' button to navigate to its respective module page. Reference generated icons: frontend/public/assets/generated/icon-career-path.dim_128x128.png, frontend/public/assets/generated/icon-india-abroad.dim_128x128.png, frontend/public/assets/generated/icon-stream-selector.dim_128x128.png, frontend/public/assets/generated/icon-ai-chatbot.dim_128x128.png, frontend/public/assets/generated/icon-futuremap.dim_128x128.png, frontend/public/assets/generated/icon-regional-language.dim_128x128.png, frontend/public/assets/generated/icon-ar-explorer.dim_128x128.png, frontend/public/assets/generated/icon-degree-finder.dim_128x128.png."
+        },
+        {
+          "path": "frontend/src/components/ModuleCard.tsx",
+          "operation": "create",
+          "description": "Create reusable ModuleCard component accepting props for icon, title, description, and navigation path. Use shadcn/ui Card component with hover effects and interactive styling. Include 'Explore' button that triggers navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create Career Path page with dropdown selector and career options display",
+      "acceptanceCriteria": [
+        "Dropdown menu allows users to select from multiple subjects/interests",
+        "Career options are displayed as cards after selection",
+        "Each career card shows related degrees and entrance exams",
+        "Layout is responsive and organized"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CareerPath.tsx",
+          "operation": "create",
+          "description": "Create Career Path page with shadcn/ui Select component for subject/interest dropdown. Display career options in card-based layout after selection, showing career name, required degrees, and relevant entrance exams. Use local state to manage selection and display logic."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /career-path that renders the CareerPath page component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create Stream Selector Quiz page with questions and result display",
+      "acceptanceCriteria": [
+        "Quiz displays multiple choice questions one at a time or in a sequence",
+        "Users can select answers and navigate through questions",
+        "Result page shows recommended stream (Science, Commerce, or Arts)",
+        "Result is based on user's quiz responses"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/StreamSelector.tsx",
+          "operation": "create",
+          "description": "Create Stream Selector Quiz page with multiple choice questions displayed sequentially. Use shadcn/ui RadioGroup for answer selection and Button components for navigation. Track user answers in local state and calculate suggested stream (Science, Commerce, or Arts) based on responses."
+        },
+        {
+          "path": "frontend/src/pages/StreamResult.tsx",
+          "operation": "create",
+          "description": "Create Stream Result page displaying the recommended stream (Science, Commerce, or Arts) based on quiz answers. Use shadcn/ui Card component to present results with clear visual indicators."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add routes for /stream-selector and /stream-result that render the StreamSelector and StreamResult page components."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create India vs Abroad Comparison page with comparison table and visual indicators",
+      "acceptanceCriteria": [
+        "Comparison table displays India vs Abroad data across Cost, ROI, Lifestyle, and Job Opportunities",
+        "Visual indicators or graphs enhance data presentation",
+        "Information is clear and easy to compare",
+        "Layout is responsive on mobile devices"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/IndiaVsAbroad.tsx",
+          "operation": "create",
+          "description": "Create India vs Abroad Comparison page with shadcn/ui Table component displaying Cost, ROI, Lifestyle, and Job Opportunities columns. Add visual indicators or simple graphs using CSS or SVG to enhance data presentation. Ensure responsive layout for mobile devices."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /india-vs-abroad that renders the IndiaVsAbroad page component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Create Chatbot page with chat interface layout",
+      "acceptanceCriteria": [
+        "Chat interface displays conversation messages in a scrollable area",
+        "Message input box allows text entry",
+        "Send button submits user messages",
+        "Design is welcoming and appropriate for students"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Chatbot.tsx",
+          "operation": "create",
+          "description": "Create Chatbot page with chat interface layout including scrollable message display area, message input box using shadcn/ui Input component, and send button using shadcn/ui Button component. Use local state to manage messages. Implement student-friendly design with welcoming colors."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /chatbot that renders the Chatbot page component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Create FutureMap page with visual career journey timeline",
+      "acceptanceCriteria": [
+        "Visual flow shows progression from School Subjects to Degree to Career to Job",
+        "Timeline or roadmap design makes the journey clear and intuitive",
+        "Each stage is visually distinct and connected",
+        "Layout works on both desktop and mobile"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/FutureMap.tsx",
+          "operation": "create",
+          "description": "Create FutureMap page displaying visual career journey flow from School Subjects → Degree → Career → Job using timeline or roadmap-style UI. Use shadcn/ui Card components for each stage with connecting lines or arrows. Ensure responsive design for mobile and desktop."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /futuremap that renders the FutureMap page component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Create Degree Info Finder page with search and degree information cards",
+      "acceptanceCriteria": [
+        "Search bar allows users to search for degrees",
+        "Search results display as cards with degree name, duration, entrance exams, and fees",
+        "Cards are well-organized and easy to read",
+        "Search functionality filters results appropriately"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/DegreeFinder.tsx",
+          "operation": "create",
+          "description": "Create Degree Info Finder page with shadcn/ui Input component for search bar. Display degree information as shadcn/ui Card components showing degree name, duration, entrance exams, and fees. Implement client-side search filtering using local state."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /degree-finder that renders the DegreeFinder page component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Create About section with platform description, problem statement, mission and vision",
+      "acceptanceCriteria": [
+        "About section includes a description of the CareerSphere platform",
+        "Problem statement clearly states that students lack career guidance",
+        "Mission and vision statements are displayed",
+        "Content is well-formatted and readable"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/About.tsx",
+          "operation": "create",
+          "description": "Create About page describing CareerSphere platform. Include sections for problem statement highlighting that students lack career guidance, mission statement, and vision statement. Use shadcn/ui Card or typography components for content organization."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /about that renders the About page component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Create Contact page with form and footer with social links",
+      "acceptanceCriteria": [
+        "Contact form displays fields for name, email, and message",
+        "Form includes a submit button",
+        "Footer contains social media links",
+        "Form validation ensures required fields are completed"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Contact.tsx",
+          "operation": "create",
+          "description": "Create Contact page with contact form using shadcn/ui Input and Textarea components for name, email, and message fields. Add shadcn/ui Button for submit. Implement client-side form validation to ensure required fields are completed. Include footer section with social media links."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "create",
+          "description": "Create reusable Footer component with social media links. Use consistent styling with shadcn/ui components."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /contact that renders the Contact page component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Implement modern UI design system with gradient colors and responsive layouts",
+      "acceptanceCriteria": [
+        "Color scheme uses soft blue and purple gradients consistently",
+        "All pages are fully responsive and work on mobile devices",
+        "Typography is clean and readable",
+        "Dashboard-style components are used throughout",
+        "Cards, icons, and buttons are interactive and visually consistent"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Configure global styles with soft blue and purple gradient color scheme. Define CSS custom properties for primary colors (blue and purple gradients), typography settings for clean readable fonts, and consistent spacing. Apply generated background pattern from frontend/public/assets/generated/pattern-education.dim_800x600.png where appropriate. Ensure all shadcn/ui component variables align with the gradient theme."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration with custom blue and purple gradient colors matching the design system. Add responsive breakpoints and utility classes for dashboard-style layouts. Configure shadcn/ui theme colors to use soft blue and purple gradients."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create Layout component that wraps all pages with Navigation and Footer components. Apply consistent spacing, background patterns, and responsive container widths. Use the generated pattern frontend/public/assets/generated/pattern-education.dim_800x600.png for subtle background decoration."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all routes with the Layout component to ensure consistent Navigation and Footer across all pages."
+        }
+      ]
+    }
+  ]
+}
