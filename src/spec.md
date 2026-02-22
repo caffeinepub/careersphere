@@ -1,19 +1,16 @@
 # Specification
 
 ## Summary
-**Goal:** Build CareerSphere, a career guidance platform with a landing page, 8 interactive module cards, and dedicated pages for career exploration tools including career path suggestions, stream selection quiz, India vs abroad comparison, AI chatbot interface, visual career journey, and degree information finder.
+**Goal:** Add user authentication with Internet Identity to enable students to save their progress, quiz results, and preferences across sessions.
 
 **Planned changes:**
-- Create landing page with hero section, navigation menu (Home, Modules, About, Contact, Login), and "Get Started" CTA
-- Build modules section with 8 feature cards in grid layout: Career Path Suggestion, India vs Abroad Guide, Stream Selector, AI Chatbot, FutureMap, Regional Language Platform, AR Explorer, Degree Finder
-- Create Career Path page with subject dropdown and career options display
-- Create Stream Selector Quiz page with multiple choice questions and stream recommendation result
-- Create India vs Abroad Comparison page with comparison table and visual indicators
-- Create Chatbot page with chat interface, message display, input box, and send button
-- Create FutureMap page with visual timeline showing School Subjects → Degree → Career → Job progression
-- Create Degree Info Finder page with search bar and degree information cards
-- Create About section describing platform, problem statement, mission, and vision
-- Create Contact page with form (name, email, message) and footer with social media links
-- Implement modern UI design with soft blue/purple gradients, responsive mobile-friendly layouts, clean typography, and dashboard-style components using cards, icons, and interactive buttons
+- Implement backend user profile storage with stable persistence for quiz results, bookmarked careers, and degree programs
+- Add backend functions to save and retrieve Stream Selector quiz results linked to user principal IDs
+- Add backend functions to bookmark and retrieve career paths and degree programs
+- Auto-save quiz results when students complete the Stream Selector Quiz (if authenticated)
+- Add bookmark buttons to Career Path and Degree Finder pages to save selections
+- Create a Profile/Dashboard page showing saved quiz results, bookmarked careers, and bookmarked degrees
+- Update Login page to explain authentication benefits and show user status
+- Add Profile/My Progress link to navigation menu
 
-**User-visible outcome:** Students can explore CareerSphere's landing page, browse 8 career guidance modules, take a stream selector quiz, compare India vs abroad career options, search for degree information, view a visual career journey roadmap, interact with a chatbot interface, and contact the platform through a form.
+**User-visible outcome:** Students can log in with Internet Identity to automatically save their Stream Selector quiz results, bookmark favorite career paths and degree programs, and view all their saved progress on a dedicated Profile page.

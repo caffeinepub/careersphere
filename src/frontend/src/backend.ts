@@ -89,10 +89,120 @@ export class ExternalBlob {
         return this;
     }
 }
+export interface UserProfileView {
+    quizResults: Array<QuizResult>;
+    surveyCompleted: boolean;
+    bookmarked: Array<bigint>;
+}
+export interface CareerPath {
+    id: bigint;
+    professionalRecognition: Array<string>;
+    guaranteedOutcomes: Array<string>;
+    title: string;
+    degreeProgram: string;
+    description: string;
+    degreeType: string;
+    specializations: Array<string>;
+    location: string;
+}
+export interface QuizResult {
+    completionPercentage: bigint;
+    selectedStreams: Array<string>;
+}
 export interface backendInterface {
+    addBookmark(careerId: bigint): Promise<void>;
+    findSimilarCareersByStream(stream: string): Promise<Array<CareerPath>>;
+    getBookmarkedCareers(): Promise<Array<CareerPath>>;
+    getUserProfile(): Promise<UserProfileView>;
+    removeBookmark(careerId: bigint): Promise<void>;
+    submitQuizResults(selectedStreams: Array<string>, completionPercentage: bigint): Promise<void>;
 }
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
+    async addBookmark(arg0: bigint): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.addBookmark(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.addBookmark(arg0);
+            return result;
+        }
+    }
+    async findSimilarCareersByStream(arg0: string): Promise<Array<CareerPath>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.findSimilarCareersByStream(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.findSimilarCareersByStream(arg0);
+            return result;
+        }
+    }
+    async getBookmarkedCareers(): Promise<Array<CareerPath>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getBookmarkedCareers();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getBookmarkedCareers();
+            return result;
+        }
+    }
+    async getUserProfile(): Promise<UserProfileView> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getUserProfile();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getUserProfile();
+            return result;
+        }
+    }
+    async removeBookmark(arg0: bigint): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.removeBookmark(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.removeBookmark(arg0);
+            return result;
+        }
+    }
+    async submitQuizResults(arg0: Array<string>, arg1: bigint): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.submitQuizResults(arg0, arg1);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.submitQuizResults(arg0, arg1);
+            return result;
+        }
+    }
 }
 export interface CreateActorOptions {
     agent?: Agent;

@@ -10,7 +10,34 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
-export interface _SERVICE {}
+export interface CareerPath {
+  'id' : bigint,
+  'professionalRecognition' : Array<string>,
+  'guaranteedOutcomes' : Array<string>,
+  'title' : string,
+  'degreeProgram' : string,
+  'description' : string,
+  'degreeType' : string,
+  'specializations' : Array<string>,
+  'location' : string,
+}
+export interface QuizResult {
+  'completionPercentage' : bigint,
+  'selectedStreams' : Array<string>,
+}
+export interface UserProfileView {
+  'quizResults' : Array<QuizResult>,
+  'surveyCompleted' : boolean,
+  'bookmarked' : Array<bigint>,
+}
+export interface _SERVICE {
+  'addBookmark' : ActorMethod<[bigint], undefined>,
+  'findSimilarCareersByStream' : ActorMethod<[string], Array<CareerPath>>,
+  'getBookmarkedCareers' : ActorMethod<[], Array<CareerPath>>,
+  'getUserProfile' : ActorMethod<[], UserProfileView>,
+  'removeBookmark' : ActorMethod<[bigint], undefined>,
+  'submitQuizResults' : ActorMethod<[Array<string>, bigint], undefined>,
+}
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];
 export declare const idlFactory: IDL.InterfaceFactory;

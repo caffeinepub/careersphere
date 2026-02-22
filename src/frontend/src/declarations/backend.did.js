@@ -8,10 +8,76 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
-export const idlService = IDL.Service({});
+export const CareerPath = IDL.Record({
+  'id' : IDL.Nat,
+  'professionalRecognition' : IDL.Vec(IDL.Text),
+  'guaranteedOutcomes' : IDL.Vec(IDL.Text),
+  'title' : IDL.Text,
+  'degreeProgram' : IDL.Text,
+  'description' : IDL.Text,
+  'degreeType' : IDL.Text,
+  'specializations' : IDL.Vec(IDL.Text),
+  'location' : IDL.Text,
+});
+export const QuizResult = IDL.Record({
+  'completionPercentage' : IDL.Nat,
+  'selectedStreams' : IDL.Vec(IDL.Text),
+});
+export const UserProfileView = IDL.Record({
+  'quizResults' : IDL.Vec(QuizResult),
+  'surveyCompleted' : IDL.Bool,
+  'bookmarked' : IDL.Vec(IDL.Nat),
+});
+
+export const idlService = IDL.Service({
+  'addBookmark' : IDL.Func([IDL.Nat], [], []),
+  'findSimilarCareersByStream' : IDL.Func(
+      [IDL.Text],
+      [IDL.Vec(CareerPath)],
+      [],
+    ),
+  'getBookmarkedCareers' : IDL.Func([], [IDL.Vec(CareerPath)], []),
+  'getUserProfile' : IDL.Func([], [UserProfileView], []),
+  'removeBookmark' : IDL.Func([IDL.Nat], [], []),
+  'submitQuizResults' : IDL.Func([IDL.Vec(IDL.Text), IDL.Nat], [], []),
+});
 
 export const idlInitArgs = [];
 
-export const idlFactory = ({ IDL }) => { return IDL.Service({}); };
+export const idlFactory = ({ IDL }) => {
+  const CareerPath = IDL.Record({
+    'id' : IDL.Nat,
+    'professionalRecognition' : IDL.Vec(IDL.Text),
+    'guaranteedOutcomes' : IDL.Vec(IDL.Text),
+    'title' : IDL.Text,
+    'degreeProgram' : IDL.Text,
+    'description' : IDL.Text,
+    'degreeType' : IDL.Text,
+    'specializations' : IDL.Vec(IDL.Text),
+    'location' : IDL.Text,
+  });
+  const QuizResult = IDL.Record({
+    'completionPercentage' : IDL.Nat,
+    'selectedStreams' : IDL.Vec(IDL.Text),
+  });
+  const UserProfileView = IDL.Record({
+    'quizResults' : IDL.Vec(QuizResult),
+    'surveyCompleted' : IDL.Bool,
+    'bookmarked' : IDL.Vec(IDL.Nat),
+  });
+  
+  return IDL.Service({
+    'addBookmark' : IDL.Func([IDL.Nat], [], []),
+    'findSimilarCareersByStream' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(CareerPath)],
+        [],
+      ),
+    'getBookmarkedCareers' : IDL.Func([], [IDL.Vec(CareerPath)], []),
+    'getUserProfile' : IDL.Func([], [UserProfileView], []),
+    'removeBookmark' : IDL.Func([IDL.Nat], [], []),
+    'submitQuizResults' : IDL.Func([IDL.Vec(IDL.Text), IDL.Nat], [], []),
+  });
+};
 
 export const init = ({ IDL }) => { return []; };

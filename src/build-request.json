@@ -1,259 +1,175 @@
 {
   "kind": "build_request",
-  "title": "Build CareerSphere career guidance platform with 8 interactive modules",
+  "title": "Add user authentication with progress saving",
   "projectName": "CareerSphere",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a landing page with hero section displaying title 'CareerSphere' and tagline 'Empowering Students for Skills and Knowledge', navigation menu with links to Home, Modules, About, Contact, and Login, and a prominent 'Get Started' call-to-action button",
-      "target": "frontend",
+      "id": "REQ-12",
+      "text": "Implement backend user profile data model in main.mo to store student preferences, quiz results, saved career paths, and selected modules. Include stable storage for persistence across canister upgrades.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-user-yes"
         ],
         "quotes": [
-          "Hero section with title \"CareerSphere\"",
-          "Tagline: Empowering Students for Skills and Knowledge",
-          "Navigation menu: Home, Modules, About, Contact, Login",
-          "Call-to-action button: Get Started"
+          "authentication so students can save their progress and preferences"
         ]
       },
       "acceptanceCriteria": [
-        "Hero section displays 'CareerSphere' as the main title",
-        "Tagline 'Empowering Students for Skills and Knowledge' is visible below the title",
-        "Navigation menu contains Home, Modules, About, Contact, and Login links",
-        "'Get Started' button is prominently displayed and clickable"
+        "User profile type includes fields for principal ID, saved quiz results, bookmarked careers, and preference settings",
+        "Profiles persist across canister upgrades using stable storage",
+        "CRUD operations available for user profiles (create, read, update)"
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Create a modules section displaying 8 interactive feature cards in a grid layout: Career Path Suggestion App, India vs Abroad Career Decision Guide, Stream Selector Tool for 10th Students, Know Your Skill AI Chatbot, FutureMap Visual Career Journey, Regional Language Career Platform, Subject-to-Career AR Explorer, and Degree Info Finder (After 12th). Each card must include an icon, short description, and 'Explore' button",
-      "target": "frontend",
+      "id": "REQ-13",
+      "text": "Add backend functions to save and retrieve Stream Selector quiz results, associating them with the authenticated user's principal ID",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-user-yes"
         ],
         "quotes": [
-          "Modules Section (8 Features Cards Grid)",
-          "Each card should have icon, short description, and \"Explore\" button"
+          "save their progress"
         ]
       },
       "acceptanceCriteria": [
-        "All 8 module cards are displayed in a responsive grid layout",
-        "Each card displays a relevant icon, descriptive text, and 'Explore' button",
-        "Cards are interactive and visually distinct",
-        "Explore buttons link to respective module pages"
+        "Function to save quiz answers and recommended stream (Science/Commerce/Arts) for a user",
+        "Function to retrieve saved quiz results by principal ID",
+        "Quiz results include timestamp and selected answers"
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "Create a Career Path page with a dropdown selector for subjects/interests that displays career options, required degrees, and relevant entrance exams in a card-based layout",
-      "target": "frontend",
+      "id": "REQ-14",
+      "text": "Add backend functions to save and retrieve bookmarked career paths and degree programs for authenticated users",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-user-yes"
         ],
         "quotes": [
-          "Dropdown to select subject/interest",
-          "Show career options, degrees, and exams in cards format"
+          "save their progress and preferences"
         ]
       },
       "acceptanceCriteria": [
-        "Dropdown menu allows users to select from multiple subjects/interests",
-        "Career options are displayed as cards after selection",
-        "Each career card shows related degrees and entrance exams",
-        "Layout is responsive and organized"
+        "Function to bookmark a career path or degree with user principal ID",
+        "Function to retrieve all bookmarked items for a user",
+        "Function to remove a bookmark"
       ]
     },
     {
-      "id": "REQ-4",
-      "text": "Create a Stream Selector Quiz page with multiple choice questions that provides a result section displaying the suggested stream (Science, Commerce, or Arts) based on user answers",
+      "id": "REQ-15",
+      "text": "Update Stream Selector Quiz page to automatically save quiz results to the backend when user completes the quiz and is authenticated via Internet Identity",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-user-yes"
         ],
         "quotes": [
-          "Multiple choice questions",
-          "Result section showing suggested stream (Science / Commerce / Arts)"
+          "save their progress"
         ]
       },
       "acceptanceCriteria": [
-        "Quiz displays multiple choice questions one at a time or in a sequence",
-        "Users can select answers and navigate through questions",
-        "Result page shows recommended stream (Science, Commerce, or Arts)",
-        "Result is based on user's quiz responses"
+        "Quiz results are saved to backend after completion if user is logged in",
+        "Show success message after saving results",
+        "Handle cases where user is not authenticated with a prompt to log in"
       ]
     },
     {
-      "id": "REQ-5",
-      "text": "Create an India vs Abroad Comparison page featuring a comparison table with columns for Cost, ROI, Lifestyle, and Job Opportunities, enhanced with graphs or visual indicators",
+      "id": "REQ-16",
+      "text": "Add bookmark buttons to Career Path page cards that save selected careers to the user's profile when authenticated",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-user-yes"
         ],
         "quotes": [
-          "Comparison table: Cost, ROI, Lifestyle, Job Opportunities",
-          "Graph or visual indicators"
+          "save their progress and preferences"
         ]
       },
       "acceptanceCriteria": [
-        "Comparison table displays India vs Abroad data across Cost, ROI, Lifestyle, and Job Opportunities",
-        "Visual indicators or graphs enhance data presentation",
-        "Information is clear and easy to compare",
-        "Layout is responsive on mobile devices"
+        "Bookmark icon button appears on each career card",
+        "Clicking bookmark saves the career to backend and shows visual feedback",
+        "Bookmarked careers display a filled bookmark icon",
+        "Prompt to log in if user is not authenticated"
       ]
     },
     {
-      "id": "REQ-6",
-      "text": "Create a Chatbot page with a chat interface layout including message display area, message input box, and send button, designed with a student-friendly aesthetic",
+      "id": "REQ-17",
+      "text": "Add bookmark buttons to Degree Finder page cards that save selected degrees to the user's profile when authenticated",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-user-yes"
         ],
         "quotes": [
-          "Chat interface layout",
-          "Message input box and send button",
-          "Student friendly design"
+          "save their progress and preferences"
         ]
       },
       "acceptanceCriteria": [
-        "Chat interface displays conversation messages in a scrollable area",
-        "Message input box allows text entry",
-        "Send button submits user messages",
-        "Design is welcoming and appropriate for students"
+        "Bookmark icon button appears on each degree card",
+        "Clicking bookmark saves the degree to backend and shows visual feedback",
+        "Bookmarked degrees display a filled bookmark icon",
+        "Prompt to log in if user is not authenticated"
       ]
     },
     {
-      "id": "REQ-7",
-      "text": "Create a FutureMap page displaying a visual career journey flow from School Subjects → Degree → Career → Job using a timeline or roadmap-style UI",
+      "id": "REQ-18",
+      "text": "Create a new Profile/Dashboard page accessible from the navigation menu that displays the authenticated user's saved quiz results, bookmarked careers, and bookmarked degrees",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-user-yes"
         ],
         "quotes": [
-          "Visual step flow: School Subjects → Degree → Career → Job",
-          "Timeline or roadmap style UI"
+          "save their progress and preferences"
         ]
       },
       "acceptanceCriteria": [
-        "Visual flow shows progression from School Subjects to Degree to Career to Job",
-        "Timeline or roadmap design makes the journey clear and intuitive",
-        "Each stage is visually distinct and connected",
-        "Layout works on both desktop and mobile"
+        "Profile page shows user principal ID and join date",
+        "Section displaying saved Stream Selector quiz results with recommended stream",
+        "Section showing bookmarked careers with links to Career Path page",
+        "Section showing bookmarked degrees with links to Degree Finder page",
+        "Navigation menu includes 'Profile' or 'My Progress' link",
+        "Redirect to login page if user is not authenticated"
       ]
     },
     {
-      "id": "REQ-8",
-      "text": "Create a Degree Info Finder page with a search bar that displays degree information cards showing degree name, duration, entrance exams, and fees",
+      "id": "REQ-19",
+      "text": "Update Login page to show authentication status and provide a clear call-to-action explaining the benefits of logging in (save progress, bookmark careers, track quiz results)",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-user-yes"
         ],
         "quotes": [
-          "Search bar",
-          "Cards showing degree name, duration, exams, fees"
+          "authentication so students can save their progress and preferences"
         ]
       },
       "acceptanceCriteria": [
-        "Search bar allows users to search for degrees",
-        "Search results display as cards with degree name, duration, entrance exams, and fees",
-        "Cards are well-organized and easy to read",
-        "Search functionality filters results appropriately"
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "text": "Create an About section describing the CareerSphere platform, including the problem statement that students lack career guidance, along with the platform's mission and vision",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Description about CareerSphere platform",
-          "Problem statement: Students lack career guidance",
-          "Mission and vision"
-        ]
-      },
-      "acceptanceCriteria": [
-        "About section includes a description of the CareerSphere platform",
-        "Problem statement clearly states that students lack career guidance",
-        "Mission and vision statements are displayed",
-        "Content is well-formatted and readable"
-      ]
-    },
-    {
-      "id": "REQ-10",
-      "text": "Create a Contact page with a contact form containing fields for name, email, and message, and include a footer with social media links",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Contact form with name, email, message",
-          "Footer with social links"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Contact form displays fields for name, email, and message",
-        "Form includes a submit button",
-        "Footer contains social media links",
-        "Form validation ensures required fields are completed"
-      ]
-    },
-    {
-      "id": "REQ-11",
-      "text": "Implement a modern UI design system with soft gradient colors (blue and purple), fully responsive mobile-friendly layouts, clean typography, dashboard-style components using cards, icons, and interactive buttons throughout the application",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Modern UI with soft colors (blue, purple, gradient)",
-          "Fully responsive mobile-friendly layout",
-          "Clean typography",
-          "Dashboard-style components",
-          "Use cards, icons, and interactive buttons"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Color scheme uses soft blue and purple gradients consistently",
-        "All pages are fully responsive and work on mobile devices",
-        "Typography is clean and readable",
-        "Dashboard-style components are used throughout",
-        "Cards, icons, and buttons are interactive and visually consistent"
+        "Login page displays benefits of authentication in a prominent section",
+        "Benefits list includes: save quiz progress, bookmark careers, track journey",
+        "When authenticated, show welcome message with user's principal ID",
+        "Provide logout button when authenticated"
       ]
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "Use Internet Identity for authentication as implemented in useInternetIdentity.ts",
+    "Maintain single-actor architecture in backend/main.mo",
+    "Do not modify immutable frontend paths: useInternetIdentity.ts, useActor.ts, main.tsx, components/ui",
+    "Preserve existing navigation structure and routes in App.tsx"
+  ],
   "nonGoals": [
-    "Backend AI functionality for the chatbot (UI only)",
-    "Actual AR implementation for Subject-to-Career AR Explorer (card placeholder only)",
-    "Multi-language support for Regional Language Career Platform (card placeholder only)",
-    "User authentication system implementation (Login link is UI only)",
-    "Database integration for storing user quiz results or form submissions"
+    "Implementing social media login (Facebook, Google, etc.)",
+    "Adding third-party analytics tracking",
+    "Creating admin dashboard or role-based access control",
+    "Implementing real-time notifications or alerts",
+    "Adding email verification or password reset flows"
   ],
   "imageRequirements": {
-    "required": [
-      "Hero section illustration showing diverse students planning their careers with books, laptops, and graduation caps in a modern flat style (hero-students.dim_1200x600.png)",
-      "Career guidance icon with a compass and path symbols for Career Path Suggestion App module card (icon-career-path.dim_128x128.png)",
-      "Globe with India and abroad flags for India vs Abroad Career Decision Guide module card (icon-india-abroad.dim_128x128.png)",
-      "Three diverging paths icon for Stream Selector Tool module card (icon-stream-selector.dim_128x128.png)",
-      "Chat bubble with AI sparkles for Know Your Skill AI Chatbot module card (icon-ai-chatbot.dim_128x128.png)",
-      "Timeline roadmap icon with milestones for FutureMap Visual Career Journey module card (icon-futuremap.dim_128x128.png)",
-      "Multiple language symbols icon for Regional Language Career Platform module card (icon-regional-language.dim_128x128.png)",
-      "AR viewer with subjects and careers for Subject-to-Career AR Explorer module card (icon-ar-explorer.dim_128x128.png)",
-      "Graduation cap with degree scroll for Degree Info Finder module card (icon-degree-finder.dim_128x128.png)",
-      "Background pattern with subtle educational elements like books, pencils, and lightbulbs for page backgrounds (pattern-education.dim_800x600.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

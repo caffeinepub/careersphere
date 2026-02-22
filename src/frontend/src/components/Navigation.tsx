@@ -1,18 +1,19 @@
 import { Link, useRouterState } from '@tanstack/react-router';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import { useState } from 'react';
+import { useInternetIdentity } from '../hooks/useInternetIdentity';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
+  const { identity } = useInternetIdentity();
 
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Modules', path: '/modules' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Login', path: '/login' },
   ];
 
   const isActive = (path: string) => currentPath === path;
@@ -45,6 +46,30 @@ export default function Navigation() {
                 {link.name}
               </Link>
             ))}
+            {identity ? (
+              <Link
+                to="/profile"
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all inline-flex items-center gap-2 ${
+                  isActive('/profile')
+                    ? 'bg-primary text-primary-foreground shadow-soft'
+                    : 'text-foreground/70 hover:text-foreground hover:bg-accent'
+                }`}
+              >
+                <User className="w-4 h-4" />
+                Profile
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive('/login')
+                    ? 'bg-primary text-primary-foreground shadow-soft'
+                    : 'text-foreground/70 hover:text-foreground hover:bg-accent'
+                }`}
+              >
+                Login
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -73,6 +98,31 @@ export default function Navigation() {
                 {link.name}
               </Link>
             ))}
+            {identity ? (
+              <Link
+                to="/profile"
+                onClick={() => setIsOpen(false)}
+                className={`block px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive('/profile')
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-foreground/70 hover:text-foreground hover:bg-accent'
+                }`}
+              >
+                Profile
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                onClick={() => setIsOpen(false)}
+                className={`block px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive('/login')
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-foreground/70 hover:text-foreground hover:bg-accent'
+                }`}
+              >
+                Login
+              </Link>
+            )}
           </div>
         )}
       </div>

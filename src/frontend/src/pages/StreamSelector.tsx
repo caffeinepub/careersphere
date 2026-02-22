@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Loader2 } from 'lucide-react';
+import { useInternetIdentity } from '../hooks/useInternetIdentity';
+import { useSubmitQuizResults } from '../hooks/useQueries';
+import { toast } from 'sonner';
 
 interface Question {
   id: number;
@@ -10,6 +13,8 @@ interface Question {
 
 export default function StreamSelector() {
   const navigate = useNavigate();
+  const { identity } = useInternetIdentity();
+  const submitQuizResults = useSubmitQuizResults();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
@@ -79,7 +84,7 @@ export default function StreamSelector() {
     }
   };
 
-  const calculateResult = () => {
+  const calculateResult = async () => {
     const streamCounts: Record<string, number> = { Science: 0, Commerce: 0, Arts: 0 };
     Object.values(answers).forEach((stream) => {
       streamCounts[stream] = (streamCounts[stream] || 0) + 1;
@@ -88,6 +93,22 @@ export default function StreamSelector() {
     const suggestedStream = Object.entries(streamCounts).reduce((a, b) =>
       a[1] > b[1] ? a : b
     )[0];
+
+    const completionPercentage = Math.round((Object.keys(answers).length / questions.length) * 100);
+
+    // Save results if user is authenticated
+    if (identity) {
+      try {
+        await submitQuizResults.mutateAsync({
+          selectedStreams: [suggestedStream],
+          completionPercentage,
+        });
+        toast.success('Quiz results saved successfully!');
+      } catch (error) {
+        console.error('Failed to save quiz results:', error);
+        toast.error('Failed to save results, but you can still view them');
+      }
+    }
 
     navigate({ to: '/stream-result', search: { stream: suggestedStream } });
   };
@@ -109,6 +130,11 @@ export default function StreamSelector() {
             <p className="text-lg text-muted-foreground">
               Answer these questions to find your ideal stream
             </p>
+            {!identity && (
+              <p className="text-sm text-muted-foreground mt-2">
+                💡 <a href="/login" className="text-primary hover:underline">Log in</a> to save your results
+              </p>
+            )}
           </div>
 
           <div className="mb-8">
@@ -168,11 +194,20 @@ export default function StreamSelector() {
 
               <button
                 onClick={handleNext}
-                disabled={!hasAnswer}
+                disabled={!hasAnswer || submitQuizResults.isPending}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:shadow-soft disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
-                {currentQuestion === questions.length - 1 ? 'See Results' : 'Next'}
-                <ChevronRight className="w-5 h-5" />
+                {submitQuizResults.isPending ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    {currentQuestion === questions.length - 1 ? 'See Results' : 'Next'}
+                    <ChevronRight className="w-5 h-5" />
+                  </>
+                )}
               </button>
             </div>
           </div>

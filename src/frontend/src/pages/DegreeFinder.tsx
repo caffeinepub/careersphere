@@ -1,7 +1,12 @@
 import { useState } from 'react';
-import { Search, Clock, FileText, DollarSign } from 'lucide-react';
+import { Search, Clock, FileText, DollarSign, Heart, Loader2 } from 'lucide-react';
+import { useInternetIdentity } from '../hooks/useInternetIdentity';
+import { useGetUserProfile, useAddBookmark, useRemoveBookmark } from '../hooks/useQueries';
+import { toast } from 'sonner';
+import { useNavigate } from '@tanstack/react-router';
 
 interface Degree {
+  id: number;
   name: string;
   duration: string;
   exams: string[];
@@ -10,10 +15,16 @@ interface Degree {
 }
 
 export default function DegreeFinder() {
+  const navigate = useNavigate();
+  const { identity } = useInternetIdentity();
+  const { data: userProfile } = useGetUserProfile();
+  const addBookmark = useAddBookmark();
+  const removeBookmark = useRemoveBookmark();
   const [searchQuery, setSearchQuery] = useState('');
 
   const degrees: Degree[] = [
     {
+      id: 20,
       name: 'B.Tech (Computer Science)',
       duration: '4 Years',
       exams: ['JEE Main', 'JEE Advanced', 'BITSAT', 'State Entrance Exams'],
@@ -21,6 +32,7 @@ export default function DegreeFinder() {
       description: 'Bachelor of Technology in Computer Science focuses on software development, algorithms, and computing systems.',
     },
     {
+      id: 21,
       name: 'MBBS',
       duration: '5.5 Years',
       exams: ['NEET UG'],
@@ -28,6 +40,7 @@ export default function DegreeFinder() {
       description: 'Bachelor of Medicine and Bachelor of Surgery is the primary medical degree for becoming a doctor.',
     },
     {
+      id: 22,
       name: 'B.Com (Hons)',
       duration: '3 Years',
       exams: ['CUET', 'University Entrance Exams'],
@@ -35,6 +48,7 @@ export default function DegreeFinder() {
       description: 'Bachelor of Commerce with Honours provides in-depth knowledge of accounting, finance, and business.',
     },
     {
+      id: 23,
       name: 'BBA',
       duration: '3 Years',
       exams: ['CUET', 'IPM', 'University Entrance Exams'],
@@ -42,6 +56,7 @@ export default function DegreeFinder() {
       description: 'Bachelor of Business Administration prepares students for management and entrepreneurship roles.',
     },
     {
+      id: 24,
       name: 'B.Sc. (Physics)',
       duration: '3 Years',
       exams: ['CUET', 'University Entrance Exams'],
@@ -49,6 +64,7 @@ export default function DegreeFinder() {
       description: 'Bachelor of Science in Physics covers fundamental principles of matter, energy, and the universe.',
     },
     {
+      id: 25,
       name: 'B.A. (Psychology)',
       duration: '3 Years',
       exams: ['CUET', 'University Entrance Exams'],
@@ -56,6 +72,7 @@ export default function DegreeFinder() {
       description: 'Bachelor of Arts in Psychology explores human behavior, mental processes, and therapeutic techniques.',
     },
     {
+      id: 26,
       name: 'LLB',
       duration: '3 Years',
       exams: ['CLAT', 'LSAT India', 'State Law Entrance Exams'],
@@ -63,6 +80,7 @@ export default function DegreeFinder() {
       description: 'Bachelor of Laws is the professional law degree required to practice as a lawyer in India.',
     },
     {
+      id: 27,
       name: 'B.Arch',
       duration: '5 Years',
       exams: ['NATA', 'JEE Main Paper 2'],
@@ -75,6 +93,31 @@ export default function DegreeFinder() {
     degree.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     degree.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const bookmarkedIds = userProfile?.bookmarked.map(id => Number(id)) || [];
+
+  const handleBookmarkToggle = async (degreeId: number) => {
+    if (!identity) {
+      toast.error('Please log in to bookmark degrees');
+      navigate({ to: '/login' });
+      return;
+    }
+
+    const isBookmarked = bookmarkedIds.includes(degreeId);
+
+    try {
+      if (isBookmarked) {
+        await removeBookmark.mutateAsync(degreeId);
+        toast.success('Bookmark removed');
+      } else {
+        await addBookmark.mutateAsync(degreeId);
+        toast.success('Degree bookmarked!');
+      }
+    } catch (error) {
+      console.error('Bookmark error:', error);
+      toast.error('Failed to update bookmark');
+    }
+  };
 
   return (
     <div className="py-16 min-h-screen bg-gradient-to-b from-background via-accent/10 to-background">
@@ -105,60 +148,85 @@ export default function DegreeFinder() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {filteredDegrees.map((degree, index) => (
-              <div
-                key={index}
-                className="bg-card rounded-2xl p-6 border border-border hover:shadow-soft-lg transition-all animate-fade-in"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <h3 className="text-2xl font-semibold mb-3 text-primary">{degree.name}</h3>
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                  {degree.description}
-                </p>
+            {filteredDegrees.map((degree, index) => {
+              const isBookmarked = bookmarkedIds.includes(degree.id);
+              const isLoading = addBookmark.isPending || removeBookmark.isPending;
 
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-medium text-sm">Duration:</span>
-                      <span className="text-muted-foreground text-sm ml-2">{degree.duration}</span>
-                    </div>
+              return (
+                <div
+                  key={index}
+                  className="bg-card rounded-2xl p-6 border border-border hover:shadow-soft-lg transition-all animate-fade-in relative"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-2xl font-semibold text-primary">{degree.name}</h3>
+                    <button
+                      onClick={() => handleBookmarkToggle(degree.id)}
+                      disabled={isLoading}
+                      className="p-2 rounded-lg hover:bg-accent transition-all disabled:opacity-50"
+                      title={isBookmarked ? 'Remove bookmark' : 'Bookmark degree'}
+                    >
+                      {isLoading ? (
+                        <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
+                      ) : (
+                        <Heart
+                          className={`w-5 h-5 transition-all ${
+                            isBookmarked
+                              ? 'fill-red-500 text-red-500'
+                              : 'text-muted-foreground hover:text-red-500'
+                          }`}
+                        />
+                      )}
+                    </button>
                   </div>
+                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                    {degree.description}
+                  </p>
 
-                  <div className="flex items-start gap-3">
-                    <DollarSign className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-medium text-sm">Fees Range:</span>
-                      <span className="text-muted-foreground text-sm ml-2">{degree.fees}</span>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <Clock className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-medium text-sm">Duration:</span>
+                        <span className="text-muted-foreground text-sm ml-2">{degree.duration}</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="flex items-start gap-3">
-                    <FileText className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                    <div className="flex-1">
-                      <span className="font-medium text-sm block mb-2">Entrance Exams:</span>
-                      <div className="flex flex-wrap gap-2">
-                        {degree.exams.map((exam, i) => (
-                          <span
-                            key={i}
-                            className="px-3 py-1 rounded-lg bg-primary/10 text-primary text-xs font-medium"
-                          >
-                            {exam}
-                          </span>
-                        ))}
+                    <div className="flex items-start gap-3">
+                      <DollarSign className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-medium text-sm">Fees Range:</span>
+                        <span className="text-muted-foreground text-sm ml-2">{degree.fees}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <FileText className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-medium text-sm">Entrance Exams:</span>
+                        <div className="mt-1 flex flex-wrap gap-2">
+                          {degree.exams.map((exam, i) => (
+                            <span
+                              key={i}
+                              className="text-xs px-2 py-1 rounded-md bg-accent text-foreground"
+                            >
+                              {exam}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {filteredDegrees.length === 0 && (
             <div className="text-center py-12 animate-fade-in">
               <Search className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
               <p className="text-muted-foreground">
-                No degrees found matching "{searchQuery}". Try a different search term.
+                No degrees found matching your search. Try different keywords!
               </p>
             </div>
           )}

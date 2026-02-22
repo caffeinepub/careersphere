@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 5,
   "summary": "CareerSphere - A modern responsive career guidance web platform for school and college students with 8 interactive modules including career path suggestion, stream selector, chatbot, and degree finder",
   "architectural_notes": [
     "Modern responsive web application with mobile-first design",
@@ -10,7 +10,6 @@
   ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Hero section illustration showing diverse students planning their careers with books, laptops, and graduation caps in a modern flat style (hero-students.dim_1200x600.png)\n- Career guidance icon with a compass and path symbols for Career Path Suggestion App module card (icon-career-path.dim_128x128.png)\n- Globe with India and abroad flags for India vs Abroad Career Decision Guide module card (icon-india-abroad.dim_128x128.png)\n- Three diverging paths icon for Stream Selector Tool module card (icon-stream-selector.dim_128x128.png)\n- Chat bubble with AI sparkles for Know Your Skill AI Chatbot module card (icon-ai-chatbot.dim_128x128.png)\n- Timeline roadmap icon with milestones for FutureMap Visual Career Journey module card (icon-futuremap.dim_128x128.png)\n- Multiple language symbols icon for Regional Language Career Platform module card (icon-regional-language.dim_128x128.png)\n- AR viewer with subjects and careers for Subject-to-Career AR Explorer module card (icon-ar-explorer.dim_128x128.png)\n- Graduation cap with degree scroll for Degree Info Finder module card (icon-degree-finder.dim_128x128.png)\n- Background pattern with subtle educational elements like books, pencils, and lightbulbs for page backgrounds (pattern-education.dim_800x600.png)",
   "existing_features": [
     {
       "id": "feature-create-a-landing-page-with-hero-section-displaying-title-careersphere-and-tagline-empowering-students-for-skills-and-knowledge-navigation-menu-with-links-to-home-modules-about-contact-and-login-and-a-prominent-get-started-call-to-action-button",
@@ -99,6 +98,46 @@
         "REQ-11"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-stream-selector-quiz-page-to-automatically-save-quiz-results-to-the-backend-when-user-completes-the-quiz-and-is-authenticated-via-internet-identity",
+      "title": "Update Stream Selector Quiz page to automatically save quiz results to the backend when user completes the quiz and is authenticated via Internet Identity",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-bookmark-buttons-to-career-path-page-cards-that-save-selected-careers-to-the-user-s-profile-when-authenticated",
+      "title": "Add bookmark buttons to Career Path page cards that save selected careers to the user's profile when authenticated",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-bookmark-buttons-to-degree-finder-page-cards-that-save-selected-degrees-to-the-user-s-profile-when-authenticated",
+      "title": "Add bookmark buttons to Degree Finder page cards that save selected degrees to the user's profile when authenticated",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-profile-dashboard-page-accessible-from-the-navigation-menu-that-displays-the-authenticated-user-s-saved-quiz-results-bookmarked-careers-and-bookmarked-degrees",
+      "title": "Create a new Profile/Dashboard page accessible from the navigation menu that displays the authenticated user's saved quiz results, bookmarked careers, and bookmarked degrees",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-login-page-to-show-authentication-status-and-provide-a-clear-call-to-action-explaining-the-benefits-of-logging-in-save-progress-bookmark-careers-track-quiz-results",
+      "title": "Update Login page to show authentication status and provide a clear call-to-action explaining the benefits of logging in (save progress, bookmark careers, track quiz results)",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -160,6 +199,36 @@
       "id": "AR-10",
       "summary": "Contact page with form and footer with social links",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Authentication system so students can save progress and preferences",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Implement backend user profile data model in main.mo to store student preferences, quiz results, saved career paths, and selected modules. Include stable storage for persistence across canister upgrades.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add backend functions to save and retrieve Stream Selector quiz results, associating them with the authenticated user's principal ID",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Add backend functions to save and retrieve bookmarked career paths and degree programs for authenticated users",
+      "reqIds": [
+        "REQ-14"
+      ],
       "status": "pending"
     }
   ],

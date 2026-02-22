@@ -1,4 +1,6 @@
 import { RouterProvider, createRouter, createRoute, createRootRoute } from '@tanstack/react-router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from '@/components/ui/sonner';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Modules from './pages/Modules';
@@ -12,6 +14,16 @@ import DegreeFinder from './pages/DegreeFinder';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const rootRoute = createRootRoute({
   component: Layout,
@@ -89,6 +101,12 @@ const loginRoute = createRoute({
   component: Login,
 });
 
+const profileRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/profile',
+  component: Profile,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   modulesRoute,
@@ -102,6 +120,7 @@ const routeTree = rootRoute.addChildren([
   aboutRoute,
   contactRoute,
   loginRoute,
+  profileRoute,
 ]);
 
 const router = createRouter({ routeTree });
@@ -113,5 +132,10 @@ declare module '@tanstack/react-router' {
 }
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <Toaster />
+    </QueryClientProvider>
+  );
 }

@@ -1,273 +1,101 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "CareerSphere Frontend Implementation - Career Guidance Platform with 8 Interactive Modules",
+  "title": "Add user authentication with progress saving",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Create landing page with hero section, navigation menu, and call-to-action",
+      "id": "REQ-15",
+      "summary": "Auto-save quiz results when authenticated user completes Stream Selector Quiz",
       "acceptanceCriteria": [
-        "Hero section displays 'CareerSphere' as the main title",
-        "Tagline 'Empowering Students for Skills and Knowledge' is visible below the title",
-        "Navigation menu contains Home, Modules, About, Contact, and Login links",
-        "'Get Started' button is prominently displayed and clickable"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add routing configuration for Home, Modules, About, Contact, and Login pages. Set up React Router with route definitions for all navigation destinations."
-        },
-        {
-          "path": "frontend/src/pages/Home.tsx",
-          "operation": "create",
-          "description": "Create Home page component with hero section displaying 'CareerSphere' title and tagline 'Empowering Students for Skills and Knowledge'. Include the generated hero section illustration at frontend/public/assets/generated/hero-students.dim_1200x600.png as a background or feature image. Add a prominent 'Get Started' button that navigates to the Modules page."
-        },
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "create",
-          "description": "Create Navigation component with links to Home, Modules, About, Contact, and Login. Use shadcn/ui navigation components for consistent styling. Ensure responsive mobile menu behavior."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Create modules section with 8 interactive feature cards in grid layout",
-      "acceptanceCriteria": [
-        "All 8 module cards are displayed in a responsive grid layout",
-        "Each card displays a relevant icon, descriptive text, and 'Explore' button",
-        "Cards are interactive and visually distinct",
-        "Explore buttons link to respective module pages"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/Modules.tsx",
-          "operation": "create",
-          "description": "Create Modules page displaying 8 feature cards in a responsive grid layout. Use shadcn/ui Card components for each module. Wire each card's 'Explore' button to navigate to its respective module page. Reference generated icons: frontend/public/assets/generated/icon-career-path.dim_128x128.png, frontend/public/assets/generated/icon-india-abroad.dim_128x128.png, frontend/public/assets/generated/icon-stream-selector.dim_128x128.png, frontend/public/assets/generated/icon-ai-chatbot.dim_128x128.png, frontend/public/assets/generated/icon-futuremap.dim_128x128.png, frontend/public/assets/generated/icon-regional-language.dim_128x128.png, frontend/public/assets/generated/icon-ar-explorer.dim_128x128.png, frontend/public/assets/generated/icon-degree-finder.dim_128x128.png."
-        },
-        {
-          "path": "frontend/src/components/ModuleCard.tsx",
-          "operation": "create",
-          "description": "Create reusable ModuleCard component accepting props for icon, title, description, and navigation path. Use shadcn/ui Card component with hover effects and interactive styling. Include 'Explore' button that triggers navigation."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Create Career Path page with dropdown selector and career options display",
-      "acceptanceCriteria": [
-        "Dropdown menu allows users to select from multiple subjects/interests",
-        "Career options are displayed as cards after selection",
-        "Each career card shows related degrees and entrance exams",
-        "Layout is responsive and organized"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/CareerPath.tsx",
-          "operation": "create",
-          "description": "Create Career Path page with shadcn/ui Select component for subject/interest dropdown. Display career options in card-based layout after selection, showing career name, required degrees, and relevant entrance exams. Use local state to manage selection and display logic."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add route for /career-path that renders the CareerPath page component."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Create Stream Selector Quiz page with questions and result display",
-      "acceptanceCriteria": [
-        "Quiz displays multiple choice questions one at a time or in a sequence",
-        "Users can select answers and navigate through questions",
-        "Result page shows recommended stream (Science, Commerce, or Arts)",
-        "Result is based on user's quiz responses"
+        "Quiz results are saved to backend after completion if user is logged in",
+        "Show success message after saving results",
+        "Handle cases where user is not authenticated with a prompt to log in"
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/StreamSelector.tsx",
-          "operation": "create",
-          "description": "Create Stream Selector Quiz page with multiple choice questions displayed sequentially. Use shadcn/ui RadioGroup for answer selection and Button components for navigation. Track user answers in local state and calculate suggested stream (Science, Commerce, or Arts) based on responses."
-        },
-        {
-          "path": "frontend/src/pages/StreamResult.tsx",
-          "operation": "create",
-          "description": "Create Stream Result page displaying the recommended stream (Science, Commerce, or Arts) based on quiz answers. Use shadcn/ui Card component to present results with clear visual indicators."
-        },
-        {
-          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Add routes for /stream-selector and /stream-result that render the StreamSelector and StreamResult page components."
+          "description": "Integrate backend quiz result submission using submitQuizResults from useActor hook. After calculating quiz results, check authentication status via useInternetIdentity and call submitQuizResults with selectedStreams array and completionPercentage. Display success toast/message on save completion. If user is not authenticated, show prompt to log in before navigating to results. Handle loading and error states during save operation."
         }
       ]
     },
     {
-      "id": "REQ-5",
-      "summary": "Create India vs Abroad Comparison page with comparison table and visual indicators",
+      "id": "REQ-16",
+      "summary": "Add bookmark functionality to Career Path page for authenticated users",
       "acceptanceCriteria": [
-        "Comparison table displays India vs Abroad data across Cost, ROI, Lifestyle, and Job Opportunities",
-        "Visual indicators or graphs enhance data presentation",
-        "Information is clear and easy to compare",
-        "Layout is responsive on mobile devices"
+        "Bookmark icon button appears on each career card",
+        "Clicking bookmark saves the career to backend and shows visual feedback",
+        "Bookmarked careers display a filled bookmark icon",
+        "Prompt to log in if user is not authenticated"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/IndiaVsAbroad.tsx",
-          "operation": "create",
-          "description": "Create India vs Abroad Comparison page with shadcn/ui Table component displaying Cost, ROI, Lifestyle, and Job Opportunities columns. Add visual indicators or simple graphs using CSS or SVG to enhance data presentation. Ensure responsive layout for mobile devices."
-        },
-        {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/pages/CareerPath.tsx",
           "operation": "modify",
-          "description": "Add route for /india-vs-abroad that renders the IndiaVsAbroad page component."
+          "description": "Add bookmark button with heart or bookmark icon to each career card. Use useActor hook to access addBookmark and removeBookmark backend functions. Fetch bookmarked career IDs from getUserProfile to display filled/unfilled bookmark state. On bookmark click, check authentication status and either call addBookmark/removeBookmark or prompt user to log in. Show visual feedback (icon state change, toast message) on successful bookmark action. Handle loading states during API calls."
         }
       ]
     },
     {
-      "id": "REQ-6",
-      "summary": "Create Chatbot page with chat interface layout",
+      "id": "REQ-17",
+      "summary": "Add bookmark functionality to Degree Finder page for authenticated users",
       "acceptanceCriteria": [
-        "Chat interface displays conversation messages in a scrollable area",
-        "Message input box allows text entry",
-        "Send button submits user messages",
-        "Design is welcoming and appropriate for students"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/Chatbot.tsx",
-          "operation": "create",
-          "description": "Create Chatbot page with chat interface layout including scrollable message display area, message input box using shadcn/ui Input component, and send button using shadcn/ui Button component. Use local state to manage messages. Implement student-friendly design with welcoming colors."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add route for /chatbot that renders the Chatbot page component."
-        }
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "summary": "Create FutureMap page with visual career journey timeline",
-      "acceptanceCriteria": [
-        "Visual flow shows progression from School Subjects to Degree to Career to Job",
-        "Timeline or roadmap design makes the journey clear and intuitive",
-        "Each stage is visually distinct and connected",
-        "Layout works on both desktop and mobile"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/FutureMap.tsx",
-          "operation": "create",
-          "description": "Create FutureMap page displaying visual career journey flow from School Subjects → Degree → Career → Job using timeline or roadmap-style UI. Use shadcn/ui Card components for each stage with connecting lines or arrows. Ensure responsive design for mobile and desktop."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add route for /futuremap that renders the FutureMap page component."
-        }
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "summary": "Create Degree Info Finder page with search and degree information cards",
-      "acceptanceCriteria": [
-        "Search bar allows users to search for degrees",
-        "Search results display as cards with degree name, duration, entrance exams, and fees",
-        "Cards are well-organized and easy to read",
-        "Search functionality filters results appropriately"
+        "Bookmark icon button appears on each degree card",
+        "Clicking bookmark saves the degree to backend and shows visual feedback",
+        "Bookmarked degrees display a filled bookmark icon",
+        "Prompt to log in if user is not authenticated"
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/DegreeFinder.tsx",
-          "operation": "create",
-          "description": "Create Degree Info Finder page with shadcn/ui Input component for search bar. Display degree information as shadcn/ui Card components showing degree name, duration, entrance exams, and fees. Implement client-side search filtering using local state."
-        },
-        {
-          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Add route for /degree-finder that renders the DegreeFinder page component."
+          "description": "Add bookmark button with heart or bookmark icon to each degree card. Use useActor hook to access addBookmark and removeBookmark backend functions. Fetch bookmarked degree IDs from getUserProfile to display filled/unfilled bookmark state. On bookmark click, check authentication status and either call addBookmark/removeBookmark or prompt user to log in. Show visual feedback (icon state change, toast message) on successful bookmark action. Handle loading states during API calls."
         }
       ]
     },
     {
-      "id": "REQ-9",
-      "summary": "Create About section with platform description, problem statement, mission and vision",
+      "id": "REQ-18",
+      "summary": "Create Profile/Dashboard page displaying saved progress and bookmarks",
       "acceptanceCriteria": [
-        "About section includes a description of the CareerSphere platform",
-        "Problem statement clearly states that students lack career guidance",
-        "Mission and vision statements are displayed",
-        "Content is well-formatted and readable"
+        "Profile page shows user principal ID and join date",
+        "Section displaying saved Stream Selector quiz results with recommended stream",
+        "Section showing bookmarked careers with links to Career Path page",
+        "Section showing bookmarked degrees with links to Degree Finder page",
+        "Navigation menu includes 'Profile' or 'My Progress' link",
+        "Redirect to login page if user is not authenticated"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/About.tsx",
+          "path": "frontend/src/pages/Profile.tsx",
           "operation": "create",
-          "description": "Create About page describing CareerSphere platform. Include sections for problem statement highlighting that students lack career guidance, mission statement, and vision statement. Use shadcn/ui Card or typography components for content organization."
+          "description": "Create new Profile page component that fetches user data via getUserProfile and getBookmarkedCareers from useActor hook. Check authentication status using useInternetIdentity and redirect to login if not authenticated. Display user principal ID prominently at top. Create sections for: (1) Quiz Results showing selectedStreams and completionPercentage from quizResults array, (2) Bookmarked Careers displaying career cards with titles and navigation links to Career Path page, (3) Bookmarked Degrees showing degree cards with links to Degree Finder page. Include loading states and empty state messages when no data is available. Style consistently with existing pages using gradient backgrounds and card layouts."
         },
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Add route for /about that renders the About page component."
+          "description": "Add new route for Profile page at path '/profile' using createRoute with Profile component as the route component. Import Profile component at top of file. Add route to routeTree structure alongside existing routes."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Add 'Profile' or 'My Progress' navigation link to both desktop and mobile navigation menus. Position link near Login link. Apply active styling when on /profile route. Ensure link is visible in both navigation modes and follows existing navigation pattern with Link component from TanStack Router."
         }
       ]
     },
     {
-      "id": "REQ-10",
-      "summary": "Create Contact page with form and footer with social links",
+      "id": "REQ-19",
+      "summary": "Update Login page to explain authentication benefits and show status",
       "acceptanceCriteria": [
-        "Contact form displays fields for name, email, and message",
-        "Form includes a submit button",
-        "Footer contains social media links",
-        "Form validation ensures required fields are completed"
+        "Login page displays benefits of authentication in a prominent section",
+        "Benefits list includes: save quiz progress, bookmark careers, track journey",
+        "When authenticated, show welcome message with user's principal ID",
+        "Provide logout button when authenticated"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/Contact.tsx",
-          "operation": "create",
-          "description": "Create Contact page with contact form using shadcn/ui Input and Textarea components for name, email, and message fields. Add shadcn/ui Button for submit. Implement client-side form validation to ensure required fields are completed. Include footer section with social media links."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "create",
-          "description": "Create reusable Footer component with social media links. Use consistent styling with shadcn/ui components."
-        },
-        {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/pages/Login.tsx",
           "operation": "modify",
-          "description": "Add route for /contact that renders the Contact page component."
-        }
-      ]
-    },
-    {
-      "id": "REQ-11",
-      "summary": "Implement modern UI design system with gradient colors and responsive layouts",
-      "acceptanceCriteria": [
-        "Color scheme uses soft blue and purple gradients consistently",
-        "All pages are fully responsive and work on mobile devices",
-        "Typography is clean and readable",
-        "Dashboard-style components are used throughout",
-        "Cards, icons, and buttons are interactive and visually consistent"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Configure global styles with soft blue and purple gradient color scheme. Define CSS custom properties for primary colors (blue and purple gradients), typography settings for clean readable fonts, and consistent spacing. Apply generated background pattern from frontend/public/assets/generated/pattern-education.dim_800x600.png where appropriate. Ensure all shadcn/ui component variables align with the gradient theme."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Extend Tailwind configuration with custom blue and purple gradient colors matching the design system. Add responsive breakpoints and utility classes for dashboard-style layouts. Configure shadcn/ui theme colors to use soft blue and purple gradients."
-        },
-        {
-          "path": "frontend/src/components/Layout.tsx",
-          "operation": "create",
-          "description": "Create Layout component that wraps all pages with Navigation and Footer components. Apply consistent spacing, background patterns, and responsive container widths. Use the generated pattern frontend/public/assets/generated/pattern-education.dim_800x600.png for subtle background decoration."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wrap all routes with the Layout component to ensure consistent Navigation and Footer across all pages."
+          "description": "Add benefits section above or beside login form that highlights authentication advantages: save quiz progress, bookmark career paths and degrees, track your journey over time. When user is authenticated (check via useInternetIdentity), display welcome message showing principal ID and add logout button that calls logout function from useInternetIdentity. Hide login form when authenticated. Style benefits list with icons and gradient cards for visual appeal. Maintain existing Internet Identity login integration."
         }
       ]
     }
