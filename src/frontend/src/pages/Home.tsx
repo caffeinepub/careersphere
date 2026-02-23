@@ -17,21 +17,28 @@ export default function Home() {
                 Your Career Journey Starts Here
               </div>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Discover Your Future
-                </span>
-              </h1>
+              <div className="flex flex-col items-center md:items-start">
+                <img 
+                  src="/assets/generated/logo.dim_512x512.png" 
+                  alt="CareerSphere Logo" 
+                  className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain mb-4 md:mb-6"
+                />
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-center md:text-left">
+                  <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Discover Your Future
+                  </span>
+                </h1>
+              </div>
               
-              <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-medium">
+              <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-medium text-center md:text-left">
                 Empowering Students for Skills and Knowledge
               </p>
               
-              <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-xl text-center md:text-left mx-auto md:mx-0">
                 Navigate your educational journey with confidence. Discover career paths, explore opportunities, and make informed decisions about your future.
               </p>
               
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
                 <button
                   onClick={() => navigate({ to: '/modules' })}
                   className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-base sm:text-lg hover:shadow-soft-lg transition-all hover:scale-105 min-h-[44px]"

@@ -1,150 +1,63 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update application name from 'career guide' to 'CareerSphere'",
+  "title": "Fix logo placement and positioning in Navigation and Home components",
   "requirements": [
     {
-      "id": "REQ-76",
-      "summary": "Update document title in index.html to 'CareerSphere - Your Career Path Navigator'",
+      "id": "REQ-91",
+      "summary": "Reposition logo in Navigation component with proper spacing and alignment to the left of 'CareerSphere' text",
       "acceptanceCriteria": [
-        "The <title> tag in frontend/index.html displays 'CareerSphere - Your Career Path Navigator'",
-        "No references to 'career guide' remain in the document title"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/index.html",
-          "operation": "modify",
-          "description": "Update the <title> tag content to 'CareerSphere - Your Career Path Navigator', replacing any existing 'career guide' references"
-        }
-      ]
-    },
-    {
-      "id": "REQ-77",
-      "summary": "Replace 'career guide' text with 'CareerSphere' in Home.tsx hero section",
-      "acceptanceCriteria": [
-        "Hero section title displays 'CareerSphere' instead of 'career guide'",
-        "Tagline maintains consistency with 'CareerSphere' branding"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/Home.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text in the hero section title and tagline, replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        }
-      ]
-    },
-    {
-      "id": "REQ-78",
-      "summary": "Replace 'career guide' references with 'CareerSphere' in About.tsx mission and vision statements",
-      "acceptanceCriteria": [
-        "All instances of 'career guide' in About page content are replaced with 'CareerSphere'",
-        "Mission and vision statements reference 'CareerSphere' consistently"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/About.tsx",
-          "operation": "modify",
-          "description": "Search for all instances of 'career guide' text in mission, vision, problem statement, and purpose sections, replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        }
-      ]
-    },
-    {
-      "id": "REQ-79",
-      "summary": "Search and replace 'career guide' with 'CareerSphere' across all remaining frontend components",
-      "acceptanceCriteria": [
-        "No instances of 'career guide' remain in any frontend component files",
-        "All references use 'CareerSphere' consistently across the application"
+        "Logo image appears immediately to the left of 'CareerSphere' text in the navigation header",
+        "Logo and text are vertically aligned and centered together",
+        "Appropriate horizontal spacing (margin-right) exists between logo and text",
+        "Logo maintains responsive sizing: h-8 w-8 on mobile, h-10 w-10 on tablet/desktop",
+        "Logo displays correctly on mobile, tablet, and laptop screen sizes"
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/Navigation.tsx",
           "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
+          "description": "Update the Navigation component to reposition the logo image immediately to the left of the 'CareerSphere' text. Add proper horizontal spacing (mr-2 or mr-3) between the logo and text, ensure vertical alignment using flex items-center, and maintain responsive sizing classes (h-8 w-8 md:h-10 md:w-10). Reference the logo using the absolute path /assets/generated/logo.dim_512x512.png and preserve the alt text 'CareerSphere Logo'."
+        }
+      ]
+    },
+    {
+      "id": "REQ-92",
+      "summary": "Reposition logo in Home component hero section centered above the title with proper spacing",
+      "acceptanceCriteria": [
+        "Logo image appears centered above the 'CareerSphere' title in the hero section",
+        "Adequate vertical spacing exists between logo and title text",
+        "Logo maintains responsive sizing: h-16 w-16 on mobile, h-20 w-20 on tablet, h-24 w-24 on desktop",
+        "Visual hierarchy is clear with logo, title, and tagline properly spaced",
+        "Logo displays correctly and is centered on all screen sizes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Update the Home component hero section to position the logo image centered above the 'CareerSphere' title. Add appropriate vertical spacing (mb-4 or mb-6) between the logo and title, implement responsive sizing classes (h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24), and ensure the logo is centered using mx-auto or flex justify-center. Reference the logo using the absolute path /assets/generated/logo.dim_512x512.png and preserve the alt text 'CareerSphere Logo'."
+        }
+      ]
+    },
+    {
+      "id": "REQ-93",
+      "summary": "Verify logo file path and references in Navigation and Home components",
+      "acceptanceCriteria": [
+        "Logo file exists at the correct path in frontend/public/assets/",
+        "Both Navigation.tsx and Home.tsx reference the logo using correct absolute path",
+        "Logo image loads without 404 errors in browser developer console",
+        "Logo displays in production deployment at the .ic0.app URL"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Ensure the logo src attribute uses the correct absolute path. The generated logo is located at frontend/public/assets/generated/logo.dim_512x512.png, so the src should be /assets/generated/logo.dim_512x512.png. Verify this path is correctly set in the img element."
         },
         {
-          "path": "frontend/src/components/ModuleCard.tsx",
+          "path": "frontend/src/pages/Home.tsx",
           "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/Contact.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/Login.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/Profile.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/CareerPath.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/Chatbot.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/DegreeFinder.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/FutureMap.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/IndiaVsAbroad.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/Modules.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/StreamSelector.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/StreamResult.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/pages/AdminDashboard.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text (excluding the copyright text which already says 'CareerSphere') and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/components/DeleteUserConfirmDialog.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/components/UserDataCard.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
-        },
-        {
-          "path": "frontend/src/components/UserDetailsModal.tsx",
-          "operation": "modify",
-          "description": "Search for any instances of 'career guide' text and replace with 'CareerSphere' (case-sensitive with capital C and S)"
+          "description": "Ensure the logo src attribute uses the correct absolute path. The generated logo is located at frontend/public/assets/generated/logo.dim_512x512.png, so the src should be /assets/generated/logo.dim_512x512.png. Verify this path is correctly set in the img element."
         }
       ]
     }

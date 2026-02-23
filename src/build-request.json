@@ -1,106 +1,82 @@
 {
   "kind": "build_request",
-  "title": "Update application name from 'career guide' to 'CareerSphere'",
+  "title": "Fix logo placement and positioning in Navigation and Home components",
   "projectName": "CareerSphere",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-76",
-      "text": "Update frontend/index.html document title tag to change from any 'career guide' reference to 'CareerSphere - Your Career Path Navigator'",
+      "id": "REQ-91",
+      "text": "Update frontend/src/components/Navigation.tsx to reposition the logo image with proper spacing and alignment, ensuring it displays to the left of the 'CareerSphere' text with adequate margin (e.g., mr-2 or mr-3) and maintains vertical centering with the text",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-latest"
         ],
         "quotes": [
-          "Change app name career guide to careerSphere"
+          "No logo is not placed correctly"
         ]
       },
       "acceptanceCriteria": [
-        "The <title> tag in frontend/index.html displays 'CareerSphere - Your Career Path Navigator'",
-        "No references to 'career guide' remain in the document title"
+        "Logo image appears immediately to the left of 'CareerSphere' text in the navigation header",
+        "Logo and text are vertically aligned and centered together",
+        "Appropriate horizontal spacing (margin-right) exists between logo and text",
+        "Logo maintains responsive sizing: h-8 w-8 on mobile, h-10 w-10 on tablet/desktop",
+        "Logo displays correctly on mobile, tablet, and laptop screen sizes"
       ]
     },
     {
-      "id": "REQ-77",
-      "text": "Search and update frontend/src/pages/Home.tsx hero section to replace any 'career guide' text with 'CareerSphere' in the title and tagline",
+      "id": "REQ-92",
+      "text": "Update frontend/src/pages/Home.tsx hero section to reposition the logo image with proper layout structure, ensuring it displays centered above the 'CareerSphere' title with adequate spacing (e.g., mb-4 or mb-6) and maintains visual hierarchy in the hero section",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-latest"
         ],
         "quotes": [
-          "Change app name career guide to careerSphere"
+          "No logo is not placed correctly"
         ]
       },
       "acceptanceCriteria": [
-        "Hero section title displays 'CareerSphere' instead of 'career guide'",
-        "Tagline maintains consistency with 'CareerSphere' branding"
+        "Logo image appears centered above the 'CareerSphere' title in the hero section",
+        "Adequate vertical spacing exists between logo and title text",
+        "Logo maintains responsive sizing: h-16 w-16 on mobile, h-20 w-20 on tablet, h-24 w-24 on desktop",
+        "Visual hierarchy is clear with logo, title, and tagline properly spaced",
+        "Logo displays correctly and is centered on all screen sizes"
       ]
     },
     {
-      "id": "REQ-78",
-      "text": "Search and update frontend/src/pages/About.tsx to replace any 'career guide' references with 'CareerSphere' in mission and vision statements",
+      "id": "REQ-93",
+      "text": "Verify the logo image file exists at frontend/public/assets/logo.png (or frontend/public/assets/generated/logo.png if generated) and is correctly referenced in both Navigation.tsx and Home.tsx with proper src attributes using absolute paths starting with /assets/",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-latest"
         ],
         "quotes": [
-          "Change app name career guide to careerSphere"
+          "No logo is not placed correctly"
         ]
       },
       "acceptanceCriteria": [
-        "All instances of 'career guide' in About page content are replaced with 'CareerSphere'",
-        "Mission and vision statements reference 'CareerSphere' consistently"
-      ]
-    },
-    {
-      "id": "REQ-79",
-      "text": "Search all remaining frontend components (Navigation.tsx, ModuleCard.tsx, Contact.tsx, Login.tsx, Profile.tsx, and all other page components) for any 'career guide' text and replace with 'CareerSphere'",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Change app name career guide to careerSphere"
-        ]
-      },
-      "acceptanceCriteria": [
-        "No instances of 'career guide' remain in any frontend component files",
-        "All references use 'CareerSphere' consistently across the application"
-      ]
-    },
-    {
-      "id": "REQ-80",
-      "text": "Search backend/main.mo for any string literals, comments, or documentation containing 'career guide' and replace with 'CareerSphere'",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Change app name career guide to careerSphere"
-        ]
-      },
-      "acceptanceCriteria": [
-        "No instances of 'career guide' remain in backend code, comments, or documentation",
-        "Backend references use 'CareerSphere' consistently"
+        "Logo file exists at the correct path in frontend/public/assets/",
+        "Both Navigation.tsx and Home.tsx reference the logo using correct absolute path",
+        "Logo image loads without 404 errors in browser developer console",
+        "Logo displays in production deployment at the .ic0.app URL"
       ]
     }
   ],
   "constraints": [
-    "Do not modify frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui files",
-    "Preserve the existing footer copyright text '© 2026 CareerSphere. All Rights Reserved.' without changes",
-    "Do not change the single-actor backend architecture in backend/main.mo",
-    "Ensure all text replacements are case-sensitive and use 'CareerSphere' with capital C and capital S"
+    "Do not modify files in frontend/src/hooks/useInternetIdentity.ts, useInternetIdentity.tsx, or useActor.ts",
+    "Do not modify files in frontend/src/components/ui directory",
+    "Do not modify frontend/src/main.tsx",
+    "Maintain existing logo alt text 'CareerSphere Logo' for accessibility",
+    "Preserve existing responsive breakpoints and Tailwind CSS utility classes"
   ],
   "nonGoals": [
-    "Changing the footer copyright text (already says 'CareerSphere')",
-    "Modifying the visual design, colors, or layout",
-    "Updating any functional behavior or features",
-    "Changing URLs or routing paths"
+    "Generating a new logo image",
+    "Changing logo dimensions or aspect ratio",
+    "Modifying backend code",
+    "Changing navigation menu structure or links",
+    "Altering hero section content beyond logo positioning"
   ],
   "imageRequirements": {
     "required": [],

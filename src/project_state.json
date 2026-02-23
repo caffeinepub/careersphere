@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 23,
+  "projectStateVersion": 29,
   "summary": "CareerSphere - A modern responsive career guidance web platform for school and college students with 8 interactive modules including career path suggestion, stream selector, chatbot, and degree finder",
   "architectural_notes": [
     "Modern responsive web application with mobile-first design",
@@ -10,7 +10,8 @@
   ],
   "known_issues": [
     "Quiz results not displaying in admin panel - data persistence issue between quiz submission and admin dashboard",
-    "Deployment error occurred during canister compilation and network deployment"
+    "Deployment error occurred during canister compilation and network deployment",
+    "Logo still not displaying correctly in Navigation component despite previous fix attempts - placement/path may need adjustment"
   ],
   "isFixRequest": true,
   "existing_features": [
@@ -405,6 +406,94 @@
         "REQ-79"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-navigation-component-frontend-src-components-navigation-tsx-to-display-the-logo-image-before-the-careersphere-text-in-the-header-with-responsive-sizing-h-8-w-8-on-mobile-h-10-w-10-on-tablet-desktop",
+      "title": "Update Navigation component (frontend/src/components/Navigation.tsx) to display the logo image before the CareerSphere text in the header, with responsive sizing (h-8 w-8 on mobile, h-10 w-10 on tablet/desktop)",
+      "reqIds": [
+        "REQ-82"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-home-page-hero-section-frontend-src-pages-home-tsx-to-display-the-logo-image-above-or-beside-the-careersphere-title-with-larger-sizing-h-16-w-16-on-mobile-h-20-w-20-on-tablet-h-24-w-24-on-desktop",
+      "title": "Update Home page hero section (frontend/src/pages/Home.tsx) to display the logo image above or beside the 'CareerSphere' title with larger sizing (h-16 w-16 on mobile, h-20 w-20 on tablet, h-24 w-24 on desktop)",
+      "reqIds": [
+        "REQ-83"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-components-navigation-tsx-to-use-the-correct-image-path-assets-logo-png-or-assets-generated-logo-png-if-generated-with-proper-img-src-attribute",
+      "title": "Update frontend/src/components/Navigation.tsx to use the correct image path /assets/logo.png (or /assets/generated/logo.png if generated) with proper img src attribute",
+      "reqIds": [
+        "REQ-85"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-home-tsx-hero-section-to-use-the-correct-image-path-assets-logo-png-or-assets-generated-logo-png-if-generated-with-proper-img-src-attribute",
+      "title": "Update frontend/src/pages/Home.tsx hero section to use the correct image path /assets/logo.png (or /assets/generated/logo.png if generated) with proper img src attribute",
+      "reqIds": [
+        "REQ-86"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-logo-image-maintains-square-aspect-ratio-with-proper-responsive-sizing-h-8-w-8-32x32px-on-mobile-h-10-w-10-40x40px-on-tablet-desktop-in-navigation-component",
+      "title": "Ensure the logo image maintains square aspect ratio with proper responsive sizing: h-8 w-8 (32x32px) on mobile, h-10 w-10 (40x40px) on tablet/desktop in Navigation component",
+      "reqIds": [
+        "REQ-87"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-logo-image-in-home-tsx-hero-section-maintains-square-aspect-ratio-with-proper-responsive-sizing-h-16-w-16-64x64px-on-mobile-h-20-w-20-80x80px-on-tablet-h-24-w-24-96x96px-on-desktop",
+      "title": "Ensure the logo image in Home.tsx hero section maintains square aspect ratio with proper responsive sizing: h-16 w-16 (64x64px) on mobile, h-20 w-20 (80x80px) on tablet, h-24 w-24 (96x96px) on desktop",
+      "reqIds": [
+        "REQ-88"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-alt-text-careersphere-logo-to-all-logo-img-elements-in-navigation-tsx-and-home-tsx-for-accessibility",
+      "title": "Add alt text 'CareerSphere Logo' to all logo img elements in Navigation.tsx and Home.tsx for accessibility",
+      "reqIds": [
+        "REQ-89"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-logo-loads-correctly-in-production-deployment-at-the-ic0-app-url-after-redeploying-the-frontend",
+      "title": "Verify logo loads correctly in production deployment at the .ic0.app URL after redeploying the frontend",
+      "reqIds": [
+        "REQ-90"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-components-navigation-tsx-to-reposition-the-logo-image-with-proper-spacing-and-alignment-ensuring-it-displays-to-the-left-of-the-careersphere-text-with-adequate-margin-e-g-mr-2-or-mr-3-and-maintains-vertical-centering-with-the-text",
+      "title": "Update frontend/src/components/Navigation.tsx to reposition the logo image with proper spacing and alignment, ensuring it displays to the left of the 'CareerSphere' text with adequate margin (e.g., mr-2 or mr-3) and maintains vertical centering with the text",
+      "reqIds": [
+        "REQ-91"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-home-tsx-hero-section-to-reposition-the-logo-image-with-proper-layout-structure-ensuring-it-displays-centered-above-the-careersphere-title-with-adequate-spacing-e-g-mb-4-or-mb-6-and-maintains-visual-hierarchy-in-the-hero-section",
+      "title": "Update frontend/src/pages/Home.tsx hero section to reposition the logo image with proper layout structure, ensuring it displays centered above the 'CareerSphere' title with adequate spacing (e.g., mb-4 or mb-6) and maintains visual hierarchy in the hero section",
+      "reqIds": [
+        "REQ-92"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-the-logo-image-file-exists-at-frontend-public-assets-logo-png-or-frontend-public-assets-generated-logo-png-if-generated-and-is-correctly-referenced-in-both-navigation-tsx-and-home-tsx-with-proper-src-attributes-using-absolute-paths-starting-with-assets",
+      "title": "Verify the logo image file exists at frontend/public/assets/logo.png (or frontend/public/assets/generated/logo.png if generated) and is correctly referenced in both Navigation.tsx and Home.tsx with proper src attributes using absolute paths starting with /assets/",
+      "reqIds": [
+        "REQ-93"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -749,6 +838,40 @@
       "summary": "Search backend/main.mo for any string literals, comments, or documentation containing 'career guide' and replace with 'CareerSphere'",
       "reqIds": [
         "REQ-80"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-59",
+      "summary": "Add logo to the application design system, incorporating it into navigation header and possibly home page hero section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-60",
+      "summary": "Save the uploaded vibrant swirling sphere logo image to frontend/public/assets/ as logo.png",
+      "reqIds": [
+        "REQ-81"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-61",
+      "summary": "Fix broken logo display by ensuring logo.png is properly placed in frontend/public/assets and referenced correctly in Navigation component with responsive sizing",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-62",
+      "summary": "If logo.png is missing, generate a modern education/career themed icon logo (symbol only, no text) and integrate it into the navbar with proper file path",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-63",
+      "summary": "Verify that frontend/public/assets/logo.png exists and is accessible, or create the directory structure if missing",
+      "reqIds": [
+        "REQ-84"
       ],
       "status": "pending"
     }

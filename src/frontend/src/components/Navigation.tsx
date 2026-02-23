@@ -23,10 +23,12 @@ export default function Navigation() {
     <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border shadow-sm">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-18">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl gradient-primary flex items-center justify-center">
-              <span className="text-xl md:text-2xl font-bold text-white">C</span>
-            </div>
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src="/assets/generated/logo.dim_512x512.png" 
+              alt="CareerSphere Logo" 
+              className="h-8 w-8 md:h-10 md:w-10 object-contain"
+            />
             <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               CareerSphere
             </span>
