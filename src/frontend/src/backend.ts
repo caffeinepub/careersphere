@@ -98,6 +98,7 @@ export interface UserProfileView {
 export interface QuizResult {
     completionPercentage: bigint;
     selectedStreams: Array<string>;
+    timestamp: bigint;
 }
 export type Result = {
     __kind__: "ok";

@@ -8,15 +8,59 @@ export function useSubmitQuizResults() {
 
   return useMutation({
     mutationFn: async ({ selectedStreams, completionPercentage }: { selectedStreams: string[], completionPercentage: number }) => {
-      if (!actor) throw new Error('Actor not initialized');
-      const result = await actor.submitQuizResults(selectedStreams, BigInt(completionPercentage));
-      if (result.__kind__ === 'err') {
-        throw new Error(result.err);
+      console.log('[useQueries:submitQuizResult] Mutation called');
+      console.log('[useQueries:submitQuizResult] Input parameters:', {
+        selectedStreams,
+        selectedStreamsType: typeof selectedStreams,
+        selectedStreamsIsArray: Array.isArray(selectedStreams),
+        selectedStreamsLength: selectedStreams.length,
+        completionPercentage,
+        completionPercentageType: typeof completionPercentage,
+      });
+
+      if (!actor) {
+        console.error('[useQueries:submitQuizResult] Actor not initialized');
+        throw new Error('Actor not initialized');
       }
-      return result.ok;
+
+      console.log('[useQueries:submitQuizResult] Actor is available, preparing data for backend');
+      
+      // Convert completionPercentage to bigint for backend
+      const completionPercentageBigInt = BigInt(completionPercentage);
+      console.log('[useQueries:submitQuizResult] Data transformation:', {
+        selectedStreamsForBackend: selectedStreams,
+        completionPercentageForBackend: completionPercentageBigInt.toString(),
+        completionPercentageForBackendType: typeof completionPercentageBigInt,
+      });
+
+      console.log('[useQueries:submitQuizResult] Calling actor.submitQuizResults()...');
+      try {
+        const result = await actor.submitQuizResults(selectedStreams, completionPercentageBigInt);
+        console.log('[useQueries:submitQuizResult] Raw backend response:', result);
+        console.log('[useQueries:submitQuizResult] Response kind:', result.__kind__);
+        
+        if (result.__kind__ === 'err') {
+          console.error('[useQueries:submitQuizResult] Backend returned error:', result.err);
+          throw new Error(result.err);
+        }
+        
+        console.log('[useQueries:submitQuizResult] Success! Returning result.ok:', result.ok);
+        return result.ok;
+      } catch (error) {
+        console.error('[useQueries:submitQuizResult] Exception during actor call');
+        console.error('[useQueries:submitQuizResult] Error type:', error instanceof Error ? 'Error' : typeof error);
+        console.error('[useQueries:submitQuizResult] Error message:', error instanceof Error ? error.message : String(error));
+        console.error('[useQueries:submitQuizResult] Full error object:', error);
+        throw error;
+      }
     },
     onSuccess: () => {
+      console.log('[useQueries:submitQuizResult] Mutation succeeded, invalidating userProfile queries');
       queryClient.invalidateQueries({ queryKey: ['userProfile'] });
+    },
+    onError: (error) => {
+      console.error('[useQueries:submitQuizResult] Mutation failed');
+      console.error('[useQueries:submitQuizResult] onError callback - error:', error);
     },
   });
 }

@@ -96,20 +96,40 @@ export default function StreamSelector() {
 
     const completionPercentage = Math.round((Object.keys(answers).length / questions.length) * 100);
 
+    console.log('[StreamSelector] Quiz completion - preparing to submit');
+    console.log('[StreamSelector] Quiz data:', {
+      selectedStreams: [suggestedStream],
+      completionPercentage,
+      answersCount: Object.keys(answers).length,
+      totalQuestions: questions.length,
+    });
+
     // Save results if user is authenticated
     if (identity) {
+      console.log('[StreamSelector] User is authenticated');
+      console.log('[StreamSelector] Principal ID:', identity.getPrincipal().toString());
+      
       try {
-        await submitQuizResults.mutateAsync({
+        console.log('[StreamSelector] Calling submitQuizResults mutation...');
+        const response = await submitQuizResults.mutateAsync({
           selectedStreams: [suggestedStream],
           completionPercentage,
         });
+        console.log('[StreamSelector] Backend response:', response);
+        console.log('[StreamSelector] Quiz results saved successfully');
         toast.success('Quiz results saved successfully!');
       } catch (error) {
-        console.error('Failed to save quiz results:', error);
+        console.error('[StreamSelector] Failed to save quiz results');
+        console.error('[StreamSelector] Error details:', error);
+        console.error('[StreamSelector] Error message:', error instanceof Error ? error.message : 'Unknown error');
+        console.error('[StreamSelector] Full error object:', JSON.stringify(error, null, 2));
         toast.error('Failed to save results, but you can still view them');
       }
+    } else {
+      console.log('[StreamSelector] User is NOT authenticated - skipping backend submission');
     }
 
+    console.log('[StreamSelector] Navigating to results page');
     navigate({ to: '/stream-result', search: { stream: suggestedStream } });
   };
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 29,
+  "projectStateVersion": 33,
   "summary": "CareerSphere - A modern responsive career guidance web platform for school and college students with 8 interactive modules including career path suggestion, stream selector, chatbot, and degree finder",
   "architectural_notes": [
     "Modern responsive web application with mobile-first design",
@@ -9,9 +9,10 @@
     "Navigation structure: Home, Modules, About, Contact, Login"
   ],
   "known_issues": [
-    "Quiz results not displaying in admin panel - data persistence issue between quiz submission and admin dashboard",
     "Deployment error occurred during canister compilation and network deployment",
-    "Logo still not displaying correctly in Navigation component despite previous fix attempts - placement/path may need adjustment"
+    "Logo still not displaying correctly in Navigation component despite previous fix attempts - placement/path may need adjustment",
+    "Quiz submission data not persisting to backend - admin dashboard shows 0 users even after quiz completion",
+    "Subject-to-Career AR Explorer module is not accessible from the modules page"
   ],
   "isFixRequest": true,
   "existing_features": [
@@ -494,6 +495,62 @@
         "REQ-93"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-comprehensive-console-logging-to-frontend-src-pages-streamselector-tsx-handlesubmit-function-to-log-1-the-exact-quiz-data-being-submitted-2-authentication-status-with-principal-id-3-the-response-received-from-the-backend-submitquizresult-mutation-4-any-error-messages-from-the-mutation-and-5-confirmation-when-navigation-to-results-page-occurs",
+      "title": "Add comprehensive console logging to frontend/src/pages/StreamSelector.tsx handleSubmit function to log: (1) the exact quiz data being submitted, (2) authentication status with principal ID, (3) the response received from the backend submitQuizResult mutation, (4) any error messages from the mutation, and (5) confirmation when navigation to results page occurs",
+      "reqIds": [
+        "REQ-94"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-that-frontend-src-hooks-usequeries-ts-submitquizresult-mutation-correctly-serializes-the-quiz-result-data-before-sending-to-the-backend-actor-ensuring-the-data-structure-matches-the-expected-backend-type-signature-stream-text-answers-text-completionpercentage-nat",
+      "title": "Verify that frontend/src/hooks/useQueries.ts submitQuizResult mutation correctly serializes the quiz result data before sending to the backend actor, ensuring the data structure matches the expected backend type signature (stream: Text, answers: [Text], completionPercentage: Nat)",
+      "reqIds": [
+        "REQ-95"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-enhanced-console-logging-to-frontend-src-pages-admindashboard-tsx-to-log-1-when-the-usealluserprofiles-query-starts-fetching-2-the-raw-data-received-from-the-backend-before-transformation-3-the-number-of-profiles-after-data-transformation-4-any-data-structure-mismatches-or-parsing-errors-and-5-the-final-profiles-array-being-passed-to-the-ui-components",
+      "title": "Add enhanced console logging to frontend/src/pages/AdminDashboard.tsx to log: (1) when the useAllUserProfiles query starts fetching, (2) the raw data received from the backend before transformation, (3) the number of profiles after data transformation, (4) any data structure mismatches or parsing errors, and (5) the final profiles array being passed to the UI components",
+      "reqIds": [
+        "REQ-98"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-enhanced-console-logging-to-frontend-src-hooks-useadminqueries-ts-usealluserprofiles-query-to-log-1-when-the-actor-query-is-initiated-2-the-raw-response-from-backend-getalluserprofiles-3-any-data-transformation-or-mapping-operations-4-the-final-transformed-data-structure-and-5-any-errors-during-the-fetch-or-transformation-process",
+      "title": "Add enhanced console logging to frontend/src/hooks/useAdminQueries.ts useAllUserProfiles query to log: (1) when the actor query is initiated, (2) the raw response from backend.getAllUserProfiles(), (3) any data transformation or mapping operations, (4) the final transformed data structure, and (5) any errors during the fetch or transformation process",
+      "reqIds": [
+        "REQ-99"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-page-component-at-frontend-src-pages-subjecttocareer-tsx-that-displays-the-subject-to-career-ar-explorer-module-content-with-a-header-description-explaining-how-subjects-connect-to-career-paths-and-placeholder-content-indicating-ar-features-are-coming-soon",
+      "title": "Create a new page component at frontend/src/pages/SubjectToCareer.tsx that displays the Subject-to-Career AR Explorer module content with a header, description explaining how subjects connect to career paths, and placeholder content indicating AR features are coming soon",
+      "reqIds": [
+        "REQ-102"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-route-for-subject-to-career-in-frontend-src-app-tsx-that-renders-the-subjecttocareer-page-component-ensuring-it-follows-the-same-routing-pattern-as-existing-module-routes-like-career-path-stream-selector-and-chatbot",
+      "title": "Add a new route for '/subject-to-career' in frontend/src/App.tsx that renders the SubjectToCareer page component, ensuring it follows the same routing pattern as existing module routes like '/career-path', '/stream-selector', and '/chatbot'",
+      "reqIds": [
+        "REQ-103"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-modules-tsx-to-ensure-the-subject-to-career-ar-explorer-module-card-has-the-correct-path-subject-to-career-in-its-modulecard-component-matching-the-pattern-used-by-other-module-cards",
+      "title": "Update frontend/src/pages/Modules.tsx to ensure the 'Subject-to-Career AR Explorer' module card has the correct path='/subject-to-career' in its ModuleCard component, matching the pattern used by other module cards",
+      "reqIds": [
+        "REQ-104"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -873,6 +930,44 @@
       "reqIds": [
         "REQ-84"
       ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-66",
+      "summary": "Add detailed console logging to backend/main.mo submitQuizResult function to log: (1) when the function is called with the caller's principal ID, (2) the quiz result data received (stream, answers array length, completion percentage), (3) confirmation when data is stored in the userProfiles HashMap, (4) the total number of user profiles in storage after insertion, and (5) any errors during storage operations",
+      "reqIds": [
+        "REQ-96"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-67",
+      "summary": "Add comprehensive console logging to backend/main.mo getAllUserProfiles function to log: (1) when the function is called, (2) the total number of profiles in the userProfiles HashMap, (3) the structure of the data being returned (number of profiles with quiz results, bookmarked careers, and degrees), (4) sample principal IDs being returned, and (5) any errors during data retrieval",
+      "reqIds": [
+        "REQ-97"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-70",
+      "summary": "Verify that backend/main.mo submitQuizResult function correctly creates a new UserProfile entry in the userProfiles HashMap when a user submits their first quiz, initializing all fields (principal, quizResults array with the new result, empty bookmarkedCareers array, empty bookmarkedDegrees array) and ensuring the HashMap key is the caller's principal ID",
+      "reqIds": [
+        "REQ-100"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-71",
+      "summary": "Verify that backend/main.mo getAllUserProfiles function correctly iterates through all entries in the userProfiles HashMap and transforms them into the return type expected by the frontend (array of UserProfile objects with principal, quizResults, bookmarkedCareers, and bookmarkedDegrees fields)",
+      "reqIds": [
+        "REQ-101"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-72",
+      "summary": "Fix Subject-to-Career AR Explorer module accessibility - ensure the module card links to a functional page or displays appropriate content",
+      "reqIds": [],
       "status": "pending"
     }
   ],

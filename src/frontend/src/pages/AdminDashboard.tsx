@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useGetAllUserProfiles } from '../hooks/useAdminQueries';
 import { Shield, Loader2, Eye, Trash2, Users } from 'lucide-react';
 import UserDetailsModal from '../components/UserDetailsModal';
@@ -18,11 +18,44 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 export default function AdminDashboard() {
-  const { data: userProfiles, isLoading: profilesLoading } = useGetAllUserProfiles();
+  console.log('[AdminDashboard] Component rendering');
+  
+  const { data: userProfiles, isLoading: profilesLoading, isFetched } = useGetAllUserProfiles();
   const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
   const [userToDelete, setUserToDelete] = useState<Principal | null>(null);
 
+  useEffect(() => {
+    console.log('[AdminDashboard] Data state changed');
+    console.log('[AdminDashboard] Loading:', profilesLoading);
+    console.log('[AdminDashboard] Fetched:', isFetched);
+    console.log('[AdminDashboard] Data available:', !!userProfiles);
+    console.log('[AdminDashboard] Data type:', typeof userProfiles);
+    console.log('[AdminDashboard] Data is array:', Array.isArray(userProfiles));
+    
+    if (userProfiles) {
+      console.log('[AdminDashboard] Profiles count:', userProfiles.length);
+      console.log('[AdminDashboard] Full profiles data:', JSON.stringify(userProfiles, null, 2));
+      
+      if (userProfiles.length > 0) {
+        console.log('[AdminDashboard] First profile structure:', {
+          principal: userProfiles[0].principal.toString(),
+          profileKeys: Object.keys(userProfiles[0].profile),
+          surveyCompleted: userProfiles[0].profile.surveyCompleted,
+          quizResultsCount: userProfiles[0].profile.quizResults?.length || 0,
+          quizResults: userProfiles[0].profile.quizResults,
+          bookmarkedCareersCount: userProfiles[0].profile.bookmarkedCareers?.length || 0,
+          bookmarkedDegreesCount: userProfiles[0].profile.bookmarkedDegrees?.length || 0,
+        });
+      } else {
+        console.log('[AdminDashboard] Profiles array is empty');
+      }
+    } else {
+      console.log('[AdminDashboard] No profiles data (null/undefined)');
+    }
+  }, [userProfiles, profilesLoading, isFetched]);
+
   if (profilesLoading) {
+    console.log('[AdminDashboard] Rendering loading state');
     return (
       <div className="py-16 min-h-screen bg-gradient-to-b from-background via-accent/10 to-background flex items-center justify-center">
         <div className="text-center px-4">
@@ -34,10 +67,12 @@ export default function AdminDashboard() {
   }
 
   const handleViewUser = (user: UserData) => {
+    console.log('[AdminDashboard] View user clicked:', user.principal.toString());
     setSelectedUser(user);
   };
 
   const handleDeleteClick = (principal: Principal) => {
+    console.log('[AdminDashboard] Delete user clicked:', principal.toString());
     setUserToDelete(principal);
   };
 
@@ -45,6 +80,8 @@ export default function AdminDashboard() {
     if (principal.length <= 20) return principal;
     return `${principal.slice(0, 10)}...${principal.slice(-10)}`;
   };
+
+  console.log('[AdminDashboard] Rendering main content with', userProfiles?.length || 0, 'profiles');
 
   return (
     <div className="py-12 sm:py-16 min-h-screen bg-gradient-to-b from-background via-accent/10 to-background">
@@ -119,57 +156,55 @@ export default function AdminDashboard() {
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {userProfiles.map((user) => {
-                          const latestQuiz = user.profile.quizResults[user.profile.quizResults.length - 1];
-                          return (
-                            <TableRow key={user.principal.toString()}>
-                              <TableCell className="font-mono text-xs lg:text-sm">
-                                <span className="hidden lg:inline">{user.principal.toString()}</span>
-                                <span className="lg:hidden">{truncatePrincipal(user.principal.toString())}</span>
-                              </TableCell>
-                              <TableCell>
-                                {latestQuiz ? (
-                                  <div className="text-sm">
-                                    <span className="font-medium">{latestQuiz.selectedStreams[0]}</span>
-                                    <span className="text-muted-foreground ml-2">
-                                      ({Number(latestQuiz.completionPercentage)}%)
-                                    </span>
+                        {userProfiles.map((user) => (
+                          <TableRow key={user.principal.toString()}>
+                            <TableCell className="font-mono text-xs">
+                              {truncatePrincipal(user.principal.toString())}
+                            </TableCell>
+                            <TableCell>
+                              {user.profile.quizResults.length > 0 ? (
+                                <div className="text-sm">
+                                  <div className="font-medium">
+                                    Latest: {user.profile.quizResults[user.profile.quizResults.length - 1].completionPercentage.toString()}%
                                   </div>
-                                ) : (
-                                  <span className="text-muted-foreground text-sm">No quiz taken</span>
-                                )}
-                              </TableCell>
-                              <TableCell className="text-center">
-                                {user.profile.bookmarkedCareers.length}
-                              </TableCell>
-                              <TableCell className="text-center">
-                                {user.profile.bookmarkedDegrees.length}
-                              </TableCell>
-                              <TableCell className="text-right">
-                                <div className="flex items-center justify-end gap-2">
-                                  <Button
-                                    variant="outline"
-                                    size="sm"
-                                    onClick={() => handleViewUser(user)}
-                                    className="min-h-[44px] min-w-[44px]"
-                                  >
-                                    <Eye className="w-4 h-4" />
-                                    <span className="ml-2 hidden lg:inline">View</span>
-                                  </Button>
-                                  <Button
-                                    variant="destructive"
-                                    size="sm"
-                                    onClick={() => handleDeleteClick(user.principal)}
-                                    className="min-h-[44px] min-w-[44px]"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                    <span className="ml-2 hidden lg:inline">Delete</span>
-                                  </Button>
+                                  <div className="text-muted-foreground text-xs">
+                                    Total: {user.profile.quizResults.length} result{user.profile.quizResults.length !== 1 ? 's' : ''}
+                                  </div>
                                 </div>
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })}
+                              ) : (
+                                <span className="text-muted-foreground text-sm">No results</span>
+                              )}
+                            </TableCell>
+                            <TableCell className="text-center">
+                              {user.profile.bookmarkedCareers.length}
+                            </TableCell>
+                            <TableCell className="text-center">
+                              {user.profile.bookmarkedDegrees.length}
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <div className="flex justify-end gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => handleViewUser(user)}
+                                  className="min-h-[44px]"
+                                >
+                                  <Eye className="w-4 h-4 mr-1" />
+                                  View
+                                </Button>
+                                <Button
+                                  variant="destructive"
+                                  size="sm"
+                                  onClick={() => handleDeleteClick(user.principal)}
+                                  className="min-h-[44px]"
+                                >
+                                  <Trash2 className="w-4 h-4 mr-1" />
+                                  Delete
+                                </Button>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        ))}
                       </TableBody>
                     </Table>
                   </ScrollArea>

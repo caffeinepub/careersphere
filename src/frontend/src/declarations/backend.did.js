@@ -28,6 +28,7 @@ export const CareerPath = IDL.Record({
 export const QuizResult = IDL.Record({
   'completionPercentage' : IDL.Nat,
   'selectedStreams' : IDL.Vec(IDL.Text),
+  'timestamp' : IDL.Int,
 });
 export const UserProfileView = IDL.Record({
   'bookmarkedDegrees' : IDL.Vec(IDL.Nat),
@@ -89,6 +90,7 @@ export const idlFactory = ({ IDL }) => {
   const QuizResult = IDL.Record({
     'completionPercentage' : IDL.Nat,
     'selectedStreams' : IDL.Vec(IDL.Text),
+    'timestamp' : IDL.Int,
   });
   const UserProfileView = IDL.Record({
     'bookmarkedDegrees' : IDL.Vec(IDL.Nat),

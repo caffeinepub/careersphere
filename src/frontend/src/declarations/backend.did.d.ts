@@ -24,6 +24,7 @@ export interface CareerPath {
 export interface QuizResult {
   'completionPercentage' : bigint,
   'selectedStreams' : Array<string>,
+  'timestamp' : bigint,
 }
 export type Result = { 'ok' : null } |
   { 'err' : string };

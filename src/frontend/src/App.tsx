@@ -16,6 +16,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
+import SubjectToCareer from './pages/SubjectToCareer';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -85,6 +86,12 @@ const degreeFinderRoute = createRoute({
   component: DegreeFinder,
 });
 
+const subjectToCareerRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/subject-to-career',
+  component: SubjectToCareer,
+});
+
 const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/about',
@@ -125,6 +132,7 @@ const routeTree = rootRoute.addChildren([
   chatbotRoute,
   futureMapRoute,
   degreeFinderRoute,
+  subjectToCareerRoute,
   aboutRoute,
   contactRoute,
   loginRoute,

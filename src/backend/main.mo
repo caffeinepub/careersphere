@@ -6,9 +6,14 @@ import Nat "mo:core/Nat";
 import Principal "mo:core/Principal";
 import Iter "mo:core/Iter";
 import Runtime "mo:core/Runtime";
+import Time "mo:core/Time";
+import Debug "mo:core/Debug";
+
 
 import AccessControl "authorization/access-control";
 import MixinAuthorization "authorization/MixinAuthorization";
+
+// Specify the data migration function in with-clause
 
 actor {
   // Initialize the access control system
@@ -23,6 +28,7 @@ actor {
   public type QuizResult = {
     selectedStreams : [Text];
     completionPercentage : Nat;
+    timestamp : Int;
   };
 
   public type CareerPath = {
@@ -188,17 +194,25 @@ actor {
   };
 
   public shared ({ caller }) func submitQuizResults(selectedStreams : [Text], completionPercentage : Nat) : async Result<(), Text> {
+    Debug.print("submitQuizResults called by: " # debug_show (caller));
+    Debug.print("Received data - Streams: " # debug_show (selectedStreams.size()) # ", Completion: " # debug_show (completionPercentage));
+
     if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
+      Debug.print("Authorization failed for " # debug_show (caller));
       Runtime.trap("Unauthorized: Only users can submit quiz results");
     };
 
     let quizResult : QuizResult = {
       selectedStreams;
       completionPercentage;
+      timestamp = Time.now();
     };
 
     switch (validateQuizResults(quizResult)) {
-      case (?error) { return #err(error) };
+      case (?error) {
+        Debug.print("Validation error: " # error);
+        return #err(error);
+      };
       case (null) {};
     };
 
@@ -218,6 +232,7 @@ actor {
       };
     };
     profiles.add(caller, newProfile);
+    Debug.print("Profile stored for " # debug_show (caller) # ". Total profiles: " # debug_show (profiles.size()));
     #ok(());
   };
 
@@ -307,11 +322,15 @@ actor {
   };
 
   public query ({ caller }) func getAllUserProfiles() : async [UserData] {
+    Debug.print("getAllUserProfiles called");
     if (not (AccessControl.isAdmin(accessControlState, caller))) {
+      Debug.print("Authorization failed for " # debug_show (caller));
       Runtime.trap("Unauthorized: Only admins can view all user profiles");
     };
 
-    profiles.toArray().map(
+    Debug.print("Total profiles to return: " # debug_show (profiles.size()));
+
+    let allUsers = profiles.toArray().map(
       func((principal, profile)) {
         {
           principal;
@@ -324,6 +343,15 @@ actor {
         };
       }
     );
+
+    Debug.print("Returning " # debug_show (allUsers.size()) # " profiles");
+    if (allUsers.size() > 0) {
+      Debug.print("First user principal: " # debug_show (allUsers[0].principal));
+    } else {
+      Debug.print("No profiles found");
+    };
+
+    allUsers;
   };
 
   public shared ({ caller }) func deleteUserProfile(principal : Principal) : async Result<(), Text> {

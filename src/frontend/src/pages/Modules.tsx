@@ -42,7 +42,7 @@ export default function Modules() {
       icon: '/assets/generated/icon-ar-explorer.dim_128x128.png',
       title: 'Subject-to-Career AR Explorer',
       description: 'Explore how your favorite subjects connect to exciting careers through augmented reality.',
-      path: '/modules',
+      path: '/subject-to-career',
     },
     {
       icon: '/assets/generated/icon-degree-finder.dim_128x128.png',
