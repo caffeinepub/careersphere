@@ -1,0 +1,1033 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 37,
+  "summary": "CareerSphere - A modern responsive career guidance web platform for school and college students with 8 interactive modules including career path suggestion, stream selector, chatbot, and degree finder",
+  "architectural_notes": [
+    "Modern responsive web application with mobile-first design",
+    "Design system: soft colors (blue, purple, gradient), clean typography, dashboard-style cards",
+    "8 interactive module pages: Career Path, Stream Selector, India vs Abroad, Chatbot, FutureMap, Degree Finder, plus About/Contact",
+    "Navigation structure: Home, Modules, About, Contact, Login"
+  ],
+  "known_issues": [
+    "Deployment error occurred during canister compilation and network deployment",
+    "Logo still not displaying correctly in Navigation component despite previous fix attempts - placement/path may need adjustment",
+    "Quiz submission data not persisting to backend - admin dashboard shows 0 users even after quiz completion",
+    "Subject-to-Career AR Explorer module is not accessible from the modules page",
+    "Regional Language Career Platform module is not accessible from the modules page"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-landing-page-with-hero-section-displaying-title-careersphere-and-tagline-empowering-students-for-skills-and-knowledge-navigation-menu-with-links-to-home-modules-about-contact-and-login-and-a-prominent-get-started-call-to-action-button",
+      "title": "Create a landing page with hero section displaying title 'CareerSphere' and tagline 'Empowering Students for Skills and Knowledge', navigation menu with links to Home, Modules, About, Contact, and Login, and a prominent 'Get Started' call-to-action button",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-modules-section-displaying-8-interactive-feature-cards-in-a-grid-layout-career-path-suggestion-app-india-vs-abroad-career-decision-guide-stream-selector-tool-for-10th-students-know-your-skill-ai-chatbot-futuremap-visual-career-journey-regional-language-career-platform-subject-to-career-ar-explorer-and-degree-info-finder-after-12th-each-card-must-include-an-icon-short-description-and-explore-button",
+      "title": "Create a modules section displaying 8 interactive feature cards in a grid layout: Career Path Suggestion App, India vs Abroad Career Decision Guide, Stream Selector Tool for 10th Students, Know Your Skill AI Chatbot, FutureMap Visual Career Journey, Regional Language Career Platform, Subject-to-Career AR Explorer, and Degree Info Finder (After 12th). Each card must include an icon, short description, and 'Explore' button",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-career-path-page-with-a-dropdown-selector-for-subjects-interests-that-displays-career-options-required-degrees-and-relevant-entrance-exams-in-a-card-based-layout",
+      "title": "Create a Career Path page with a dropdown selector for subjects/interests that displays career options, required degrees, and relevant entrance exams in a card-based layout",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-stream-selector-quiz-page-with-multiple-choice-questions-that-provides-a-result-section-displaying-the-suggested-stream-science-commerce-or-arts-based-on-user-answers",
+      "title": "Create a Stream Selector Quiz page with multiple choice questions that provides a result section displaying the suggested stream (Science, Commerce, or Arts) based on user answers",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-india-vs-abroad-comparison-page-featuring-a-comparison-table-with-columns-for-cost-roi-lifestyle-and-job-opportunities-enhanced-with-graphs-or-visual-indicators",
+      "title": "Create an India vs Abroad Comparison page featuring a comparison table with columns for Cost, ROI, Lifestyle, and Job Opportunities, enhanced with graphs or visual indicators",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-chatbot-page-with-a-chat-interface-layout-including-message-display-area-message-input-box-and-send-button-designed-with-a-student-friendly-aesthetic",
+      "title": "Create a Chatbot page with a chat interface layout including message display area, message input box, and send button, designed with a student-friendly aesthetic",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-futuremap-page-displaying-a-visual-career-journey-flow-from-school-subjects-degree-career-job-using-a-timeline-or-roadmap-style-ui",
+      "title": "Create a FutureMap page displaying a visual career journey flow from School Subjects → Degree → Career → Job using a timeline or roadmap-style UI",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-degree-info-finder-page-with-a-search-bar-that-displays-degree-information-cards-showing-degree-name-duration-entrance-exams-and-fees",
+      "title": "Create a Degree Info Finder page with a search bar that displays degree information cards showing degree name, duration, entrance exams, and fees",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-about-section-describing-the-careersphere-platform-including-the-problem-statement-that-students-lack-career-guidance-along-with-the-platform-s-mission-and-vision",
+      "title": "Create an About section describing the CareerSphere platform, including the problem statement that students lack career guidance, along with the platform's mission and vision",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-contact-page-with-a-contact-form-containing-fields-for-name-email-and-message-and-include-a-footer-with-social-media-links",
+      "title": "Create a Contact page with a contact form containing fields for name, email, and message, and include a footer with social media links",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-modern-ui-design-system-with-soft-gradient-colors-blue-and-purple-fully-responsive-mobile-friendly-layouts-clean-typography-dashboard-style-components-using-cards-icons-and-interactive-buttons-throughout-the-application",
+      "title": "Implement a modern UI design system with soft gradient colors (blue and purple), fully responsive mobile-friendly layouts, clean typography, dashboard-style components using cards, icons, and interactive buttons throughout the application",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-stream-selector-quiz-page-to-automatically-save-quiz-results-to-the-backend-when-user-completes-the-quiz-and-is-authenticated-via-internet-identity",
+      "title": "Update Stream Selector Quiz page to automatically save quiz results to the backend when user completes the quiz and is authenticated via Internet Identity",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-bookmark-buttons-to-career-path-page-cards-that-save-selected-careers-to-the-user-s-profile-when-authenticated",
+      "title": "Add bookmark buttons to Career Path page cards that save selected careers to the user's profile when authenticated",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-bookmark-buttons-to-degree-finder-page-cards-that-save-selected-degrees-to-the-user-s-profile-when-authenticated",
+      "title": "Add bookmark buttons to Degree Finder page cards that save selected degrees to the user's profile when authenticated",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-profile-dashboard-page-accessible-from-the-navigation-menu-that-displays-the-authenticated-user-s-saved-quiz-results-bookmarked-careers-and-bookmarked-degrees",
+      "title": "Create a new Profile/Dashboard page accessible from the navigation menu that displays the authenticated user's saved quiz results, bookmarked careers, and bookmarked degrees",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-login-page-to-show-authentication-status-and-provide-a-clear-call-to-action-explaining-the-benefits-of-logging-in-save-progress-bookmark-careers-track-quiz-results",
+      "title": "Update Login page to show authentication status and provide a clear call-to-action explaining the benefits of logging in (save progress, bookmark careers, track quiz results)",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-navigation-component-to-improve-mobile-responsiveness-with-proper-hamburger-menu-functionality-touch-friendly-tap-targets-minimum-44px-and-smooth-transitions-between-mobile-and-tablet-breakpoints",
+      "title": "Update Navigation component to improve mobile responsiveness with proper hamburger menu functionality, touch-friendly tap targets (minimum 44px), and smooth transitions between mobile and tablet breakpoints",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-home-page-hero-section-and-feature-cards-to-be-fully-responsive-across-mobile-768px-tablet-768px-1024px-and-laptop-1024px-screen-sizes-with-appropriate-font-scaling-spacing-and-card-layouts",
+      "title": "Enhance Home page hero section and feature cards to be fully responsive across mobile (< 768px), tablet (768px-1024px), and laptop (>1024px) screen sizes with appropriate font scaling, spacing, and card layouts",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-modules-page-grid-layout-to-display-1-column-on-mobile-2-columns-on-tablet-and-3-4-columns-on-laptop-with-consistent-card-sizing-and-spacing-across-all-breakpoints",
+      "title": "Update Modules page grid layout to display 1 column on mobile, 2 columns on tablet, and 3-4 columns on laptop with consistent card sizing and spacing across all breakpoints",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-optimize-careerpath-page-dropdown-selector-career-cards-and-bookmark-buttons-for-mobile-tablet-and-laptop-screens-with-improved-touch-interactions-and-responsive-card-layouts",
+      "title": "Optimize CareerPath page dropdown selector, career cards, and bookmark buttons for mobile, tablet, and laptop screens with improved touch interactions and responsive card layouts",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-streamselector-quiz-page-and-streamresult-page-to-be-fully-responsive-with-proper-question-layout-button-sizing-and-result-display-across-mobile-tablet-and-laptop-screens",
+      "title": "Enhance StreamSelector quiz page and StreamResult page to be fully responsive with proper question layout, button sizing, and result display across mobile, tablet, and laptop screens",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-indiavsabroad-comparison-page-to-display-comparison-categories-in-responsive-layout-stacked-on-mobile-side-by-side-on-tablet-laptop-with-readable-progress-bars-and-text-at-all-screen-sizes",
+      "title": "Update IndiaVsAbroad comparison page to display comparison categories in responsive layout: stacked on mobile, side-by-side on tablet/laptop, with readable progress bars and text at all screen sizes",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-optimize-chatbot-page-message-interface-for-mobile-tablet-and-laptop-screens-with-responsive-message-bubbles-input-area-that-avoids-keyboard-overlap-on-mobile-and-proper-scrolling-behavior",
+      "title": "Optimize Chatbot page message interface for mobile, tablet, and laptop screens with responsive message bubbles, input area that avoids keyboard overlap on mobile, and proper scrolling behavior",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-futuremap-timeline-visualization-to-be-fully-responsive-with-vertical-timeline-on-mobile-adaptive-spacing-on-tablet-and-horizontal-branching-layout-on-laptop-screens",
+      "title": "Enhance FutureMap timeline visualization to be fully responsive with vertical timeline on mobile, adaptive spacing on tablet, and horizontal/branching layout on laptop screens",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-degreefinder-search-and-results-layout-to-be-fully-responsive-with-stacked-cards-on-mobile-2-column-grid-on-tablet-and-3-column-grid-on-laptop-with-touch-friendly-search-input-and-bookmark-buttons",
+      "title": "Update DegreeFinder search and results layout to be fully responsive with stacked cards on mobile, 2-column grid on tablet, and 3-column grid on laptop, with touch-friendly search input and bookmark buttons",
+      "reqIds": [
+        "REQ-33"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-optimize-about-page-mission-vision-cards-and-contact-page-form-for-mobile-tablet-and-laptop-screens-with-responsive-card-layouts-form-field-sizing-and-proper-spacing",
+      "title": "Optimize About page mission/vision cards and Contact page form for mobile, tablet, and laptop screens with responsive card layouts, form field sizing, and proper spacing",
+      "reqIds": [
+        "REQ-34"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-profile-page-layout-to-be-fully-responsive-with-stacked-sections-on-mobile-principal-id-quiz-results-bookmarks-adaptive-grid-on-tablet-and-multi-column-dashboard-layout-on-laptop",
+      "title": "Enhance Profile page layout to be fully responsive with stacked sections on mobile (principal ID, quiz results, bookmarks), adaptive grid on tablet, and multi-column dashboard layout on laptop",
+      "reqIds": [
+        "REQ-35"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-footer-component-to-be-fully-responsive-with-stacked-social-media-links-on-mobile-horizontal-layout-on-tablet-laptop-and-appropriate-icon-sizing-across-all-breakpoints",
+      "title": "Update Footer component to be fully responsive with stacked social media links on mobile, horizontal layout on tablet/laptop, and appropriate icon sizing across all breakpoints",
+      "reqIds": [
+        "REQ-36"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-admin-dashboard-page-route-at-admin-that-displays-all-stored-user-data-from-the-backend-in-a-responsive-table-format",
+      "title": "Create a new Admin Dashboard page route at /admin that displays all stored user data from the backend in a responsive table format",
+      "reqIds": [
+        "REQ-37"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-react-query-hooks-for-admin-operations-including-fetching-all-user-profiles-and-deleting-user-profiles-with-proper-cache-invalidation",
+      "title": "Implement React Query hooks for admin operations including fetching all user profiles and deleting user profiles with proper cache invalidation",
+      "reqIds": [
+        "REQ-40"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-view-button-functionality-to-admin-dashboard-that-displays-detailed-user-information-in-a-modal-or-expandable-section-showing-full-quiz-results-complete-bookmarked-careers-list-and-complete-bookmarked-degrees-list",
+      "title": "Add View button functionality to Admin Dashboard that displays detailed user information in a modal or expandable section showing full quiz results, complete bookmarked careers list, and complete bookmarked degrees list",
+      "reqIds": [
+        "REQ-41"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-delete-button-functionality-to-admin-dashboard-with-confirmation-dialog-that-removes-user-profiles-from-the-backend-and-updates-the-table-display",
+      "title": "Add Delete button functionality to Admin Dashboard with confirmation dialog that removes user profiles from the backend and updates the table display",
+      "reqIds": [
+        "REQ-42"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-navigation-link-to-admin-dashboard-in-the-navigation-component-accessible-when-user-is-authenticated-via-internet-identity",
+      "title": "Add navigation link to Admin Dashboard in the Navigation component accessible when user is authenticated via Internet Identity",
+      "reqIds": [
+        "REQ-43"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-responsive-design-to-admin-dashboard-with-mobile-first-approach-stacked-cards-on-mobile-768px-table-layout-on-tablet-768px-1024px-and-full-table-with-all-columns-on-laptop-1024px",
+      "title": "Apply responsive design to Admin Dashboard with mobile-first approach: stacked cards on mobile (<768px), table layout on tablet (768px-1024px), and full table with all columns on laptop (>1024px)",
+      "reqIds": [
+        "REQ-44"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-internet-identity-authentication-requirement-from-admin-dashboard-page-admin-to-allow-unauthenticated-access-to-view-all-stored-user-data",
+      "title": "Remove Internet Identity authentication requirement from Admin Dashboard page (/admin) to allow unauthenticated access to view all stored user data",
+      "reqIds": [
+        "REQ-45"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-role-based-access-control-checks-from-admindashboard-tsx-that-currently-redirect-non-admin-users-allowing-any-visitor-to-access-the-page",
+      "title": "Remove role-based access control checks from AdminDashboard.tsx that currently redirect non-admin users, allowing any visitor to access the page",
+      "reqIds": [
+        "REQ-46"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-navigation-component-to-display-admin-dashboard-link-to-all-users-removing-the-authentication-dependent-conditional-rendering",
+      "title": "Update Navigation component to display Admin Dashboard link to all users, removing the authentication-dependent conditional rendering",
+      "reqIds": [
+        "REQ-47"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-streamselector-tsx-to-add-console-logging-when-quiz-is-submitted-logging-the-submission-status-response-from-backend-and-any-errors",
+      "title": "Update frontend/src/pages/StreamSelector.tsx to add console logging when quiz is submitted, logging the submission status, response from backend, and any errors",
+      "reqIds": [
+        "REQ-50"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-admindashboard-tsx-to-add-console-logging-for-data-fetching-operations-logging-the-number-of-profiles-received-loading-states-and-any-fetch-errors",
+      "title": "Update frontend/src/pages/AdminDashboard.tsx to add console logging for data fetching operations, logging the number of profiles received, loading states, and any fetch errors",
+      "reqIds": [
+        "REQ-51"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-hooks-usequeries-ts-submitquizresult-mutation-to-ensure-it-properly-calls-the-backend-actor-s-submitquizresult-method-and-handles-the-response",
+      "title": "Update frontend/src/hooks/useQueries.ts submitQuizResult mutation to ensure it properly calls the backend actor's submitQuizResult method and handles the response",
+      "reqIds": [
+        "REQ-54"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-hooks-useadminqueries-ts-usealluserprofiles-query-to-ensure-it-properly-calls-the-backend-actor-s-getalluserprofiles-method-and-transforms-the-data-for-display",
+      "title": "Update frontend/src/hooks/useAdminQueries.ts useAllUserProfiles query to ensure it properly calls the backend actor's getAllUserProfiles method and transforms the data for display",
+      "reqIds": [
+        "REQ-55"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-all-hardcoded-references-to-careersphere-from-frontend-index-html-document-title-tag",
+      "title": "Remove all hardcoded references to 'CareerSphere' from frontend/index.html document title tag",
+      "reqIds": [
+        "REQ-63"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-all-hardcoded-references-to-careersphere-from-frontend-src-pages-home-tsx-hero-section-title-and-tagline",
+      "title": "Remove all hardcoded references to 'CareerSphere' from frontend/src/pages/Home.tsx hero section title and tagline",
+      "reqIds": [
+        "REQ-64"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-all-hardcoded-references-to-careersphere-from-frontend-src-pages-about-tsx-page-content-including-mission-and-vision-statements",
+      "title": "Remove all hardcoded references to 'CareerSphere' from frontend/src/pages/About.tsx page content including mission and vision statements",
+      "reqIds": [
+        "REQ-65"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-search-and-remove-any-remaining-references-to-careersphere-from-all-other-frontend-components-including-navigation-tsx-modulecard-tsx-and-all-page-components",
+      "title": "Search and remove any remaining references to 'CareerSphere' from all other frontend components including Navigation.tsx, ModuleCard.tsx, and all page components",
+      "reqIds": [
+        "REQ-66"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-components-footer-tsx-to-replace-the-entire-copyright-section-with-the-text-2026-careersphere-all-rights-reserved",
+      "title": "Update frontend/src/components/Footer.tsx to replace the entire copyright section with the text '© 2026 CareerSphere. All Rights Reserved.'",
+      "reqIds": [
+        "REQ-67"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-deploy-the-frontend-to-internet-computer-production-network-and-generate-a-permanent-public-ic0-app-url-that-works-on-mobile-and-laptop-devices",
+      "title": "Deploy the frontend to Internet Computer production network and generate a permanent public .ic0.app URL that works on mobile and laptop devices",
+      "reqIds": [
+        "REQ-74"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-the-production-deployment-persists-and-remains-accessible-24-7-without-requiring-platform-login",
+      "title": "Verify the production deployment persists and remains accessible 24/7 without requiring platform login",
+      "reqIds": [
+        "REQ-75"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-search-all-remaining-frontend-components-navigation-tsx-modulecard-tsx-contact-tsx-login-tsx-profile-tsx-and-all-other-page-components-for-any-career-guide-text-and-replace-with-careersphere",
+      "title": "Search all remaining frontend components (Navigation.tsx, ModuleCard.tsx, Contact.tsx, Login.tsx, Profile.tsx, and all other page components) for any 'career guide' text and replace with 'CareerSphere'",
+      "reqIds": [
+        "REQ-79"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-navigation-component-frontend-src-components-navigation-tsx-to-display-the-logo-image-before-the-careersphere-text-in-the-header-with-responsive-sizing-h-8-w-8-on-mobile-h-10-w-10-on-tablet-desktop",
+      "title": "Update Navigation component (frontend/src/components/Navigation.tsx) to display the logo image before the CareerSphere text in the header, with responsive sizing (h-8 w-8 on mobile, h-10 w-10 on tablet/desktop)",
+      "reqIds": [
+        "REQ-82"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-home-page-hero-section-frontend-src-pages-home-tsx-to-display-the-logo-image-above-or-beside-the-careersphere-title-with-larger-sizing-h-16-w-16-on-mobile-h-20-w-20-on-tablet-h-24-w-24-on-desktop",
+      "title": "Update Home page hero section (frontend/src/pages/Home.tsx) to display the logo image above or beside the 'CareerSphere' title with larger sizing (h-16 w-16 on mobile, h-20 w-20 on tablet, h-24 w-24 on desktop)",
+      "reqIds": [
+        "REQ-83"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-components-navigation-tsx-to-use-the-correct-image-path-assets-logo-png-or-assets-generated-logo-png-if-generated-with-proper-img-src-attribute",
+      "title": "Update frontend/src/components/Navigation.tsx to use the correct image path /assets/logo.png (or /assets/generated/logo.png if generated) with proper img src attribute",
+      "reqIds": [
+        "REQ-85"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-home-tsx-hero-section-to-use-the-correct-image-path-assets-logo-png-or-assets-generated-logo-png-if-generated-with-proper-img-src-attribute",
+      "title": "Update frontend/src/pages/Home.tsx hero section to use the correct image path /assets/logo.png (or /assets/generated/logo.png if generated) with proper img src attribute",
+      "reqIds": [
+        "REQ-86"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-logo-image-maintains-square-aspect-ratio-with-proper-responsive-sizing-h-8-w-8-32x32px-on-mobile-h-10-w-10-40x40px-on-tablet-desktop-in-navigation-component",
+      "title": "Ensure the logo image maintains square aspect ratio with proper responsive sizing: h-8 w-8 (32x32px) on mobile, h-10 w-10 (40x40px) on tablet/desktop in Navigation component",
+      "reqIds": [
+        "REQ-87"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-logo-image-in-home-tsx-hero-section-maintains-square-aspect-ratio-with-proper-responsive-sizing-h-16-w-16-64x64px-on-mobile-h-20-w-20-80x80px-on-tablet-h-24-w-24-96x96px-on-desktop",
+      "title": "Ensure the logo image in Home.tsx hero section maintains square aspect ratio with proper responsive sizing: h-16 w-16 (64x64px) on mobile, h-20 w-20 (80x80px) on tablet, h-24 w-24 (96x96px) on desktop",
+      "reqIds": [
+        "REQ-88"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-alt-text-careersphere-logo-to-all-logo-img-elements-in-navigation-tsx-and-home-tsx-for-accessibility",
+      "title": "Add alt text 'CareerSphere Logo' to all logo img elements in Navigation.tsx and Home.tsx for accessibility",
+      "reqIds": [
+        "REQ-89"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-logo-loads-correctly-in-production-deployment-at-the-ic0-app-url-after-redeploying-the-frontend",
+      "title": "Verify logo loads correctly in production deployment at the .ic0.app URL after redeploying the frontend",
+      "reqIds": [
+        "REQ-90"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-components-navigation-tsx-to-reposition-the-logo-image-with-proper-spacing-and-alignment-ensuring-it-displays-to-the-left-of-the-careersphere-text-with-adequate-margin-e-g-mr-2-or-mr-3-and-maintains-vertical-centering-with-the-text",
+      "title": "Update frontend/src/components/Navigation.tsx to reposition the logo image with proper spacing and alignment, ensuring it displays to the left of the 'CareerSphere' text with adequate margin (e.g., mr-2 or mr-3) and maintains vertical centering with the text",
+      "reqIds": [
+        "REQ-91"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-home-tsx-hero-section-to-reposition-the-logo-image-with-proper-layout-structure-ensuring-it-displays-centered-above-the-careersphere-title-with-adequate-spacing-e-g-mb-4-or-mb-6-and-maintains-visual-hierarchy-in-the-hero-section",
+      "title": "Update frontend/src/pages/Home.tsx hero section to reposition the logo image with proper layout structure, ensuring it displays centered above the 'CareerSphere' title with adequate spacing (e.g., mb-4 or mb-6) and maintains visual hierarchy in the hero section",
+      "reqIds": [
+        "REQ-92"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-the-logo-image-file-exists-at-frontend-public-assets-logo-png-or-frontend-public-assets-generated-logo-png-if-generated-and-is-correctly-referenced-in-both-navigation-tsx-and-home-tsx-with-proper-src-attributes-using-absolute-paths-starting-with-assets",
+      "title": "Verify the logo image file exists at frontend/public/assets/logo.png (or frontend/public/assets/generated/logo.png if generated) and is correctly referenced in both Navigation.tsx and Home.tsx with proper src attributes using absolute paths starting with /assets/",
+      "reqIds": [
+        "REQ-93"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-comprehensive-console-logging-to-frontend-src-pages-streamselector-tsx-handlesubmit-function-to-log-1-the-exact-quiz-data-being-submitted-2-authentication-status-with-principal-id-3-the-response-received-from-the-backend-submitquizresult-mutation-4-any-error-messages-from-the-mutation-and-5-confirmation-when-navigation-to-results-page-occurs",
+      "title": "Add comprehensive console logging to frontend/src/pages/StreamSelector.tsx handleSubmit function to log: (1) the exact quiz data being submitted, (2) authentication status with principal ID, (3) the response received from the backend submitQuizResult mutation, (4) any error messages from the mutation, and (5) confirmation when navigation to results page occurs",
+      "reqIds": [
+        "REQ-94"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-that-frontend-src-hooks-usequeries-ts-submitquizresult-mutation-correctly-serializes-the-quiz-result-data-before-sending-to-the-backend-actor-ensuring-the-data-structure-matches-the-expected-backend-type-signature-stream-text-answers-text-completionpercentage-nat",
+      "title": "Verify that frontend/src/hooks/useQueries.ts submitQuizResult mutation correctly serializes the quiz result data before sending to the backend actor, ensuring the data structure matches the expected backend type signature (stream: Text, answers: [Text], completionPercentage: Nat)",
+      "reqIds": [
+        "REQ-95"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-enhanced-console-logging-to-frontend-src-pages-admindashboard-tsx-to-log-1-when-the-usealluserprofiles-query-starts-fetching-2-the-raw-data-received-from-the-backend-before-transformation-3-the-number-of-profiles-after-data-transformation-4-any-data-structure-mismatches-or-parsing-errors-and-5-the-final-profiles-array-being-passed-to-the-ui-components",
+      "title": "Add enhanced console logging to frontend/src/pages/AdminDashboard.tsx to log: (1) when the useAllUserProfiles query starts fetching, (2) the raw data received from the backend before transformation, (3) the number of profiles after data transformation, (4) any data structure mismatches or parsing errors, and (5) the final profiles array being passed to the UI components",
+      "reqIds": [
+        "REQ-98"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-enhanced-console-logging-to-frontend-src-hooks-useadminqueries-ts-usealluserprofiles-query-to-log-1-when-the-actor-query-is-initiated-2-the-raw-response-from-backend-getalluserprofiles-3-any-data-transformation-or-mapping-operations-4-the-final-transformed-data-structure-and-5-any-errors-during-the-fetch-or-transformation-process",
+      "title": "Add enhanced console logging to frontend/src/hooks/useAdminQueries.ts useAllUserProfiles query to log: (1) when the actor query is initiated, (2) the raw response from backend.getAllUserProfiles(), (3) any data transformation or mapping operations, (4) the final transformed data structure, and (5) any errors during the fetch or transformation process",
+      "reqIds": [
+        "REQ-99"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-page-component-at-frontend-src-pages-subjecttocareer-tsx-that-displays-the-subject-to-career-ar-explorer-module-content-with-a-header-description-explaining-how-subjects-connect-to-career-paths-and-placeholder-content-indicating-ar-features-are-coming-soon",
+      "title": "Create a new page component at frontend/src/pages/SubjectToCareer.tsx that displays the Subject-to-Career AR Explorer module content with a header, description explaining how subjects connect to career paths, and placeholder content indicating AR features are coming soon",
+      "reqIds": [
+        "REQ-102"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-route-for-subject-to-career-in-frontend-src-app-tsx-that-renders-the-subjecttocareer-page-component-ensuring-it-follows-the-same-routing-pattern-as-existing-module-routes-like-career-path-stream-selector-and-chatbot",
+      "title": "Add a new route for '/subject-to-career' in frontend/src/App.tsx that renders the SubjectToCareer page component, ensuring it follows the same routing pattern as existing module routes like '/career-path', '/stream-selector', and '/chatbot'",
+      "reqIds": [
+        "REQ-103"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-modules-tsx-to-ensure-the-subject-to-career-ar-explorer-module-card-has-the-correct-path-subject-to-career-in-its-modulecard-component-matching-the-pattern-used-by-other-module-cards",
+      "title": "Update frontend/src/pages/Modules.tsx to ensure the 'Subject-to-Career AR Explorer' module card has the correct path='/subject-to-career' in its ModuleCard component, matching the pattern used by other module cards",
+      "reqIds": [
+        "REQ-104"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-page-component-at-frontend-src-pages-regionallanguage-tsx-that-displays-the-regional-language-career-platform-module-content-with-a-header-description-explaining-how-the-platform-helps-students-explore-career-options-in-their-regional-language-and-placeholder-content-with-a-coming-soon-status-indicator-style-it-consistently-with-the-existing-subjecttocareer-tsx-page-using-the-same-gradient-and-card-patterns",
+      "title": "Create a new page component at frontend/src/pages/RegionalLanguage.tsx that displays the Regional Language Career Platform module content with a header, description explaining how the platform helps students explore career options in their regional language, and placeholder content with a 'coming soon' status indicator. Style it consistently with the existing SubjectToCareer.tsx page using the same gradient and card patterns.",
+      "reqIds": [
+        "REQ-105"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-route-for-regional-language-in-frontend-src-app-tsx-that-renders-the-regionallanguage-page-component-following-the-same-routing-pattern-used-for-subject-to-career-and-other-module-routes",
+      "title": "Add a new route for '/regional-language' in frontend/src/App.tsx that renders the RegionalLanguage page component, following the same routing pattern used for '/subject-to-career' and other module routes.",
+      "reqIds": [
+        "REQ-106"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-modules-tsx-to-ensure-the-regional-language-career-platform-module-card-has-path-regional-language-in-its-modulecard-component-so-clicking-the-explore-button-navigates-to-the-new-page",
+      "title": "Update frontend/src/pages/Modules.tsx to ensure the 'Regional Language Career Platform' module card has path='/regional-language' in its ModuleCard component, so clicking the Explore button navigates to the new page.",
+      "reqIds": [
+        "REQ-107"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Landing page with hero section, navigation, and Get Started CTA",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "8 feature modules cards grid with icons and explore buttons",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Career Path page with subject dropdown and career/degree/exam cards",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Stream Selector Quiz with MCQs and result showing Science/Commerce/Arts",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "India vs Abroad comparison page with table and visual indicators",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Chatbot page UI with chat interface and message input",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "FutureMap page with visual career journey timeline from subjects to job",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Degree Info Finder with search bar and degree cards showing duration/exams/fees",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "About section with platform description, problem statement, mission and vision",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Contact page with form and footer with social links",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Authentication system so students can save progress and preferences",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Implement backend user profile data model in main.mo to store student preferences, quiz results, saved career paths, and selected modules. Include stable storage for persistence across canister upgrades.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add backend functions to save and retrieve Stream Selector quiz results, associating them with the authenticated user's principal ID",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Add backend functions to save and retrieve bookmarked career paths and degree programs for authenticated users",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Implement stable storage in backend/main.mo to ensure all user data (quiz results, bookmarked careers, bookmarked degrees, user profiles) persists across canister upgrades using stable variables",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Create backend/migration.mo file with pre_upgrade and post_upgrade hooks to safely migrate existing user data during canister upgrades",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Add backend validation functions to ensure data integrity for quiz results (valid stream values), career bookmarks (non-empty fields), and degree bookmarks (valid duration and fee ranges)",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Implement backend error handling for all public functions in main.mo to return Result types with descriptive error messages for validation failures, authentication issues, and data not found scenarios",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Add backend query function to retrieve bookmark statistics (total careers bookmarked, total degrees bookmarked, most popular bookmarks across all users) for potential analytics dashboard",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Ensure fully responsive design optimized for mobile, tablet, and laptop screens across all pages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Admin Dashboard page to view stored user data in table format with view and delete actions",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Add backend query function getAllUserProfiles that returns all stored user profiles with their quiz results, bookmarked careers, and bookmarked degrees for admin viewing",
+      "reqIds": [
+        "REQ-38"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Add backend update function deleteUserProfile that removes a user profile and all associated data by principal ID with proper authentication checks",
+      "reqIds": [
+        "REQ-39"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Update Admin Dashboard to be accessible without Internet Identity authentication",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-26",
+      "summary": "Fix quiz data not displaying in admin panel: ensure quiz submission saves to JSON database, connect admin dashboard to read from same JSON file, fix backend API endpoints for save/fetch, add console logs for data confirmation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Add debug logging to backend/main.mo submitQuizResult function to log when quiz data is received and successfully stored, including the principal ID and quiz result details",
+      "reqIds": [
+        "REQ-48"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-28",
+      "summary": "Add debug logging to backend/main.mo getAllUserProfiles function to log the number of profiles being returned and basic profile information",
+      "reqIds": [
+        "REQ-49"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-31",
+      "summary": "Verify that backend/main.mo submitQuizResult function correctly stores quiz results in the stable userProfiles HashMap and associates them with the caller's principal ID",
+      "reqIds": [
+        "REQ-52"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-32",
+      "summary": "Verify that backend/main.mo getAllUserProfiles function correctly retrieves all user profiles from the userProfiles HashMap including quiz results and returns them as an array",
+      "reqIds": [
+        "REQ-53"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-35",
+      "summary": "Add detailed documentation comment in backend/main.mo explaining that user data is stored in stable memory using Motoko stable variables (userProfiles HashMap) and persists across canister upgrades, clarifying there is no external JSON file database",
+      "reqIds": [
+        "REQ-56"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-36",
+      "summary": "Create a comprehensive README.md file in the project root with step-by-step instructions to: (1) install dfx and Node.js dependencies, (2) start the local Internet Computer replica with dfx start --clean, (3) deploy the backend canister with dfx deploy backend, (4) start the frontend development server with npm run dev, (5) access the application at localhost URLs, and (6) view backend logs with dfx canister logs backend",
+      "reqIds": [
+        "REQ-57"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-37",
+      "summary": "Analyze and fix compilation errors in backend/main.mo that are preventing successful deployment to the Internet Computer network",
+      "reqIds": [
+        "REQ-58"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-38",
+      "summary": "Verify that all Motoko type declarations in backend/main.mo are correct and compatible with the current Motoko compiler version",
+      "reqIds": [
+        "REQ-59"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-39",
+      "summary": "Ensure all imports in backend/main.mo use correct module paths and that all imported modules are available in the current Motoko base library",
+      "reqIds": [
+        "REQ-60"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-40",
+      "summary": "Validate that all HashMap operations in backend/main.mo use correct syntax for stable storage patterns compatible with the Motoko compiler",
+      "reqIds": [
+        "REQ-61"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-41",
+      "summary": "Fix any actor class or public function signature errors in backend/main.mo that may be causing deployment failures",
+      "reqIds": [
+        "REQ-62"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-42",
+      "summary": "Remove all hardcoded platform name references from codebase and update footer to '© 2026 CareerSphere. All Rights Reserved.'",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-48",
+      "summary": "Search frontend/src/index.css and frontend/index.css for any CSS comments or custom property names that reference 'CareerSphere' and remove or genericize them",
+      "reqIds": [
+        "REQ-68"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-49",
+      "summary": "Search backend/main.mo for any string literals, comments, or documentation that reference 'CareerSphere' and remove or genericize them",
+      "reqIds": [
+        "REQ-69"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-50",
+      "summary": "Analyze and fix all Motoko compilation errors in backend/main.mo that are preventing successful deployment to the Internet Computer production network",
+      "reqIds": [
+        "REQ-70"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-51",
+      "summary": "Verify all HashMap operations and stable storage patterns in backend/main.mo use correct syntax compatible with the Motoko compiler version",
+      "reqIds": [
+        "REQ-71"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-52",
+      "summary": "Ensure all module imports in backend/main.mo reference valid Motoko base library modules with correct paths",
+      "reqIds": [
+        "REQ-72"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-53",
+      "summary": "Deploy the fixed backend canister to Internet Computer production network and verify it receives a permanent canister ID",
+      "reqIds": [
+        "REQ-73"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-54",
+      "summary": "Update frontend/index.html document title tag to change from any 'career guide' reference to 'CareerSphere - Your Career Path Navigator'",
+      "reqIds": [
+        "REQ-76"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-55",
+      "summary": "Search and update frontend/src/pages/Home.tsx hero section to replace any 'career guide' text with 'CareerSphere' in the title and tagline",
+      "reqIds": [
+        "REQ-77"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-56",
+      "summary": "Search and update frontend/src/pages/About.tsx to replace any 'career guide' references with 'CareerSphere' in mission and vision statements",
+      "reqIds": [
+        "REQ-78"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-58",
+      "summary": "Search backend/main.mo for any string literals, comments, or documentation containing 'career guide' and replace with 'CareerSphere'",
+      "reqIds": [
+        "REQ-80"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-59",
+      "summary": "Add logo to the application design system, incorporating it into navigation header and possibly home page hero section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-60",
+      "summary": "Save the uploaded vibrant swirling sphere logo image to frontend/public/assets/ as logo.png",
+      "reqIds": [
+        "REQ-81"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-61",
+      "summary": "Fix broken logo display by ensuring logo.png is properly placed in frontend/public/assets and referenced correctly in Navigation component with responsive sizing",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-62",
+      "summary": "If logo.png is missing, generate a modern education/career themed icon logo (symbol only, no text) and integrate it into the navbar with proper file path",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-63",
+      "summary": "Verify that frontend/public/assets/logo.png exists and is accessible, or create the directory structure if missing",
+      "reqIds": [
+        "REQ-84"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-66",
+      "summary": "Add detailed console logging to backend/main.mo submitQuizResult function to log: (1) when the function is called with the caller's principal ID, (2) the quiz result data received (stream, answers array length, completion percentage), (3) confirmation when data is stored in the userProfiles HashMap, (4) the total number of user profiles in storage after insertion, and (5) any errors during storage operations",
+      "reqIds": [
+        "REQ-96"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-67",
+      "summary": "Add comprehensive console logging to backend/main.mo getAllUserProfiles function to log: (1) when the function is called, (2) the total number of profiles in the userProfiles HashMap, (3) the structure of the data being returned (number of profiles with quiz results, bookmarked careers, and degrees), (4) sample principal IDs being returned, and (5) any errors during data retrieval",
+      "reqIds": [
+        "REQ-97"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-70",
+      "summary": "Verify that backend/main.mo submitQuizResult function correctly creates a new UserProfile entry in the userProfiles HashMap when a user submits their first quiz, initializing all fields (principal, quizResults array with the new result, empty bookmarkedCareers array, empty bookmarkedDegrees array) and ensuring the HashMap key is the caller's principal ID",
+      "reqIds": [
+        "REQ-100"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-71",
+      "summary": "Verify that backend/main.mo getAllUserProfiles function correctly iterates through all entries in the userProfiles HashMap and transforms them into the return type expected by the frontend (array of UserProfile objects with principal, quizResults, bookmarkedCareers, and bookmarkedDegrees fields)",
+      "reqIds": [
+        "REQ-101"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-72",
+      "summary": "Fix Subject-to-Career AR Explorer module accessibility - ensure the module card links to a functional page or displays appropriate content",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-73",
+      "summary": "Make Regional Language Career Platform module accessible - create page component, add route, and update module card with correct path",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-74",
+      "summary": "Audit backend/main.mo for all Motoko compilation errors including incorrect type declarations, invalid HashMap stable storage patterns, missing or incorrect module imports, and malformed public function signatures. Fix every identified error so the file compiles cleanly with the current Motoko compiler.",
+      "reqIds": [
+        "REQ-108"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-75",
+      "summary": "Audit all frontend TypeScript and React files for any build-time errors including type mismatches, missing imports, incorrect component props, and broken module references. Fix every identified error so the frontend builds cleanly.",
+      "reqIds": [
+        "REQ-109"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-76",
+      "summary": "Deploy both the backend canister and frontend canister to the Internet Computer production network after all compilation errors are resolved. Confirm the deployment succeeds and the application is accessible at a permanent .ic0.app URL.",
+      "reqIds": [
+        "REQ-110"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "CareerSphere",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

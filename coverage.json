@@ -1,0 +1,79 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-27T07:58:05.692Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 0,
+    "items": [
+      {
+        "id": "REQ-108",
+        "summary": "Audit backend/main.mo for all Motoko compilation errors including incorrect type declarations, invalid HashMap stable storage patterns, missing or incorrect module imports, and malformed public function signatures. Fix every identified error so the file compiles cleanly with the current Motoko compiler.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-109",
+        "summary": "Audit all frontend TypeScript and React files for any build-time errors including type mismatches, missing imports, incorrect component props, and broken module references. Fix every identified error so the frontend builds cleanly.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/Navigation.tsx",
+          "frontend/src/components/ModuleCard.tsx",
+          "frontend/src/components/UserDataCard.tsx",
+          "frontend/src/components/UserDetailsModal.tsx",
+          "frontend/src/components/DeleteUserConfirmDialog.tsx",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/hooks/useAdminQueries.ts",
+          "frontend/src/pages/AdminDashboard.tsx",
+          "frontend/src/pages/Profile.tsx",
+          "frontend/src/pages/StreamSelector.tsx",
+          "frontend/src/pages/StreamResult.tsx",
+          "frontend/src/pages/CareerPath.tsx",
+          "frontend/src/pages/DegreeFinder.tsx",
+          "frontend/src/pages/Login.tsx",
+          "frontend/src/pages/Chatbot.tsx",
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/pages/Modules.tsx",
+          "frontend/src/pages/About.tsx",
+          "frontend/src/pages/Contact.tsx",
+          "frontend/src/pages/FutureMap.tsx",
+          "frontend/src/pages/IndiaVsAbroad.tsx",
+          "frontend/src/pages/SubjectToCareer.tsx",
+          "frontend/src/utils/urlParams.ts"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-110",
+        "summary": "Deploy both the backend canister and frontend canister to the Internet Computer production network after all compilation errors are resolved. Confirm the deployment succeeds and the application is accessible at a permanent .ic0.app URL.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/hooks/useActor.ts",
+          "frontend/index.html",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Navigation.tsx",
+          "frontend/src/pages/Modules.tsx",
+          "frontend/src/pages/AdminDashboard.tsx"
+        ],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-implementation-plan.json",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

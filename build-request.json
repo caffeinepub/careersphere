@@ -1,0 +1,80 @@
+{
+  "kind": "build_request",
+  "title": "Fix deployment errors and redeploy CareerSphere",
+  "projectName": "CareerSphere",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-108",
+      "text": "Audit backend/main.mo for all Motoko compilation errors including incorrect type declarations, invalid HashMap stable storage patterns, missing or incorrect module imports, and malformed public function signatures. Fix every identified error so the file compiles cleanly with the current Motoko compiler.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Fastly solve issue and deploy"
+        ]
+      },
+      "acceptanceCriteria": [
+        "backend/main.mo compiles without any errors or warnings during dfx build",
+        "All stable variable declarations use correct Motoko stable storage syntax",
+        "All HashMap operations use correct Motoko base library API",
+        "All imports reference valid Motoko base library modules"
+      ]
+    },
+    {
+      "id": "REQ-109",
+      "text": "Audit all frontend TypeScript and React files for any build-time errors including type mismatches, missing imports, incorrect component props, and broken module references. Fix every identified error so the frontend builds cleanly.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Fastly solve issue and deploy"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend builds without TypeScript compilation errors",
+        "All component imports resolve correctly",
+        "No missing prop type errors in any component",
+        "npm run build completes successfully"
+      ]
+    },
+    {
+      "id": "REQ-110",
+      "text": "Deploy both the backend canister and frontend canister to the Internet Computer production network after all compilation errors are resolved. Confirm the deployment succeeds and the application is accessible at a permanent .ic0.app URL.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Fastly solve issue and deploy"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend canister deploys successfully to the IC production network and receives a permanent canister ID",
+        "Frontend canister deploys successfully and is accessible at a .ic0.app URL",
+        "The deployed application loads on both mobile and desktop browsers",
+        "All 8 module pages are navigable in the production deployment",
+        "Admin Dashboard at /admin is accessible without authentication in production"
+      ]
+    }
+  ],
+  "constraints": [
+    "All Motoko logic must remain in the single backend/main.mo actor file",
+    "Do not modify files listed in frontend.immutablePaths: useInternetIdentity.ts, useActor.ts, main.tsx, and frontend/src/components/ui",
+    "Preserve all existing features and data model (userProfiles HashMap, quiz results, bookmarks)"
+  ],
+  "nonGoals": [
+    "Adding new features or pages beyond what already exists",
+    "Changing the UI design or layout",
+    "Modifying the data schema or backend API signatures"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
