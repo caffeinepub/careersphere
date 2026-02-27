@@ -36,7 +36,7 @@ export default function Modules() {
       icon: '/assets/generated/icon-regional-language.dim_128x128.png',
       title: 'Regional Language Career Platform',
       description: 'Access career guidance in your preferred regional language for better understanding.',
-      path: '/modules',
+      path: '/regional-language',
     },
     {
       icon: '/assets/generated/icon-ar-explorer.dim_128x128.png',

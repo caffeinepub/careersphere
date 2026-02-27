@@ -17,6 +17,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import SubjectToCareer from './pages/SubjectToCareer';
+import RegionalLanguage from './pages/RegionalLanguage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -92,6 +93,12 @@ const subjectToCareerRoute = createRoute({
   component: SubjectToCareer,
 });
 
+const regionalLanguageRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/regional-language',
+  component: RegionalLanguage,
+});
+
 const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/about',
@@ -133,6 +140,7 @@ const routeTree = rootRoute.addChildren([
   futureMapRoute,
   degreeFinderRoute,
   subjectToCareerRoute,
+  regionalLanguageRoute,
   aboutRoute,
   contactRoute,
   loginRoute,

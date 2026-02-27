@@ -1,4 +1,81 @@
 {
   "kind": "feature_evidence_report",
-  "features": []
+  "features": [
+    {
+      "featureId": "feature-verify-and-fix-the-route-registration-for-subject-to-career-in-frontend-src-app-tsx-so-that-the-subjecttocareer-page-component-is-correctly-imported-and-rendered-when-navigating-to-that-path-following-the-same-pattern-as-other-module-routes-such-as-career-path-and-chatbot",
+      "featureTitle": "Verify and fix the route registration for '/subject-to-career' in frontend/src/App.tsx so that the SubjectToCareer page component is correctly imported and rendered when navigating to that path, following the same pattern as other module routes such as '/career-path' and '/chatbot'.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-111"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-verify-and-fix-the-route-registration-for-regional-language-in-frontend-src-app-tsx-so-that-the-regionallanguage-page-component-is-correctly-imported-and-rendered-when-navigating-to-that-path-following-the-same-pattern-as-other-module-routes",
+      "featureTitle": "Verify and fix the route registration for '/regional-language' in frontend/src/App.tsx so that the RegionalLanguage page component is correctly imported and rendered when navigating to that path, following the same pattern as other module routes.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-112"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-verify-that-frontend-src-pages-modules-tsx-passes-the-correct-path-props-subject-to-career-and-regional-language-respectively-prefixed-with-to-the-modulecard-components-for-subject-to-career-ar-explorer-and-regional-language-career-platform-and-fix-any-incorrect-or-missing-path-values",
+      "featureTitle": "Verify that frontend/src/pages/Modules.tsx passes the correct path props ('subject-to-career' and 'regional-language' respectively, prefixed with '/') to the ModuleCard components for 'Subject-to-Career AR Explorer' and 'Regional Language Career Platform', and fix any incorrect or missing path values.",
+      "files": [
+        "frontend/src/pages/Modules.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-113"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-frontend-src-pages-regionallanguage-tsx-exists-as-a-valid-react-component-that-exports-a-default-component-if-the-file-is-missing-or-malformed-recreate-it-with-a-header-description-explaining-how-the-platform-helps-students-explore-careers-in-their-regional-language-and-a-coming-soon-status-indicator-styled-consistently-with-subjecttocareer-tsx",
+      "featureTitle": "Ensure frontend/src/pages/RegionalLanguage.tsx exists as a valid React component that exports a default component. If the file is missing or malformed, recreate it with a header, description explaining how the platform helps students explore careers in their regional language, and a 'coming soon' status indicator, styled consistently with SubjectToCareer.tsx.",
+      "files": [
+        "frontend/src/pages/RegionalLanguage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-115"
+      ],
+      "confidence": "high"
+    }
+  ]
 }

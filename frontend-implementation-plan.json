@@ -1,180 +1,85 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix deployment errors and redeploy CareerSphere",
+  "title": "Fix inaccessible module pages for Subject-to-Career and Regional Language",
   "requirements": [
     {
-      "id": "REQ-109",
-      "summary": "Audit and fix all frontend TypeScript and React build errors including type mismatches, missing imports, incorrect component props, and broken module references",
+      "id": "REQ-111",
+      "summary": "Fix route registration for '/subject-to-career' in App.tsx to ensure SubjectToCareer page renders correctly",
       "acceptanceCriteria": [
-        "Frontend builds without TypeScript compilation errors",
-        "All component imports resolve correctly",
-        "No missing prop type errors in any component",
-        "npm run build completes successfully"
+        "Navigating to /subject-to-career renders the SubjectToCareer page without a 404 or blank screen",
+        "The route is registered in App.tsx using the same pattern as existing module routes",
+        "The SubjectToCareer component is correctly imported in App.tsx"
       ],
       "file_operations": [
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Verify TanStack Router configuration with all 15 routes including /subject-to-career, fix any type errors in route definitions, ensure correct imports from @tanstack/react-router, and validate RouterProvider setup. Check that React Query client configuration with 5-minute stale time is correctly typed."
-        },
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "modify",
-          "description": "Fix any TypeScript errors in navigation links, verify Internet Identity integration types match useInternetIdentity hook return values, ensure responsive mobile menu state management is correctly typed, and validate Link component props from router."
-        },
-        {
-          "path": "frontend/src/components/ModuleCard.tsx",
-          "operation": "modify",
-          "description": "Validate card component props interface (icon, title, description, path), ensure navigation function types are correct, fix any hover animation styling that may cause build warnings."
-        },
-        {
-          "path": "frontend/src/components/UserDataCard.tsx",
-          "operation": "modify",
-          "description": "Verify UserData type matches backend interface definition from backend.d.ts, ensure principal ID display logic is correctly typed, validate action button onClick handlers match expected signatures."
-        },
-        {
-          "path": "frontend/src/components/UserDetailsModal.tsx",
-          "operation": "modify",
-          "description": "Fix any type mismatches in modal props, ensure UserProfileView type from backend.d.ts is correctly imported and used, validate quiz results array rendering logic matches QuizResult interface."
-        },
-        {
-          "path": "frontend/src/components/DeleteUserConfirmDialog.tsx",
-          "operation": "modify",
-          "description": "Verify Principal type import from @dfinity/principal or @icp-sdk/core/principal matches backend interface, ensure useDeleteUserProfile hook types are correct, fix any alert dialog component prop type errors."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Audit all React Query hooks for type safety: verify useQuery and useMutation generic types match backend interface methods, ensure quiz results submission types align with submitQuizResults signature, validate bookmark add/remove mutation types match addBookmark and removeBookmark backend methods, fix any Promise return type mismatches."
-        },
-        {
-          "path": "frontend/src/hooks/useAdminQueries.ts",
-          "operation": "modify",
-          "description": "Verify admin query hooks match backend getAllUserProfiles and deleteUserProfile method signatures, ensure UserData array type is correctly imported from backend.d.ts, fix any toast notification type errors, validate query invalidation logic."
-        },
-        {
-          "path": "frontend/src/pages/AdminDashboard.tsx",
-          "operation": "modify",
-          "description": "Fix type errors in user profile table rendering, ensure modal state management types are correct, verify useAdminQueries hook usage matches expected return types, validate Principal display and comparison logic types."
-        },
-        {
-          "path": "frontend/src/pages/Profile.tsx",
-          "operation": "modify",
-          "description": "Verify user profile display types match UserProfileView from backend.d.ts, ensure Internet Identity hook types are correct for principal ID display, fix any bookmark array rendering type errors, validate logout handler types."
-        },
-        {
-          "path": "frontend/src/pages/StreamSelector.tsx",
-          "operation": "modify",
-          "description": "Audit quiz state management types, verify submitQuizResults mutation matches backend interface signature (selectedStreams: Array<string>, completionPercentage: bigint), ensure navigation with state parameters is correctly typed, fix any form input handler type errors."
-        },
-        {
-          "path": "frontend/src/pages/StreamResult.tsx",
-          "operation": "modify",
-          "description": "Verify location state types from router navigation match quiz results structure, ensure stream recommendation display logic handles all expected stream values, fix any type errors in subject and career list rendering."
-        },
-        {
-          "path": "frontend/src/pages/CareerPath.tsx",
-          "operation": "modify",
-          "description": "Audit subject selection state types, verify findSimilarCareersByStream query matches backend method signature, ensure CareerPath type from backend.d.ts is correctly used for career display, fix bookmark functionality types requiring authentication, validate degree and exam rendering logic."
-        },
-        {
-          "path": "frontend/src/pages/DegreeFinder.tsx",
-          "operation": "modify",
-          "description": "Verify degree data structure types match any backend degree-related interfaces, ensure bookmark integration types match user profile bookmark arrays (bookmarkedDegrees: Array<bigint>), fix search functionality types, validate Internet Identity authentication check types."
-        },
-        {
-          "path": "frontend/src/pages/Login.tsx",
-          "operation": "modify",
-          "description": "Fix Internet Identity authentication flow types, verify useInternetIdentity hook return value types match login/logout handlers, ensure principal ID display types are correct, validate logged-in state conditional rendering logic types."
-        },
-        {
-          "path": "frontend/src/pages/Chatbot.tsx",
-          "operation": "modify",
-          "description": "Audit message state management types, verify simulated bot response logic types for keyword matching, ensure message history rendering types are correct, fix any input handler type errors."
-        },
-        {
-          "path": "frontend/src/pages/Home.tsx",
-          "operation": "modify",
-          "description": "Verify navigation link types to modules and about pages, ensure hero section image references match existing assets (frontend/public/assets/generated/hero-students.dim_1200x600.png and frontend/public/assets/generated/logo.dim_512x512.png), fix any animation or gradient styling type warnings."
-        },
-        {
-          "path": "frontend/src/pages/Modules.tsx",
-          "operation": "modify",
-          "description": "Verify ModuleCard component usage matches its prop interface, ensure all 8 module definitions have correct types, validate icon image references match existing generated assets in frontend/public/assets/generated/."
-        },
-        {
-          "path": "frontend/src/pages/About.tsx",
-          "operation": "modify",
-          "description": "Fix any type errors in animated card components, validate mission/vision/team data structure types, ensure gradient styling doesn't cause build warnings."
-        },
-        {
-          "path": "frontend/src/pages/Contact.tsx",
-          "operation": "modify",
-          "description": "Audit contact form state types, verify form validation logic types, ensure submission handler types are correct, fix any icon component type errors in contact information display."
-        },
-        {
-          "path": "frontend/src/pages/FutureMap.tsx",
-          "operation": "modify",
-          "description": "Verify roadmap stage data types, ensure responsive layout logic types are correct for horizontal/vertical timeline switching, fix any animation type warnings."
-        },
-        {
-          "path": "frontend/src/pages/IndiaVsAbroad.tsx",
-          "operation": "modify",
-          "description": "Audit comparison category data types, verify score bar calculation types, ensure interactive category selection state types are correct, fix any animation transition type errors."
-        },
-        {
-          "path": "frontend/src/pages/SubjectToCareer.tsx",
-          "operation": "modify",
-          "description": "Verify static content types for AR Explorer feature cards, ensure 'coming soon' status display types are correct."
-        },
-        {
-          "path": "frontend/src/utils/urlParams.ts",
-          "operation": "modify",
-          "description": "Audit URL parameter extraction function return types, verify sessionStorage operations are correctly typed, ensure parameter clearing logic types match expected signatures."
+          "description": "Verify that the '/subject-to-career' route is correctly registered in the TanStack Router configuration. Import SubjectToCareer component if missing. Ensure the route definition follows the same pattern as existing module routes like '/career-path' and '/chatbot', with proper path, component, and element configuration."
         }
       ]
     },
     {
-      "id": "REQ-110",
-      "summary": "Deploy both backend and frontend canisters to IC production network after compilation errors are resolved and confirm application accessibility at .ic0.app URL",
+      "id": "REQ-112",
+      "summary": "Fix route registration for '/regional-language' in App.tsx to ensure RegionalLanguage page renders correctly",
       "acceptanceCriteria": [
-        "Backend canister deploys successfully to the IC production network and receives a permanent canister ID",
-        "Frontend canister deploys successfully and is accessible at a .ic0.app URL",
-        "The deployed application loads on both mobile and desktop browsers",
-        "All 8 module pages are navigable in the production deployment",
-        "Admin Dashboard at /admin is accessible without authentication in production"
+        "Navigating to /regional-language renders the RegionalLanguage page without a 404 or blank screen",
+        "The route is registered in App.tsx using the same pattern as existing module routes",
+        "The RegionalLanguage component is correctly imported in App.tsx"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useActor.ts",
-          "operation": "modify",
-          "description": "Verify backend canister ID configuration for production deployment, ensure actor initialization logic correctly handles production network environment, validate Internet Identity authentication state integration for deployed environment."
-        },
-        {
-          "path": "frontend/index.html",
-          "operation": "modify",
-          "description": "Verify page title 'CareerSphere - Your Career Path Navigator' is correct, ensure viewport meta tag is properly configured for mobile responsiveness, validate root div configuration for production build."
-        },
-        {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Ensure all 15 routes including /subject-to-career are correctly registered for production deployment, verify React Query configuration works in production environment, validate Toaster notifications are properly configured for deployed app."
-        },
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "modify",
-          "description": "Verify all navigation links (Home, Modules, About, Contact, Admin Dashboard at /admin, Profile/Login) work correctly in production deployment, ensure mobile menu functions properly on deployed site, validate Internet Identity integration works with production canister."
-        },
+          "description": "Verify that the '/regional-language' route is correctly registered in the TanStack Router configuration. Import RegionalLanguage component if missing. Ensure the route definition follows the same pattern as other module routes, with proper path, component, and element configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-113",
+      "summary": "Fix path props in Modules.tsx for Subject-to-Career and Regional Language ModuleCard components",
+      "acceptanceCriteria": [
+        "The 'Subject-to-Career AR Explorer' ModuleCard has path='/subject-to-career'",
+        "The 'Regional Language Career Platform' ModuleCard has path='/regional-language'",
+        "Clicking the Explore button on each card navigates to the correct route"
+      ],
+      "file_operations": [
         {
           "path": "frontend/src/pages/Modules.tsx",
           "operation": "modify",
-          "description": "Verify all 8 module cards (Stream Selector, Career Path, Degree Finder, Future Map, India vs Abroad, Chatbot, AR Explorer, Regional Language) navigate correctly in production, ensure generated icon assets load properly from frontend/public/assets/generated/."
-        },
+          "description": "Verify and fix the path props for the 'Subject-to-Career AR Explorer' and 'Regional Language Career Platform' ModuleCard components in the grid of 8 career guidance tool cards. Ensure the Subject-to-Career card has path='/subject-to-career' and the Regional Language card has path='/regional-language', matching the route paths defined in App.tsx."
+        }
+      ]
+    },
+    {
+      "id": "REQ-114",
+      "summary": "Ensure SubjectToCareer.tsx exists as a valid React component with proper content and styling",
+      "acceptanceCriteria": [
+        "frontend/src/pages/SubjectToCareer.tsx exists and exports a valid default React component",
+        "The page displays a header, a brief description, and a coming-soon placeholder section",
+        "The page uses the same gradient and card styling patterns as other module pages"
+      ],
+      "file_operations": [
         {
-          "path": "frontend/src/pages/AdminDashboard.tsx",
+          "path": "frontend/src/pages/SubjectToCareer.tsx",
           "operation": "modify",
-          "description": "Verify admin dashboard at /admin is accessible without authentication in production deployment, ensure user profile data loads correctly from deployed backend canister, validate view and delete actions work with production backend."
+          "description": "Verify that SubjectToCareer.tsx exports a valid default React component. According to the file summary, this page already exists as an informational page for the Subject-to-Career AR Explorer feature with feature cards and a coming-soon notice. Ensure it includes a header, description explaining how subjects connect to career paths, a coming-soon notice for AR features, and uses consistent gradient and card styling matching other module pages like StreamSelector.tsx and CareerPath.tsx. Reference the AR explorer icon asset at frontend/public/assets/generated/icon-ar-explorer.dim_128x128.png if needed for visual consistency."
+        }
+      ]
+    },
+    {
+      "id": "REQ-115",
+      "summary": "Ensure RegionalLanguage.tsx exists as a valid React component with proper content and styling",
+      "acceptanceCriteria": [
+        "frontend/src/pages/RegionalLanguage.tsx exists and exports a valid default React component",
+        "The page displays a header, a brief description about regional language career guidance, and a coming-soon placeholder",
+        "The page uses the same gradient and card styling patterns as SubjectToCareer.tsx"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/RegionalLanguage.tsx",
+          "operation": "create",
+          "description": "Create RegionalLanguage.tsx as a valid React component that exports a default component. Include a header, description explaining how the platform helps students explore careers in their regional language, and a coming-soon status indicator. Use the same gradient and card styling patterns as SubjectToCareer.tsx to maintain visual consistency. Reference the regional language icon asset at frontend/public/assets/generated/icon-regional-language.dim_128x128.png for the page header or hero section."
         }
       ]
     }

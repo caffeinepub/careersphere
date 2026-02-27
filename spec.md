@@ -1,11 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Fix all compilation errors in the CareerSphere backend (Motoko) and frontend (TypeScript/React) so the application builds cleanly and can be deployed to the Internet Computer production network.
+**Goal:** Fix inaccessible module pages for Subject-to-Career and Regional Language in CareerSphere by correcting route registrations and ensuring valid page components exist.
 
 **Planned changes:**
-- Audit and fix all Motoko compilation errors in `backend/main.mo` (type declarations, stable storage patterns, HashMap API usage, imports, and public function signatures)
-- Audit and fix all frontend TypeScript/React build errors (type mismatches, missing imports, incorrect component props, broken module references)
-- Deploy the fixed backend canister and frontend canister to the IC production network
+- Register the `/subject-to-career` route in `App.tsx` with the correct import and rendering of the `SubjectToCareer` component
+- Register the `/regional-language` route in `App.tsx` with the correct import and rendering of the `RegionalLanguage` component
+- Fix `Modules.tsx` to pass `path='/subject-to-career'` and `path='/regional-language'` to the respective `ModuleCard` components
+- Ensure `SubjectToCareer.tsx` exists as a valid React component with a header, description, and coming-soon placeholder styled consistently with other module pages
+- Ensure `RegionalLanguage.tsx` exists as a valid React component with a header, description about regional language career guidance, and a coming-soon placeholder styled consistently with other module pages
 
-**User-visible outcome:** CareerSphere is live and accessible at a permanent `.ic0.app` URL, with all 8 module pages navigable and the Admin Dashboard accessible on both mobile and desktop browsers.
+**User-visible outcome:** Users can navigate to the Subject-to-Career and Regional Language module pages without encountering a 404 or blank screen, and clicking Explore on the respective module cards correctly routes to each page.

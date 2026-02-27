@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 37,
+  "projectStateVersion": 39,
   "summary": "CareerSphere - A modern responsive career guidance web platform for school and college students with 8 interactive modules including career path suggestion, stream selector, chatbot, and degree finder",
   "architectural_notes": [
     "Modern responsive web application with mobile-first design",
@@ -576,6 +576,38 @@
         "REQ-107"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-verify-and-fix-the-route-registration-for-subject-to-career-in-frontend-src-app-tsx-so-that-the-subjecttocareer-page-component-is-correctly-imported-and-rendered-when-navigating-to-that-path-following-the-same-pattern-as-other-module-routes-such-as-career-path-and-chatbot",
+      "title": "Verify and fix the route registration for '/subject-to-career' in frontend/src/App.tsx so that the SubjectToCareer page component is correctly imported and rendered when navigating to that path, following the same pattern as other module routes such as '/career-path' and '/chatbot'.",
+      "reqIds": [
+        "REQ-111"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-and-fix-the-route-registration-for-regional-language-in-frontend-src-app-tsx-so-that-the-regionallanguage-page-component-is-correctly-imported-and-rendered-when-navigating-to-that-path-following-the-same-pattern-as-other-module-routes",
+      "title": "Verify and fix the route registration for '/regional-language' in frontend/src/App.tsx so that the RegionalLanguage page component is correctly imported and rendered when navigating to that path, following the same pattern as other module routes.",
+      "reqIds": [
+        "REQ-112"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-that-frontend-src-pages-modules-tsx-passes-the-correct-path-props-subject-to-career-and-regional-language-respectively-prefixed-with-to-the-modulecard-components-for-subject-to-career-ar-explorer-and-regional-language-career-platform-and-fix-any-incorrect-or-missing-path-values",
+      "title": "Verify that frontend/src/pages/Modules.tsx passes the correct path props ('subject-to-career' and 'regional-language' respectively, prefixed with '/') to the ModuleCard components for 'Subject-to-Career AR Explorer' and 'Regional Language Career Platform', and fix any incorrect or missing path values.",
+      "reqIds": [
+        "REQ-113"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-frontend-src-pages-regionallanguage-tsx-exists-as-a-valid-react-component-that-exports-a-default-component-if-the-file-is-missing-or-malformed-recreate-it-with-a-header-description-explaining-how-the-platform-helps-students-explore-careers-in-their-regional-language-and-a-coming-soon-status-indicator-styled-consistently-with-subjecttocareer-tsx",
+      "title": "Ensure frontend/src/pages/RegionalLanguage.tsx exists as a valid React component that exports a default component. If the file is missing or malformed, recreate it with a header, description explaining how the platform helps students explore careers in their regional language, and a 'coming soon' status indicator, styled consistently with SubjectToCareer.tsx.",
+      "reqIds": [
+        "REQ-115"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -1022,6 +1054,14 @@
       "summary": "Deploy both the backend canister and frontend canister to the Internet Computer production network after all compilation errors are resolved. Confirm the deployment succeeds and the application is accessible at a permanent .ic0.app URL.",
       "reqIds": [
         "REQ-110"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-80",
+      "summary": "Ensure frontend/src/pages/SubjectToCareer.tsx exists as a valid React component that exports a default component. If the file is missing or malformed, recreate it with a header, description explaining how subjects connect to career paths, and a 'coming soon' notice for AR features, styled consistently with the existing module pages.",
+      "reqIds": [
+        "REQ-114"
       ],
       "status": "pending"
     }

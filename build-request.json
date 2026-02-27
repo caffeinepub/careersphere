@@ -1,77 +1,110 @@
 {
   "kind": "build_request",
-  "title": "Fix deployment errors and redeploy CareerSphere",
+  "title": "Fix inaccessible module pages for Subject-to-Career and Regional Language",
   "projectName": "CareerSphere",
   "priority": "high",
   "requirements": [
     {
-      "id": "REQ-108",
-      "text": "Audit backend/main.mo for all Motoko compilation errors including incorrect type declarations, invalid HashMap stable storage patterns, missing or incorrect module imports, and malformed public function signatures. Fix every identified error so the file compiles cleanly with the current Motoko compiler.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-3"
-        ],
-        "quotes": [
-          "Fastly solve issue and deploy"
-        ]
-      },
-      "acceptanceCriteria": [
-        "backend/main.mo compiles without any errors or warnings during dfx build",
-        "All stable variable declarations use correct Motoko stable storage syntax",
-        "All HashMap operations use correct Motoko base library API",
-        "All imports reference valid Motoko base library modules"
-      ]
-    },
-    {
-      "id": "REQ-109",
-      "text": "Audit all frontend TypeScript and React files for any build-time errors including type mismatches, missing imports, incorrect component props, and broken module references. Fix every identified error so the frontend builds cleanly.",
+      "id": "REQ-111",
+      "text": "Verify and fix the route registration for '/subject-to-career' in frontend/src/App.tsx so that the SubjectToCareer page component is correctly imported and rendered when navigating to that path, following the same pattern as other module routes such as '/career-path' and '/chatbot'.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-latest"
         ],
         "quotes": [
-          "Fastly solve issue and deploy"
+          "The module is still not accessible"
         ]
       },
       "acceptanceCriteria": [
-        "Frontend builds without TypeScript compilation errors",
-        "All component imports resolve correctly",
-        "No missing prop type errors in any component",
-        "npm run build completes successfully"
+        "Navigating to /subject-to-career renders the SubjectToCareer page without a 404 or blank screen",
+        "The route is registered in App.tsx using the same pattern as existing module routes",
+        "The SubjectToCareer component is correctly imported in App.tsx"
       ]
     },
     {
-      "id": "REQ-110",
-      "text": "Deploy both the backend canister and frontend canister to the Internet Computer production network after all compilation errors are resolved. Confirm the deployment succeeds and the application is accessible at a permanent .ic0.app URL.",
-      "target": "both",
+      "id": "REQ-112",
+      "text": "Verify and fix the route registration for '/regional-language' in frontend/src/App.tsx so that the RegionalLanguage page component is correctly imported and rendered when navigating to that path, following the same pattern as other module routes.",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-latest"
         ],
         "quotes": [
-          "Fastly solve issue and deploy"
+          "The module is still not accessible"
         ]
       },
       "acceptanceCriteria": [
-        "Backend canister deploys successfully to the IC production network and receives a permanent canister ID",
-        "Frontend canister deploys successfully and is accessible at a .ic0.app URL",
-        "The deployed application loads on both mobile and desktop browsers",
-        "All 8 module pages are navigable in the production deployment",
-        "Admin Dashboard at /admin is accessible without authentication in production"
+        "Navigating to /regional-language renders the RegionalLanguage page without a 404 or blank screen",
+        "The route is registered in App.tsx using the same pattern as existing module routes",
+        "The RegionalLanguage component is correctly imported in App.tsx"
+      ]
+    },
+    {
+      "id": "REQ-113",
+      "text": "Verify that frontend/src/pages/Modules.tsx passes the correct path props ('subject-to-career' and 'regional-language' respectively, prefixed with '/') to the ModuleCard components for 'Subject-to-Career AR Explorer' and 'Regional Language Career Platform', and fix any incorrect or missing path values.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "The module is still not accessible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The 'Subject-to-Career AR Explorer' ModuleCard has path='/subject-to-career'",
+        "The 'Regional Language Career Platform' ModuleCard has path='/regional-language'",
+        "Clicking the Explore button on each card navigates to the correct route"
+      ]
+    },
+    {
+      "id": "REQ-114",
+      "text": "Ensure frontend/src/pages/SubjectToCareer.tsx exists as a valid React component that exports a default component. If the file is missing or malformed, recreate it with a header, description explaining how subjects connect to career paths, and a 'coming soon' notice for AR features, styled consistently with the existing module pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "The module is still not accessible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/src/pages/SubjectToCareer.tsx exists and exports a valid default React component",
+        "The page displays a header, a brief description, and a coming-soon placeholder section",
+        "The page uses the same gradient and card styling patterns as other module pages"
+      ]
+    },
+    {
+      "id": "REQ-115",
+      "text": "Ensure frontend/src/pages/RegionalLanguage.tsx exists as a valid React component that exports a default component. If the file is missing or malformed, recreate it with a header, description explaining how the platform helps students explore careers in their regional language, and a 'coming soon' status indicator, styled consistently with SubjectToCareer.tsx.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "The module is still not accessible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/src/pages/RegionalLanguage.tsx exists and exports a valid default React component",
+        "The page displays a header, a brief description about regional language career guidance, and a coming-soon placeholder",
+        "The page uses the same gradient and card styling patterns as SubjectToCareer.tsx"
       ]
     }
   ],
   "constraints": [
-    "All Motoko logic must remain in the single backend/main.mo actor file",
-    "Do not modify files listed in frontend.immutablePaths: useInternetIdentity.ts, useActor.ts, main.tsx, and frontend/src/components/ui",
-    "Preserve all existing features and data model (userProfiles HashMap, quiz results, bookmarks)"
+    "Do not modify files listed in frontend.immutablePaths",
+    "Do not change any existing working module routes or page components",
+    "Follow the existing TanStack Router route registration pattern found in frontend/src/App.tsx"
   ],
   "nonGoals": [
-    "Adding new features or pages beyond what already exists",
-    "Changing the UI design or layout",
-    "Modifying the data schema or backend API signatures"
+    "Implementing actual AR features for Subject-to-Career module",
+    "Implementing actual regional language content or translations",
+    "Changes to backend logic",
+    "Modifying any other pages or components not related to these two module routes"
   ],
   "imageRequirements": {
     "required": [],
